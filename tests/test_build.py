@@ -106,3 +106,48 @@ def test_rebuild_preserves_notes(tmp_path):
     generate_data_files(root=tmp_path, data_dir=data_dir, rebuild=True)
     data2 = json.loads((data_dir / "data.json").read_text(encoding="utf-8"))
     assert data2["papers"][0]["notes"]["zh"] == "重要的一篇"
+
+
+# --- Task 9: Data contract tests ---
+
+def test_archived_sop_excluded_from_scan(tmp_path):
+    """build.py never marks new SOPs as archived — only --rebuild does."""
+    sop_dir = tmp_path / "files" / "sops"
+    sop_dir.mkdir(parents=True)
+    (sop_dir / "protocol-v1.0.pdf").touch()
+    (sop_dir / "protocol-v2.0.pdf").touch()
+    entries = scan_directory(tmp_path)
+    # Fresh scan: both appear, none archived
+    assert all(not s.get("archived") for s in entries["sops"])
+
+def test_rebuild_archives_old_sop_version(tmp_path):
+    """After rebuild, older version of same SOP base ID is archived."""
+    sop_dir = tmp_path / "files" / "sops"
+    sop_dir.mkdir(parents=True)
+    (sop_dir / "protocol-v1.0.pdf").touch()
+    data_dir = tmp_path / "data"
+    generate_data_files(root=tmp_path, data_dir=data_dir)
+
+    # Now add v2.0
+    (sop_dir / "protocol-v2.0.pdf").touch()
+    generate_data_files(root=tmp_path, data_dir=data_dir, rebuild=True)
+
+    data = json.loads((data_dir / "data.json").read_text(encoding="utf-8"))
+    active = [s for s in data["sops"] if not s.get("archived")]
+    archived = [s for s in data["sops"] if s.get("archived")]
+    assert len(active) == 1
+    assert len(archived) == 1
+
+def test_paper_year_extracted_correctly(tmp_path):
+    papers_dir = tmp_path / "1.Journal Articles"
+    papers_dir.mkdir(parents=True)
+    (papers_dir / "3.YangAnalChem2010.pdf").touch()
+    entries = scan_directory(tmp_path)
+    assert entries["papers"][0]["year"] == 2010
+
+def test_presentation_date_extracted(tmp_path):
+    pres_dir = tmp_path / "files" / "presentations"
+    pres_dir.mkdir(parents=True)
+    (pres_dir / "2024-03-15-single-cell.pdf").touch()
+    entries = scan_directory(tmp_path)
+    assert entries["presentations"][0]["date"] == "2024-03-15"

@@ -196,12 +196,6 @@ def scan_directory(root: Path) -> dict:
                 "summary": {"zh": "", "en": ""},
             })
 
-    # Resolve any ID collisions within each collection
-    result["papers"] = deduplicate_ids(result["papers"])
-    result["books"] = deduplicate_ids(result["books"])
-    result["sops"] = deduplicate_ids(result["sops"])
-    result["presentations"] = deduplicate_ids(result["presentations"])
-
     return result
 
 
@@ -217,6 +211,32 @@ def merge_notes(existing: dict, new_entry: dict) -> dict:
                 if existing[field].get(lang):
                     new_entry[field][lang] = existing[field][lang]
     return new_entry
+
+
+def _version_key(entry: dict) -> tuple:
+    """Return (major, minor) version tuple for sorting SOPs."""
+    m = re.search(r'v(\d+)(?:\.(\d+))?', entry.get("version", "v0"), re.IGNORECASE)
+    if m:
+        return (int(m.group(1)), int(m.group(2) or 0))
+    return (0, 0)
+
+
+def archive_old_sop_versions(sops: list) -> None:
+    """Mark older versions of the same SOP as archived (in-place).
+
+    Groups by the raw ID (before dedup), which equals
+    'sop-{generate_id(name, strip_version=True)}' — identical for
+    protocol-v1.0.pdf and protocol-v2.0.pdf.
+    """
+    from collections import defaultdict
+    by_base: dict = defaultdict(list)
+    for s in sops:
+        by_base[s["id"]].append(s)
+    for group in by_base.values():
+        if len(group) > 1:
+            group.sort(key=_version_key, reverse=True)
+            for old in group[1:]:
+                old["archived"] = True
 
 
 # ---------------------------------------------------------------------------
@@ -253,6 +273,13 @@ def generate_data_files(
     scanned = scan_directory(root)
 
     if rebuild:
+        # Archive old SOP versions BEFORE dedup (groups by pre-dedup base ID)
+        archive_old_sop_versions(scanned["sops"])
+
+        # Dedup all collections (may change IDs)
+        for key in ("papers", "books", "sops", "presentations"):
+            scanned[key] = deduplicate_ids(scanned[key])
+
         new_data = scanned
         # Merge notes from existing — enumerate so mutations persist in list
         for key in ("papers", "books", "sops", "presentations"):
@@ -260,6 +287,10 @@ def generate_data_files(
                 if entry["id"] in existing_by_id:
                     new_data[key][i] = merge_notes(existing_by_id[entry["id"]], entry)
     else:
+        # Dedup raw scanned entries first
+        for key in ("papers", "books", "sops", "presentations"):
+            scanned[key] = deduplicate_ids(scanned[key])
+
         # Incremental: keep existing, append genuinely new IDs
         new_data = {}
         for key in ("papers", "books", "sops", "presentations"):
