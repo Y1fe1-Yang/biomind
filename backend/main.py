@@ -1,8 +1,13 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
+from backend.routers.files import router as files_router
+from backend.routers.downloads import router as downloads_router
 
 app = FastAPI(title="BioMiND")
+
+app.include_router(files_router)
+app.include_router(downloads_router)
 
 @app.get("/api/health")
 def health():
