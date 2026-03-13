@@ -1,5 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh">
-<head><meta charset="UTF-8"><title>BioMiND</title></head>
-<body><h1>BioMiND — Coming Soon</h1></body>
+<html lang="zh" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BioMiND</title>
+  <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- Data and i18n (no fetch — loaded as <script> tags) -->
+  <script src="/data/data.js"></script>
+  <script src="/i18n/zh.js"></script>
+  <script src="/i18n/en.js"></script>
+</head>
+<body class="h-full bg-gray-50 text-gray-900">
+
+  <!-- Username prompt modal -->
+  <div id="username-modal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+    <div class="bg-white rounded-xl p-8 shadow-xl max-w-sm w-full mx-4">
+      <h2 id="username-modal-title" class="text-xl font-semibold mb-4"></h2>
+      <input id="username-input" type="text" class="w-full border rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <button id="username-confirm" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"></button>
+    </div>
+  </div>
+
+  <!-- Top navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center h-14 gap-6">
+      <span class="font-bold text-blue-700 text-lg mr-4">BioMiND</span>
+      <button data-view="timeline" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.timeline"></button>
+      <button data-view="directions" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.directions"></button>
+      <button data-view="sops" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.sops"></button>
+      <button data-view="presentations" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.presentations"></button>
+      <div class="ml-auto flex items-center gap-3">
+        <!-- Search -->
+        <input id="search-input" type="text" class="border rounded-lg px-3 py-1.5 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n-placeholder="search.placeholder">
+        <!-- Language toggle -->
+        <button id="lang-toggle" class="text-sm text-gray-500 hover:text-gray-800 transition">中/EN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content area -->
+  <main class="max-w-7xl mx-auto px-4 py-6">
+    <div id="view-timeline" class="view hidden"></div>
+    <div id="view-directions" class="view hidden"></div>
+    <div id="view-sops" class="view hidden"></div>
+    <div id="view-presentations" class="view hidden"></div>
+    <div id="view-search" class="view hidden"></div>
+  </main>
+
+  <!-- Kimi FAB placeholder (implemented in Plan 2) -->
+  <button id="kimi-fab" class="hidden fixed bottom-6 right-6 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center text-2xl hover:bg-blue-700 transition z-30" title="AI 助手">✦</button>
+
+  <script src="/assets/app.js"></script>
+</body>
 </html>

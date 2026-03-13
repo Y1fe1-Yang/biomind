@@ -1,0 +1,40 @@
+window.I18N_ZH = {
+  nav: {
+    timeline: "时间线",
+    directions: "研究方向",
+    sops: "SOP 库",
+    presentations: "组内分享",
+  },
+  search: { placeholder: "搜索标题、摘要、标签..." },
+  type: {
+    journal: "期刊",
+    conference: "会议",
+    book: "书籍",
+    sop: "SOP",
+    presentation: "分享",
+  },
+  paper: {
+    authors: "作者",
+    year: "年份",
+    journal: "期刊/会议",
+    doi: "DOI",
+    openPdf: "打开 PDF",
+    noAbstract: "（摘要待补充）",
+    noNotes: "（暂无背景说明）",
+  },
+  sop: {
+    version: "版本",
+    updated: "更新日期",
+    author: "负责人",
+    openPdf: "打开 SOP",
+  },
+  presentation: { presenter: "分享人", openPdf: "打开文件" },
+  username: {
+    prompt: "请输入您的姓名或昵称（用于标识您的 AI 对话）",
+    placeholder: "例如：张三",
+    confirm: "确认",
+  },
+  directions: { all: "全部", unknownYear: "未知年份" },
+  noResults: "没有找到相关内容",
+  loading: "加载中...",
+};

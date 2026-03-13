@@ -1,0 +1,40 @@
+window.I18N_EN = {
+  nav: {
+    timeline: "Timeline",
+    directions: "Research Directions",
+    sops: "SOP Library",
+    presentations: "Group Sharing",
+  },
+  search: { placeholder: "Search titles, abstracts, tags..." },
+  type: {
+    journal: "Journal",
+    conference: "Conference",
+    book: "Book",
+    sop: "SOP",
+    presentation: "Sharing",
+  },
+  paper: {
+    authors: "Authors",
+    year: "Year",
+    journal: "Journal/Conference",
+    doi: "DOI",
+    openPdf: "Open PDF",
+    noAbstract: "(Abstract pending)",
+    noNotes: "(No background notes yet)",
+  },
+  sop: {
+    version: "Version",
+    updated: "Updated",
+    author: "Author",
+    openPdf: "Open SOP",
+  },
+  presentation: { presenter: "Presenter", openPdf: "Open File" },
+  username: {
+    prompt: "Please enter your name (used to identify your AI conversations)",
+    placeholder: "e.g. Zhang San",
+    confirm: "Confirm",
+  },
+  directions: { all: "All", unknownYear: "Unknown Year" },
+  noResults: "No results found",
+  loading: "Loading...",
+};
