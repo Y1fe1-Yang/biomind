@@ -1,0 +1,14 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+files/generated/
+conversations/*
+!conversations/.gitkeep
+data/data.json
+data/data.js
+*.egg-info/
+node_modules/
+frontend/assets/input.css
+package*.json
+tailwind.config.js

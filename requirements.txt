@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+httpx
+rank-bm25
+PyPDF2
+python-docx
+python-pptx
+openpyxl
+pytest
+pytest-asyncio
