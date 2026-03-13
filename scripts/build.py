@@ -10,6 +10,7 @@ Usage:
 
 import re
 import json
+import fitz  # PyMuPDF — for PDF thumbnail generation
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -240,6 +241,35 @@ def archive_old_sop_versions(sops: list) -> None:
 
 
 # ---------------------------------------------------------------------------
+# PDF thumbnail generation
+# ---------------------------------------------------------------------------
+
+def generate_thumbs(papers: list, root: Path) -> None:
+    """Render the first page of each paper PDF as a 2× PNG thumbnail.
+
+    Skips papers that already have a thumbnail (incremental).
+    Silently skips missing or unreadable PDFs.
+    Output: data/thumbs/{id}.png, served at /data/thumbs/{id}.png.
+    """
+    out_dir = root / "data" / "thumbs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for p in papers:
+        thumb_path = out_dir / f"{p['id']}.png"
+        if thumb_path.exists():
+            continue
+        pdf_path = root / p["file"]
+        if not pdf_path.exists():
+            continue
+        try:
+            doc = fitz.open(str(pdf_path))
+            pix = doc[0].get_pixmap(matrix=fitz.Matrix(2.0, 2.0))
+            pix.save(str(thumb_path))
+            doc.close()
+        except Exception:
+            pass
+
+
+# ---------------------------------------------------------------------------
 # Data file generation
 # ---------------------------------------------------------------------------
 
@@ -298,6 +328,19 @@ def generate_data_files(
             new_entries = [e for e in scanned[key] if e["id"] not in existing_ids]
             new_data[key] = existing_data.get(key, []) + new_entries
 
+    # Merge meta_cache (AI-extracted titles/abstracts)
+    meta_cache = _load_meta_cache(root)
+    if meta_cache:
+        for key in ("papers", "books"):
+            for entry in new_data[key]:
+                cached = meta_cache.get(entry["file"])
+                if cached and not cached.get("_error"):
+                    _apply_meta(entry, cached)
+
+    # Generate PDF thumbnails for papers (incremental, skips existing)
+    # Books are excluded by design — only journal/conference PDFs get thumbnails
+    generate_thumbs(new_data["papers"], root)
+
     # Preserve or create meta block
     meta = existing_data.get("meta", DEFAULT_META.copy())
     meta["generated"] = datetime.now(timezone.utc).isoformat()
@@ -321,6 +364,34 @@ def generate_data_files(
 # CLI entry point
 # ---------------------------------------------------------------------------
 
+def _load_meta_cache(root: Path) -> dict:
+    cache_file = root / "data" / "meta_cache.json"
+    if not cache_file.exists():
+        return {}
+    try:
+        return json.loads(cache_file.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _apply_meta(entry: dict, cached: dict) -> None:
+    """Overwrite empty entry fields with AI-extracted values from cache."""
+    if not entry.get("title") and cached.get("title"):
+        entry["title"] = cached["title"]
+    if not entry.get("authors") and cached.get("authors"):
+        entry["authors"] = cached["authors"]
+    if not entry.get("abstract") and cached.get("abstract"):
+        entry["abstract"] = cached["abstract"]
+    if not entry.get("doi") and cached.get("doi"):
+        entry["doi"] = cached["doi"]
+    if not entry.get("year") and cached.get("year"):
+        entry["year"] = cached["year"]
+    if not entry.get("journal") and cached.get("venue"):
+        entry["journal"] = cached["venue"]
+    elif not entry.get("journal") and cached.get("journal"):
+        entry["journal"] = cached["journal"]
+
+
 if __name__ == "__main__":
     import argparse
 
@@ -338,6 +409,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     root = Path(__file__).parent.parent
-    generate_data_files(root=root, rebuild=args.rebuild)
     if args.extract:
-        print("--extract: Kimi extraction not yet implemented")
+        from scripts.extract_meta import run as extract_run
+        extract_run()
+    generate_data_files(root=root, rebuild=args.rebuild)

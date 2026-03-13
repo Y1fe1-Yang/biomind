@@ -1,4 +1,5 @@
 .env
+.venv/
 __pycache__/
 *.pyc
 .pytest_cache/
@@ -12,3 +13,4 @@ node_modules/
 frontend/assets/input.css
 package*.json
 tailwind.config.js
+data/thumbs/

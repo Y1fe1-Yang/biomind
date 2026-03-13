@@ -1,4 +1,6 @@
 import sys
+import shutil
+from unittest.mock import patch, MagicMock
 sys.path.insert(0, ".")
 from scripts.build import generate_id
 
@@ -151,3 +153,44 @@ def test_presentation_date_extracted(tmp_path):
     (pres_dir / "2024-03-15-single-cell.pdf").touch()
     entries = scan_directory(tmp_path)
     assert entries["presentations"][0]["date"] == "2024-03-15"
+
+
+class TestGenerateThumbs:
+    def test_creates_thumbs_dir_and_png(self, tmp_path):
+        """generate_thumbs creates data/thumbs/ and writes a PNG for each paper."""
+        pdf_dir = tmp_path / "1.Journal Articles"
+        pdf_dir.mkdir()
+        import fitz
+        doc = fitz.open()
+        doc.new_page()
+        pdf_path = pdf_dir / "TestPaper2025.pdf"
+        doc.save(str(pdf_path))
+        doc.close()
+
+        papers = [{"id": "testpaper2025", "file": "1.Journal Articles/TestPaper2025.pdf"}]
+        from scripts.build import generate_thumbs
+        generate_thumbs(papers, tmp_path)
+
+        thumb = tmp_path / "data" / "thumbs" / "testpaper2025.png"
+        assert thumb.exists(), "PNG thumbnail should be created"
+        assert thumb.stat().st_size > 100, "PNG should have non-trivial size"
+
+    def test_skips_existing_thumbs(self, tmp_path):
+        """generate_thumbs skips papers that already have a thumbnail."""
+        thumbs_dir = tmp_path / "data" / "thumbs"
+        thumbs_dir.mkdir(parents=True)
+        existing = thumbs_dir / "already.png"
+        existing.write_bytes(b"fake")
+
+        papers = [{"id": "already", "file": "missing.pdf"}]
+        from scripts.build import generate_thumbs
+        generate_thumbs(papers, tmp_path)  # should not raise even with missing PDF
+
+        assert existing.read_bytes() == b"fake", "Existing thumb should not be overwritten"
+
+    def test_skips_missing_pdf_silently(self, tmp_path):
+        """generate_thumbs silently skips papers whose PDF file does not exist."""
+        papers = [{"id": "ghost", "file": "1.Journal Articles/ghost.pdf"}]
+        from scripts.build import generate_thumbs
+        generate_thumbs(papers, tmp_path)  # must not raise
+        assert not (tmp_path / "data" / "thumbs" / "ghost.png").exists()
