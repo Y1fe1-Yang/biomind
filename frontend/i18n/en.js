@@ -1,5 +1,6 @@
 window.I18N_EN = {
   nav: {
+    home: "Home",
     timeline: "Timeline",
     directions: "Research Directions",
     sops: "SOP Library",
@@ -29,12 +30,32 @@ window.I18N_EN = {
     openPdf: "Open SOP",
   },
   presentation: { presenter: "Presenter", openPdf: "Open File" },
-  username: {
-    prompt: "Please enter your name (used to identify your AI conversations)",
-    placeholder: "e.g. Zhang San",
-    confirm: "Confirm",
+  auth: {
+    loginTab: "Login",
+    registerTab: "Register",
+    username: "Username",
+    password: "Password",
+    passwordMin: "Password (min 6 chars)",
+    confirmPassword: "Confirm password",
+    loginBtn: "Login",
+    registerBtn: "Register",
+    logout: "Logout",
+    passwordMismatch: "Passwords do not match",
+    loginFailed: "Invalid username or password",
+    registerFailed: "Registration failed",
   },
   directions: { all: "All", unknownYear: "Unknown Year" },
+  home: {
+    eyebrow: "Laboratory of Biomedical Microsystems and Nano Devices",
+    titleZh: "Biomedical Microsystems & Nano Devices Lab",
+    desc: "Integrating engineering, physics, information science, biology and chemistry to advance frontier biomedical microsystems and nanodevices research.",
+    latestPubs: "Latest Publications",
+    viewAll: "View all papers →",
+    directions: "Research Directions",
+    directionsMore: "Learn more →",
+    multiDisc: "Multidisciplinary",
+    papers: "",
+  },
   noResults: "No results found",
   loading: "Loading...",
 };

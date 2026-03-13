@@ -1,5 +1,6 @@
 window.I18N_ZH = {
   nav: {
+    home: "主页",
     timeline: "时间线",
     directions: "研究方向",
     sops: "SOP 库",
@@ -29,12 +30,32 @@ window.I18N_ZH = {
     openPdf: "打开 SOP",
   },
   presentation: { presenter: "分享人", openPdf: "打开文件" },
-  username: {
-    prompt: "请输入您的姓名或昵称（用于标识您的 AI 对话）",
-    placeholder: "例如：张三",
-    confirm: "确认",
+  auth: {
+    loginTab: "登录",
+    registerTab: "注册",
+    username: "用户名",
+    password: "密码",
+    passwordMin: "密码（至少 6 位）",
+    confirmPassword: "确认密码",
+    loginBtn: "登录",
+    registerBtn: "注册",
+    logout: "退出",
+    passwordMismatch: "两次密码不一致",
+    loginFailed: "用户名或密码错误",
+    registerFailed: "注册失败",
   },
   directions: { all: "全部", unknownYear: "未知年份" },
+  home: {
+    eyebrow: "Laboratory of Biomedical Microsystems and Nano Devices",
+    titleZh: "生物医学微系统与纳米器件实验室",
+    desc: "综合运用工程科学、物理科学、信息科学、生物科学与化学科学的新技术，致力于前沿生物医学微纳系统与器件研究，推动多学科交叉融合创新。",
+    latestPubs: "最新发表",
+    viewAll: "查看全部文献 →",
+    directions: "研究方向",
+    directionsMore: "详细介绍 →",
+    multiDisc: "多学科交叉",
+    papers: "篇",
+  },
   noResults: "没有找到相关内容",
   loading: "加载中...",
 };
