@@ -66,6 +66,33 @@ def detect_date(filename: str) -> str | None:
     return m.group(1) if m else None
 
 
+def deduplicate_ids(entries: list) -> list:
+    """Resolve ID collisions by appending the leading numeric file prefix,
+    then a sequential counter for any remaining collisions."""
+    from collections import Counter
+
+    # Pass 1: append numeric prefix for first-round collisions
+    duplicate_ids = {id for id, cnt in Counter(e["id"] for e in entries).items() if cnt > 1}
+    if duplicate_ids:
+        for entry in entries:
+            if entry["id"] in duplicate_ids:
+                m = re.match(r'^(\d+)', Path(entry["file"]).name)
+                if m:
+                    entry["id"] = f"{entry['id']}-{m.group(1)}"
+
+    # Pass 2: sequential suffix for any still-colliding IDs
+    seen: dict = {}
+    for entry in entries:
+        base = entry["id"]
+        if base in seen:
+            seen[base] += 1
+            entry["id"] = f"{base}-{seen[base]}"
+        else:
+            seen[base] = 1
+
+    return entries
+
+
 # ---------------------------------------------------------------------------
 # Scanner
 # ---------------------------------------------------------------------------
@@ -168,6 +195,12 @@ def scan_directory(root: Path) -> dict:
                 "tags": [],
                 "summary": {"zh": "", "en": ""},
             })
+
+    # Resolve any ID collisions within each collection
+    result["papers"] = deduplicate_ids(result["papers"])
+    result["books"] = deduplicate_ids(result["books"])
+    result["sops"] = deduplicate_ids(result["sops"])
+    result["presentations"] = deduplicate_ids(result["presentations"])
 
     return result
 
