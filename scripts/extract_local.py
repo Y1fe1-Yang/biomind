@@ -33,6 +33,62 @@ SCAN_DIRS = [
 
 # Regex patterns
 DOI_RE = re.compile(r'\b(10\.\d{4,}/[^\s"<>\]\[,;]+)')
+# DOI may span a newline (e.g. "10.1016/\nj.isci.2022.104200")
+DOI_NEWLINE_RE = re.compile(r'(10\.\d{4,}/)\n(\S)')
+
+# DOI prefix → journal name mapping (longest-prefix wins)
+DOI_JOURNAL_MAP: list[tuple[str, str]] = [
+    ("10.1002/advs",       "Advanced Science"),
+    ("10.1002/smll",       "Small"),
+    ("10.1002/lpor",       "Laser & Photonics Reviews"),
+    ("10.1016/j.snb",      "Sensors and Actuators B: Chemical"),
+    ("10.1016/j.isci",     "iScience"),
+    ("10.1016/j.microc",   "Microchemical Journal"),
+    ("10.1016/j.mtbio",    "Materials Today Bio"),
+    ("10.1016/j.talanta",  "Talanta"),
+    ("10.1016/j.bios",     "Biosensors and Bioelectronics"),
+    ("10.1038/s41378",     "Microsystems & Nanoengineering"),
+    ("10.1039/c5cs",       "Chemical Society Reviews"),
+    ("10.1021/acsomega",       "ACS Omega"),
+    ("10.1021/acssensors",    "ACS Sensors"),
+    ("10.1021/acs.analchem",  "Analytical Chemistry"),
+    ("10.1021/acs.nanolett",  "Nano Letters"),
+    ("10.3390/mi",         "Micromachines"),
+    ("10.3390/bios",       "Biosensors"),
+    ("10.1364/PRJ",        "Photonics Research"),
+    ("10.1039/d0an",       "Analyst"),
+    ("10.1039/d1ra",       "RSC Advances"),
+    ("10.1039/d0nr",       "Nanoscale"),
+    ("10.1039/d0lc",       "Lab on a Chip"),
+    ("10.1039/d2lc",       "Lab on a Chip"),
+    ("10.1039/d3lc",       "Lab on a Chip"),
+    ("10.1039/d0",         "RSC journals"),
+    ("10.1039/",           "RSC journals"),
+    ("10.1109/",           "IEEE"),
+]
+
+KNOWN_JOURNALS = [
+    "Advanced Science", "Small", "Laser & Photonics Reviews",
+    "Sensors and Actuators B", "iScience", "Microchemical Journal",
+    "Materials Today Bio", "Talanta", "Microsystems & Nanoengineering",
+    "Analyst", "Nanoscale", "RSC Advances", "Lab on a Chip",
+    "Analytical Chemistry", "Photonics Research", "Micromachines",
+    "Biosensors and Bioelectronics", "Biosensors", "ACS Omega",
+    "Chemical Society Reviews", "Nano Research", "Star Protocols",
+    "Nano Letters", "ACS Sensors", "Nature", "Science",
+]
+def extract_journal(doi: str, text: str) -> str:
+    """Resolve journal name from DOI prefix (longest match wins) or text scan."""
+    if doi:
+        for prefix, name in DOI_JOURNAL_MAP:
+            if doi.startswith(prefix):
+                return name
+    for name in KNOWN_JOURNALS:
+        if name.lower() in text.lower():
+            return name
+    return ""
+
+
 ABSTRACT_START_RE = re.compile(
     r'A\s*B\s*S\s*T\s*R\s*A\s*C\s*T|Abstract',
     re.IGNORECASE,
@@ -138,6 +194,8 @@ def extract_abstract(text: str) -> str:
 # ---------------------------------------------------------------------------
 
 def extract_doi(text: str) -> str:
+    # Collapse newlines that split DOIs (e.g. "10.1016/\nj.isci...")
+    text = DOI_NEWLINE_RE.sub(r'\1\2', text)
     m = DOI_RE.search(text)
     if m:
         return m.group(1).rstrip('.,;:)')
@@ -161,14 +219,16 @@ def process_pdf(pdf_path: Path) -> dict:
         if not full_text.strip():
             return {"_error": "no text layer (scanned PDF)"}
 
+        doi     = extract_doi(full_text)
+        journal = extract_journal(doi, full_text)
         return {
             "title":    extract_title(doc),
             "abstract": extract_abstract(full_text),
-            "doi":      extract_doi(full_text),
+            "doi":      doi,
             "authors":  [],
-            "journal":  "",
+            "journal":  journal,
             "year":     None,
-            "venue":    "",
+            "venue":    journal,
         }
     except Exception as e:
         return {"_error": str(e)}
@@ -235,6 +295,9 @@ def run(force: bool = False) -> None:
             print(f"{ab}  {do}  {ti}")
             done += 1
 
+        # Preserve directions classified externally (keyword classifier)
+        if cache.get(key, {}).get("directions") and not result.get("_error"):
+            result["directions"] = cache[key]["directions"]
         cache[key] = result
         save_cache(cache)
 

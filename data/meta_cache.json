@@ -13,13 +13,13 @@
     ]
   },
   "1.Journal Articles/10.YangChemSocRev2018.pdf": {
-    "title": "Micro-optics for microfluidic analytical applications",
+    "title": "Micro-optics microfluidic analytical applications",
     "abstract": "",
     "doi": "10.1039/c5cs00649j",
     "authors": [],
-    "journal": "",
+    "journal": "Chemical Society Reviews",
     "year": null,
-    "venue": "",
+    "venue": "Chemical Society Reviews",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -29,18 +29,18 @@
     "abstract": "",
     "doi": "10.1364/PRJ.7.000532",
     "authors": [],
-    "journal": "",
+    "journal": "Photonics Research",
     "year": null,
-    "venue": ""
+    "venue": "Photonics Research"
   },
   "1.Journal Articles/12.Micromachines2019.pdf": {
     "title": "Micro-optical Components for Bioimaging on Tissues, Cells and Subcellular Structures",
     "abstract": "Bioimaging generally indicates imaging techniques that acquire biological information from living forms. Among di↵erent imaging techniques, optical microscopy plays a predominant role in observing tissues, cells and biomolecules. Along with the fast development of microtechnology, developing miniaturized and integrated optical imaging systems has become essential to provide new imaging solutions for point-of-care applications. In this review, we will introduce the basic micro-optical components and their fabrication technologies ﬁrst, and further emphasize the development of integrated optical systems for in vitro and in vivo bioimaging, respectively. We will conclude by giving our perspectives on micro-optical components for bioimaging applications in the near future.",
     "doi": "10.3390/mi10060405",
     "authors": [],
-    "journal": "",
+    "journal": "Micromachines",
     "year": null,
-    "venue": "",
+    "venue": "Micromachines",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -49,13 +49,13 @@
     ]
   },
   "1.Journal Articles/13.Analyst2020.pdf": {
-    "title": "Aptasensor-enabled quantitative analysis of nano-sized extracellular vesicles by flow cytometry",
+    "title": "Volume 145 Number 23 7 December 2020 Pages 7451-7768",
     "abstract": "",
     "doi": "10.1039/d0an01652g",
     "authors": [],
-    "journal": "",
+    "journal": "Analyst",
     "year": null,
-    "venue": "",
+    "venue": "Analyst",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
@@ -66,9 +66,9 @@
     "abstract": "A large-scale homogenized photonic nanojet array with deﬁned pattern and spacing facilitates practical applications in super-resolution imaging, subwavelength-resolution nanopatterning, nano objects trapping and detection technology. In this paper, we present the fabrication of a large-scale photonic nanojet array via the template-assisted self-assembly (TASA) approach. Templates of two-dimensional (2D) large-scale microwell array with deﬁned pattern and spacing are fabricated. Melamine microspheres with excellent size uniformity are utilized to pattern on the template. It is found that microwells can be ﬁlled at a yield up to 95%. These arrayed microspheres on the template serve as microlenses and can be excited to generate large-scale photonic nanojets. The uniformly-sized melamine spheres are beneﬁcial for the generation of a homogenized photonic nanojet array. The intensity of the photonic nanojets in water is as high as ~2 fold the background light signal. Our work shows a simple, robust, and fast means for the fabrication of a large-scale homogenized photonic nanojet array.",
     "doi": "10.3390/mi11050473",
     "authors": [],
-    "journal": "",
+    "journal": "Micromachines",
     "year": null,
-    "venue": "",
+    "venue": "Micromachines",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -80,21 +80,21 @@
     "abstract": "Distinctive from other forms of microﬂuidic system, capillary microﬂuidics is of great interest in autonomous micro-systems due to its well-engineered ﬂuidic control based on capillary force. As an essential component of ﬂuidic control in capillaric circuits, micro-valves enable sequential ﬂuidic operations by performing actions such as stopping and triggering. In this paper, we present a stair-step liquid-triggered valve; the functionality of the valve and its dependencies on geometry and surface modiﬁcation are studied. The surface contact angle of the microfabricated valves that are coated by polyethylene glycol (PEG) or (3-Aminopropyl) triethoxysilane (APTES) is evaluated experimentally, and the corresponding reliability of the valve structure is discussed. Moreover, the variation in the surface contact angle over time is investigated, indicating the shelf time of the device. We further discuss the overall ﬂuidic behavior in such capillary valves, which beneﬁts the capillaric circuit designs at the initial stage.",
     "doi": "10.3390/mi11070690",
     "authors": [],
-    "journal": "",
+    "journal": "Micromachines",
     "year": null,
-    "venue": "",
+    "venue": "Micromachines",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/16.Nanoscale2021.pdf": {
-    "title": "Label-free separation of nanoscale particles by an ultrahigh gradient magnetic field in a microfluidic device",
+    "title": "As featured in:",
     "abstract": "",
     "doi": "10.1039/d0nr08383f",
     "authors": [],
-    "journal": "",
+    "journal": "Nanoscale",
     "year": null,
-    "venue": "",
+    "venue": "Nanoscale",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -104,34 +104,34 @@
     "abstract": "entity was also embodied, to some extent, in the research of twin PHs produced by a twin-ellipse microcylinder [42]. Through the division of a circular-column particle into a horizontal graded-index microcylinder constituted by multilayer media of equal thicknesses along the direction of light propagation, the sidelobes-controlled ultranarrow PNJs could be generated and modified [43]. These works have intentionally or uninten- tionally taken advantage of the special focusing characteristics resulting from the aforementioned rule three; it is just that none of them has delved into the partition of an incoming in- terface in a cause-and-effect way. The following two works explicitly involved and made a preliminary exploration of this problem. First, Wang et al. analyzed the working distance and beam width of the focus under illumination conditions of cov- ering the whole LRI, localizing in the middle, two boundaries, and partial areas of the microsphere lenses, and the related influences on contrast enhancement and the imaging mecha- nism of near-field assisted white light interferometry [44]. Second, Gu et al. further clearly divided the first LRI into one middle region and two edge regions, and on this basis, a microparticle with a special shape was designed to realize the formation of an ultranarrow PNJ with a refractive index of the dielectric overstepping the upper bound of two [30]. A crucial unresolved problem that arises here is: where is the boundary point between the middle region (representing slow convergence and divergence of light) and the edge region (rep- resenting rapid convergence and divergence of light) of the first LRI? None of the studies above have addressed this fundamental problem; it is only an unstated and general division of the in- cident plane in Ref. [44] and a simple trisection of the first LRI based on π∕3 opening angle for the central part in Ref. [30]. Ray optics combined with numerical calculation is an effec- tive way to qualitativ",
     "doi": "10.1364/PRJ.419106",
     "authors": [],
-    "journal": "",
+    "journal": "Photonics Research",
     "year": null,
-    "venue": "",
+    "venue": "Photonics Research",
     "directions": [
       "等离激元纳米光子学"
     ]
   },
   "1.Journal Articles/18.RSCAdvances2021.pdf": {
-    "title": "MALDI-MS-based biomarker analysis of extracellular vesicles from human lung carcinoma cells",
+    "title": "RSC Advances",
     "abstract": "",
     "doi": "10.1039/d1ra04305f",
     "authors": [],
-    "journal": "",
+    "journal": "RSC Advances",
     "year": null,
-    "venue": "",
+    "venue": "RSC Advances",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/19.Small2021.pdf": {
-    "title": "smll.202102150-3.pdf",
+    "title": "www.small-journal.com",
     "abstract": "",
     "doi": "10.1002/smll.202102150",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": ""
+    "venue": "Small"
   },
   "1.Journal Articles/2.YangChinJSenAct2008.pdf": {
     "title": "体硅加工的压电式微加速度计的设计",
@@ -147,25 +147,25 @@
     ]
   },
   "1.Journal Articles/20.MicrosysNanoeng2022.pdf": {
-    "title": "A magnetically enabled simulation of microgravity represses the auxin response during early seed germination on a microfluidic platform",
+    "title": "A magnetically enabled simulation of microgravity represses germination",
     "abstract": "For plants on Earth, the phytohormone auxin is essential for gravitropism-regulated seedling establishment and plant growth. However, little is known about auxin responses under microgravity conditions due to the lack of a tool that can provide an alteration of gravity. In this paper, a microﬂuidic negative magnetophoretic platform is developed to levitate Arabidopsis seeds in an equilibrium plane where the applied magnetic force compensates for gravitational acceleration. With the beneﬁt of the microﬂuidic platform to simulate a microgravity environment on-chip, it is found that the auxin response is signiﬁcantly repressed in levitated seeds. Simulated microgravity statistically interrupts auxin responses in embryos, even after chemical-mediated auxin alterations, illustrating that auxin is a critical factor that mediates the plant response to gravity alteration. Furthermore, pretreatment with an auxin transportation inhibitor (N-1-naphthylphthalamic acid) enables a decrease in the auxin response, which is no longer affected by simulated microgravity, demonstrating that polar auxin transportation plays a vital role in gravity-regulated auxin responses. The presented microﬂuidic platform provides simulated microgravity conditions in an easy-to-implement manner, helping to study and elucidate how plants correspond to diverse gravity conditions; in the future, this may be developed into a versatile tool for biological study on a variety of samples.",
     "doi": "10.1038/s41378-021-00331-5",
     "authors": [],
-    "journal": "",
+    "journal": "Microsystems & Nanoengineering",
     "year": null,
-    "venue": "",
+    "venue": "Microsystems & Nanoengineering",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/21.SenActuaB2022.pdf": {
-    "title": "Localized photonic nanojet based sensing platform for highly efficient signal amplification and quantitative biosensing",
+    "title": "Sensors and Actuators: B. Chemical",
     "abstract": "Light-analyte interaction systems are key elements of novel near-field optics based sensing techniques used for highly-sensitive detection of various kinds of targets. However, it is still a great challenge to achieve quantitative analysis of the targets using these sensing techniques, since critical difficulties exist on how to efficiently and precisely introduce the analytes into the desired location of the near-field light focusing, and quantitatively measure the enhanced optical signal reliably. In this work, we present for the first time a localized photonic nanojet (L-PNJ) based sensing platform which provides a strategy to achieve quantitative biosensing via utilizing a unique light-analyte interaction system. We demonstrate that individual fluorescent microsphere of different sizes can be readily introduced to the light-analyte interaction system with loading efficiency more than 70%, and generates reproducible enhanced fluorescence signals with standard deviation less than 7.5%. We employ this sensing platform for fluorescent-bead-based biotin concentration analysis, achieving the improvement on the detection sensitivity and limit of detection, opening the door for highly sensitive and quantitative biosensing. This L-PNJ based sensing platform is promising for development of next-generation on-chip signal amplification and quantitative detection systems.",
     "doi": "10.1016/j.snb.2022.131401",
     "authors": [],
-    "journal": "",
+    "journal": "Sensors and Actuators B: Chemical",
     "year": null,
-    "venue": "",
+    "venue": "Sensors and Actuators B: Chemical",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -177,9 +177,9 @@
     "abstract": "The separation and puriﬁcation of a sample of interest is essential for subsequent detection and analysis procedures, but there is a lack of effective separation methods with which to purify nano-sized particles from the sample media. In this paper, a microﬂuidic system based on nega- tive magnetophoresis is presented for the high-resolution separation of nanoparticles. The system includes on-chip magnetic pole arrays and permalloys that symmetrically distribute on both sides of the separation channel and four permanent magnets that provide strong magnetic ﬁelds. The microﬂuidic system can separate 200 nm particles with a high purity from the mixture (1000 nm and 200 nm particles) due to a magnetic ﬁeld gradient as high as 10,000 T/m being generated inside the separation channel, which can provide a negative magnetophoretic force of up to 10 pN to the 1000 nm particle. The overall recovery rate of the particles reaches 99%, the recovery rate of 200 nm particles is 84.2%, and the purity reaches 98.2%. Compared with the existing negative magne- tophoretic separation methods, our system not only exhibits high resolution on particle sizes (800 nm), but also improves the sample processing throughput, which reaches 2.5 µL/min. The microﬂuidic system is expected to provide a new solution for the high-purity separation of nanoparticles, as well as nanobiological samples.",
     "doi": "10.3390/mi13030377",
     "authors": [],
-    "journal": "",
+    "journal": "Micromachines",
     "year": null,
-    "venue": "",
+    "venue": "Micromachines",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -187,13 +187,13 @@
     ]
   },
   "1.Journal Articles/23.ACSOmega2022-Yang Liangtao.pdf": {
-    "title": "Insight into the Contact Impedance between the Electrode and the Skin Surface for Electrophysical Recordings",
+    "title": "Impedance Electrode Electrophysical Recordings",
     "abstract": "To obtain a performance improved dry electrode for bioelectrical activity detection is still a challenge, which is mainly due to the poor fundamental understanding on the impedance of the electrode−skin interface. Herein, the impedance between the electrode and the skin interface of three types of electrodes, which are the wet electrode, semidry electrode, and dry electrode, is investigated with electrochemical impedance spectros- copy combined with the spectra ﬁtting technique. The parameters of performance duration, potential, and frequency associated with the impedance are explored for these three types of electrodes. The overall impedance is roughly constant within the performance duration and the potential applied in this study. Along with the frequency decreases, the impedance of the dry electrode reduces faster and is more complicated compared with the other two types of electrodes. Moreover, the results computed with the equivalent circuits show that the charge transfer resistance is additionally present compared to the wet and semidry electrodes. This large and additional charge transfer resistance may explain its relatively poorer electrophysiological properties.",
     "doi": "10.1021/acsomega.2c00282",
     "authors": [],
-    "journal": "",
+    "journal": "ACS Omega",
     "year": null,
-    "venue": "",
+    "venue": "ACS Omega",
     "directions": [
       "生物传感与即时检测",
       "柔性微纳器件"
@@ -202,48 +202,48 @@
   "1.Journal Articles/24.iScience2022.pdf": {
     "title": "A human cornea-on-a-chip for the study of epithelial wound healing by extracellular vesicles",
     "abstract": "",
-    "doi": "10.1016/j.isci",
+    "doi": "10.1016/j.isci.2022.104200",
     "authors": [],
-    "journal": "",
+    "journal": "iScience",
     "year": null,
-    "venue": "",
+    "venue": "iScience",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/25.LabChip2022.pdf": {
-    "title": "Extraction of small extracellular vesicles by label-free and biocompatible on-chip magnetic separation",
+    "title": "Lab on a Chip",
     "abstract": "",
     "doi": "10.1039/d2lc00217e",
     "authors": [],
-    "journal": "",
+    "journal": "Lab on a Chip",
     "year": null,
-    "venue": "",
+    "venue": "Lab on a Chip",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/26.MaterialsTodayBio2023.pdf": {
-    "title": "Mechanical stimulation on a microfluidic device to highly enhance small extracellular vesicle secretion of mesenchymal stem cells",
+    "title": "Materials",
     "abstract": "Small extracellular vesicles (sEVs) are recognized as promising detection biomarkers and attractive delivery ve- hicles, showing great potential in diagnosis and treatment of diseases. However, the applications of sEVs are usually restricted by their poor secretion amount from donor cells under routine cell culture conditions, which is especially true for mesenchymal stem cells (MSCs) due to their limited expansion and early senescence. Here, a microﬂuidic device is proposed for boosting sEV secretion from MSCs derived from human fetal bone marrow (BM-MSCs). As the cells rapidly pass through a microﬂuidic channel with a series of narrow squeezing ridges, mechanical stimulation permeabilizes the cell membrane, thus promoting them to secrete more sEVs into extracellular space. In this study, the microﬂuidic device demonstrates that mechanical-squeezing effect could increase the secretion amount of sEVs from the BM-MSCs by approximately 4-fold, while maintaining cellular growth state of the stem cells. Further, the secreted sEVs are efﬁciently taken up by immortalized human corneal epithelial cells and accelerate corneal epithelial wound healing in vitro, indicating that this technique wound not affect the functionality of sEVs and demonstrating the application potentials of this technique.",
     "doi": "10.1016/j.mtbio.2022.100527",
     "authors": [],
-    "journal": "",
+    "journal": "Materials Today Bio",
     "year": null,
-    "venue": "",
+    "venue": "Materials Today Bio",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/27.Biosensors2023-Liu Qing.pdf": {
-    "title": "Type of the Paper (Article",
+    "title": "The Feature, Performance, and Prospect of Advanced Electrodes for Electroencephalogram",
     "abstract": "Recently, advanced electrodes have been developed, such as semi-dry, dry contact, dry non-contact, and microneedle array electrodes. They can overcome the issues of wet electrodes and maintain high signal quality. However, the variations in these electrodes are still unclear and not explained, and there is still confusion regarding the feasibility of electrodes for different application scenarios. In this review, the physical features and electroencephalogram (EEG) signal perfor- mances of these advanced EEG electrodes are introduced in view of the differences in contact be- tween the skin and electrodes. Specifically, contact features, biofeatures, impedance, signal quality, and artifacts are discussed. The application scenarios and prospects of different types of EEG elec- trodes are also elucidated.",
     "doi": "10.3390/bios13010101",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析",
@@ -255,9 +255,9 @@
     "abstract": "",
     "doi": "10.1016/j.xpro.2023.102122",
     "authors": [],
-    "journal": "",
+    "journal": "Star Protocols",
     "year": null,
-    "venue": "",
+    "venue": "Star Protocols",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -267,9 +267,9 @@
     "abstract": "Single-molecule detection (SMD) aims to achieve the ultimate limit-of-detection (LOD) in biosensing. This method detects a countable number of targeted analyte molecules in solution, where the dynamics of molecule diffusion, capturing, identification and delivery greatly impact the SMD’s efficiency and accuracy. In this study, we adopt the first-passage time method to investigate the diffusion-controlled reaction process in SMD. We analyze the influence of detection conditions on incubation time and the expected coefficient of variation (CV) under three SMD molecule capturing strategies, including solid-phase capturing (one-dimensional solid-liquid interface fixation), liquid-phase magnetic bead (MB) capturing, and liquid-phase direct fluorescence pair la­ beling. We find that inside a finite-sized reaction chamber, a finite average reaction time exists in all three capturing strategies, while the liquid-phase strategies are in general more efficient than the solid-phase ap­ proaches. CV can be estimated by averaging first-passage time solely in all three strategies, and the CV reduction is achievable given an extended reaction time. To further enable zeptomolar detection, extra treatments, such as adopting liquid-phase fluorescence pairs with high diffusion rates to label the molecule, or designing specific sensing devices with large effective sensing areas would be required. This framework provides solid theoretical support to guide the design of SMD sensing strategies and sensor structures to achieve desired measurement time and CV.",
     "doi": "10.1016/j.talanta.2023.124569",
     "authors": [],
-    "journal": "",
+    "journal": "Talanta",
     "year": null,
-    "venue": "",
+    "venue": "Talanta",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
@@ -280,21 +280,21 @@
     "abstract": "",
     "doi": "10.1021/ac102149f",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/30.Biosen&Bioelectron2023.pdf": {
-    "title": "CRISPR/Cas12a-Assisted isothermal amplification for rapid and specific diagnosis of respiratory virus on an microfluidic platform",
+    "title": "Biosensors and Bioelectronics",
     "abstract": "Respiratory viruses have long been a major cause of a global pandemic, emphasizing the urgent need for high- sensitivity diagnostic tools. Typical PCR technology can only determine the type of virus in the sample, which is unable to detect different variants of the same virus without costly and time-consuming gene sequencing. Here, we introduce a simple, fully enclosed, and highly integrated microfluidic system based on CRISPR/Cas12a and isothermal amplification techniques (LOC-CRISPR) that can specifically identify multiple common respiratory viruses and their variants. The LOC-CRISPR chip integrates viral nucleic acid extraction, recombinant polymerase amplification, and CRISPR/Cas12a cleavage reaction-based detection, contamination-free detection. In addition, the LOC-CRISPR chip was designed for multiplexed detection (two-sample input and ten-result outputs), which can not only detect the presence of SARS-CoV-2, H1N1, H3N2, IVB and HRSV but also differentiate the BA.1, BA.2, and BA.5 variants of SARS-COV-2. For clinical validation, the LOC-CRISPR chip was used to analyze 50 naso­ pharyngeal swab samples (44 positive and 6 negative) and achieved excellent sensitivity (97.8%) and specificity (100%). This innovative LOC-CRISPR system has the ability to quickly, sensitively, and accurately detect mul­ tiple target nucleic acid sequences with single-base mutations, which will further improve the rapid identifica­ tion and traceability of respiratory viruses infectious diseases.",
     "doi": "10.1016/j.bios.2023.115523",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors and Bioelectronics",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors and Bioelectronics",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -302,13 +302,13 @@
     ]
   },
   "1.Journal Articles/31.Biosensors2023.pdf": {
-    "title": "Microlens-Assisted Light-Scattering Imaging of Plasmonic Nanoparticles at the Single Particle Level",
+    "title": "biosensors Microlens-Assisted Light-Scattering Imaging of Plasmonic Nanoparticles at the Single Particle Level",
     "abstract": "We present a microlens-assisted imaging approach to record the scattering light of plas- monic nanoparticles at the single particle level. The microlens can signiﬁcantly enhance the backscat- tering of visible light from individual plasmonic nanoparticles by several dozen folds, and single gold nanoparticles with a diameter as low as 60 nm can be imaged under a conventional optical microscope. This can beneﬁt from a signiﬁcant increase in the scattering intensity afforded by the mi- crolens, meaning that the imaging of gold nanoparticles at a high temporal resolution (up to 5000 Hz) can be achieved, which is fast enough to record single particle adhesion events on the substrate. This research presents a fast and efﬁcient means of acquiring scattering light from plasmonic nanoparticles, which has great potential to develop plasmonic nanoparticle-based biosensors and investigate a wide range of plasmonic nanoparticle-based fast interaction processes.",
     "doi": "10.3390/bios13090871",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -316,13 +316,13 @@
     ]
   },
   "1.Journal Articles/32.LabChip2023Cover.pdf": {
-    "title": "A low-temperature digital microfluidic system used for protein–protein interaction detection",
+    "title": "As featured in:",
     "abstract": "",
     "doi": "10.1039/d3lc00386h",
     "authors": [],
-    "journal": "",
+    "journal": "Lab on a Chip",
     "year": null,
-    "venue": "",
+    "venue": "Lab on a Chip",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
@@ -333,9 +333,9 @@
     "abstract": "miRNAs are small non-coding RNA molecules which serve as promising biomarkers due to their important roles in the development and progression of various cancer types. The detection of miRNAs is of vital importance to the early-stage diagnostics and prognostics of multiple diseases. However, traditional detection strategies have faced some challenges owing to the intrinsic characteristics of miR- NAs including small size, short sequence length, low con- centration level and high sequence homology in complex real samples. To overcome these challenges, we proposed a MXene-enhanced plasmonic biosensor for real-time and label-free detection of miRNA. By utilizing MXene nano- material which possesses unique characteristics including large surface area and strong carrier conﬁnement abili- ties, we tuned the absorption of our plasmonic sensing substrate to reach a “zero-reﬂection” state and induced an extremely sharp phase change at the resonance angle. Com- bined with the sensing mechanism based on phase-induced lateral displacement measurement, this MXene-enhanced plasmonic biosensor can achieve a much superior sensing performance compared to traditional SPR devices. Based on this biosensing scheme, the ultrasensitive detection of target miRNA with a detection limit down to 10 fM has *Corresponding author: Hui Yang, Research Center for Bionic Sensing and Intelligence, Institute of Biomedical and Health Engineering, Shen- zhen Institute of Advanced Technology, Chinese Academy of Sciences, Shenzhen 518055, China, E-mail: hui.yang@siat.ac.cn. https://orcid.org/0000-0002-6800-6308 Yuye Wang, Yurui Hu, Ruibin Xie, Qi Zeng, Yanhang Hong, Xi Chen, Pengcheng Zhang, Lin Zeng, and Yi Zhang, Research Center for Bionic Sensing and Intelligence, Institute of Biomedical and Health Engi- neering, Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences, Shenzhen 518055, China. https://orcid.org/0000-0001-6528- 3388 (Y. Wang). https://orcid.org/0000-0003-1448-4061 (Q. Zeng)",
     "doi": "10.1515/nanoph-2023-0432",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -344,52 +344,52 @@
     ]
   },
   "1.Journal Articles/34.ChinChemLett2024.pdf": {
-    "title": "Highly efficient labelling of extracellular vesicles for enhanced detection on a microfluidic platform",
+    "title": "efficient labelling extracellular detection microfluidic",
     "abstract": "Developing precise extracellular vesicles (EVs) labelling techniques with minimal disturbance is of great importance to the follow-up EVs detection and analysis. However, currently available methods such as using probes to conjugate phospholipids or membrane proteins have certain limitations due to EV steric hindrance, dye aggregation, etc. Here, we present a microﬂuidic platform to enhance EVs’ labelling ef- ﬁciency and improve their detection. This platform provides excellent sample throughput and high- eﬃciency EV labelling at lower label concentrations with an optimized ﬂowing rate. Flow cytometry analysis (FCM) and cellular uptake results show that EV labelling by utilizing this platform possesses the merits of a higher labelling eﬃciency with 64.1% relative improvement than conventional co-incubation method and a lower background noise. Moreover, this technique maintains EVs’ size, morphology and biological activities. After the recipient cells uptake the EVs treated by the microﬂuidic platform, the spa- tial and temporal distribution of EVs in the cells are clearly observed. These results demonstrate that our method holds great potential in eﬃcient labelling of EVs, which is essential to subsequent EV quantiﬁca- tion and analysis. © 2023 Published by Elsevier B.V. on behalf of Chinese Chemical Society and Institute of Materia Medica, Chinese Academy of Medical Sciences. Extracellular vesicles (EVs) are a type of membranous vesicles secreted from cells to extracellular environment and then taken up by recipient cells, they participate in various pathophysiologi- cal processes and exist in cell culture mediums and biological ﬂu- ids [ 1 , 2 ]. With the advantages of high concentration, less invasive sampling and carrying a variety of molecules that reﬂect the char- acteristics of parental cells, EVs play an important role in clinical diagnosis as novel liquid biopsy biomarkers [ 3 , 4 ]. However, sen- sitive detection and accurate visualization of EVs in large-",
     "doi": "10.1016/j.cclet.2023.108534",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/35.BiologyBulletin2024.pdf": {
-    "title": "BioBull2360258Zhang.fm",
+    "title": "Generation of Stable Cell Lines of APP695 ( K595N, M596L Over-Expression via Lentiviral Over-Expression System",
     "abstract": "There are now various theories on the pathophysiology of Alzheimer’s disease (AD), the β-Amy- loid (Aβ) cascade hypothesis has garnered a lot of interest. This text applied lentivirus-encapsulated plasmid to transfect APP695 (K595N, M596L) gene into SH-SY5Y cells and thereby obtain a stable cell line over- expressing Aβ. We used qPCR to monitor the mRNA expression of β-Amyloid Precursor Protein (APP) gene, β-Site APP Cleaving Enzyme 1 (BACE1) gene, we also used Western Blot to detect the APP protein, BACE1 protein, and Aβ1-42, respectively, in addition, the expression of Aβ1-42 in SH-SY5Y cell lysate and cell culture supernatant was measured by Enzyme-Linked Immunosorbent Assay (ELISA). The findings demon- strated APP gene over-expression following APP695 (K595N, M596L) gene transfection, and also indicated the successful establishment of the Swedish mutant cell model.",
     "doi": "10.1134/S1062359023602586",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/36.ChemEngJ2024.pdf": {
-    "title": "DNA-AuNP encoders array Integrating a multi-modal coupled analysis approach for noninvasive precision screening of myocardial function injury disease in children",
+    "title": "Chemical Engineering Journal",
     "abstract": "Limited-species serum biomarkers could only partially reflect the information on myocardial function injury disease in children, leading to some important information being inevitably lost, which affects the judgment of the whole information, resulting in a high rate of false positives and negatives. There is a critical unmet need for noninvasive precision screening for myocardial function injury disease in children. Here, we introduced a multi- modal coupled analysis of the DNA-AuNP encoders to achieve this goal. The DNA-AuNP encoders react with the serum specimen from myocardial function injury disease in children to generate the multi-modal response sig­ nals, such as the fluorescence spectrum, size distribution, and surface ζ-potential distribution. Interestingly, we used dark-field microscopy to observe the interface changes between the DNA-AuNP encoder and serum at the microscopic level. Different machine learning algorithms analyze the correlation of a clinical outcome with multi-modal response signals from a target disease. As the number of modal response signals increases, our approach monotonically increases screening performance. The three-modal coupled analysis provided an average accuracy of up to 91.7% using 37 serum specimens in children from myocarditis, myocardial injury, and health. This study provides a highly generic tool for noninvasive screening using a drop of serum.",
     "doi": "10.1016/j.cej.2024.151890",
     "authors": [],
-    "journal": "",
+    "journal": "Nanoscale",
     "year": null,
-    "venue": "",
+    "venue": "Nanoscale",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/37.SenActuaB2024.pdf": {
-    "title": "Triple-enhanced Raman scattering sensor based on superhydrophobic/-philic microsphere platform and heating evaporation assisted for high-sensitivity detection",
+    "title": "Actuators:",
     "abstract": "The ability to detect molecules in small volumes of highly diluted solutions is crucial for applications such as food quality and safety, environmental monitoring, biomedical diagnostics, and so on. The primary concern lies in the sensitivity and efficiency of detection technology. In this work, an ultra-sensitive surface-enhanced Raman scattering (SERS) detection strategy is presented, which is based on superhydrophobic/-philic microsphere SERS (SSM-SERS) platform and heating evaporation assisted for high-sensitivity detection. Relying on the heating- assisted evaporation, the evaporation efficiency of the droplet is increased by 378.5 times, and the deposition area after evaporation is reduced by 10.4 times, leading to the extremely high detection efficiency and further enrichment of the target molecules. When the microspheres array approaches the superhydrophobic/-philic (SH/ SHL) substrate, the optical-plasmonic hybrid structure is formed, enhancing light-matter interactions and resulting in an improvement of the Raman signal. The optimized SERS sensor is capable of detecting Rhodamine 6 G (R6G) at the femtomolar level (10−16 M), with a sample volume of only 5 μL and an enhancement factor of 3.29 × 109. Considering the misuse of fish drugs, malachite green (MG) and methylene blue (MB) were chosen to validate the performance of SERS sensor. These findings highlight the consistent high sensitivity of the SERS sensor, offering valuable insights for applications in food safety and related fields.",
     "doi": "10.1016/j.snb.2024.136332",
     "authors": [],
-    "journal": "",
+    "journal": "Sensors and Actuators B: Chemical",
     "year": null,
-    "venue": "",
+    "venue": "Sensors and Actuators B: Chemical",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -397,38 +397,38 @@
     ]
   },
   "1.Journal Articles/38.ChemicalEngineering&Processing2024.pdf": {
-    "title": "Numerical and experimental investigation of Tesla micromixers with different three-dimensional herringbone structures",
+    "title": "Engineering Processing Intensification",
     "abstract": "Laminar flow within channels at the micro- or nano-scale of the microfluidic device restricts the rapid mixing of different fluids, leading to reduced reaction velocity. In this study, different three-dimensional herringbone structures were designed to the Tesla micromixers to enhance transverse flow and vortex flow in the channels. Computational fluid dynamics (CFD) simulation results indicated that the sunken herringbone structure provided the most significant enhancement in mixing. The raised herringbone structure exhibited the best energy per- formance. When Reynolds number (Re) exceeded 60, the mixing indexes (MI) of the Tesla micromixers were over 90%. The improvement in mixing efficiency by both herringbone structures compensated for the weak mixing performance of the Tesla structure at lower Reynolds numbers (Re=0.2–30). Additionally, the mixing experi- mental results verified the accuracy of the simulation results. This study could provide guidance for improving the mixing performance of micromixers over a wide range of Reynolds numbers (Re=0–100).",
     "doi": "10.1016/j.cep.2024.110040",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/39.SenActuaB2025.pdf": {
-    "title": "A cross-reactive imaging matrix of membrane protein profiling for single-cell analysis",
+    "title": "Sensors and Actuators: B. Chemical",
     "abstract": "Membrane proteins play a critical role in cellular processes such as chemical transport, signal transduction, and enzymatic catalysis. A comprehensive understanding of membrane protein types and accurately measuring their expression levels are essential for advancing cell biology. However, current methods often fail to characterize the types and amounts of multiple membrane proteins in specific cell types due to inherent measurement limitations. Here, we have developed a single-cell image analysis technique based on a cross-reactive imaging matrix using membrane protein tags. This technique allows quantitative and qualitative analysis of multiple membrane protein types and their expression levels within single cells. As a proof of concept, we used four specific DNA aptamers to tag four different membrane proteins in seven different cell types. The four proteins are MUC1, EGFR, HeR2, and TLR4. The seven cell lines are 3t3, 4T1, A549, CT26, HeLa, Hepa1–6, Raw, respectively. We captured a comprehensive image matrix using wide-field fluorescence imaging, allowing precise quantification of protein expression at the single-cell level. Our approach introduces a multi-labeling analysis method for mem­ brane proteins and reveals the influence of membrane protein diversity on cell heterogeneity analysis. We found that the accuracy of cell heterogeneity recognition can be affected by adjusting the number of membrane pro­ teins. As the diversity of membrane protein species increases, the accuracy of cell type recognition increases. Our approach facilitates the evaluation of heterogeneity in diverse cells, providing new insights into cellular diversity and a powerful tool for studying single-cell biology.",
     "doi": "10.1016/j.snb.2024.136704",
     "authors": [],
-    "journal": "",
+    "journal": "Sensors and Actuators B: Chemical",
     "year": null,
-    "venue": "",
+    "venue": "Sensors and Actuators B: Chemical",
     "directions": [
       "微流控与单细胞分析",
       "生物传感与即时检测"
     ]
   },
   "1.Journal Articles/4.YangAnalChem2013.pdf": {
-    "title": "ac303471x 1..8",
+    "title": "Microtextured Substrates Microparticles uorescence",
     "abstract": "We propose a concept for enhancing the ﬂuorescent detection signal of on-chip immunoassays by using three-dimensional 3 and 8 μm size microtextured structures as substrates for the assay, which allows exploitation of a large number of ﬂuorophores within the focal plane of an optical microscope for detection. Additionally, we demonstrate the use of 3 and 9.75 μm dielectric microparticles, respectively, as in situ lenses on the 3 and 8 μm microstructures, respectively, for further enhancement of the optical signal. In our model system, the ﬂuorescent complex is formed on (3-aminopropyl)triethoxysilane microstructures and we use carboxyl- functionalized melamine microparticles as the in situ lenses. Mouse IgG diluted in phosphate-buﬀered saline is used as model target antigen and can be easily detected down to a concentration of 2 ng/mL thanks to these approaches. Also, we present a detailed two-dimensional numerical study of the light propagation through a dielectric microparticle using the ﬁnite element method, providing key insight into the signal ampliﬁcation mechanism of a microlens, and point out its advantageous use in microﬂuidic assays. M icroﬂuidic immunoassays are playing an increasingly important role in healthcare diagnosis, drug toxicity evaluation, food quality testing, and environmental safety monitoring.1−5 Microﬂuidic channels are characterized by a large surface-to-volume ratio, which makes them particularly interesting to be used in heterogeneous assays. Indeed, a properly functionalized microchannel wall can easily purify a speciﬁc target antigen from a complex sample matrix. Among a wide variety of bioanalytical immunoassay principles, including the enzyme-linked immunosorbent assay (ELISA) as a gold standard for protein analysis, ﬂuorescent detection methods have become predominant due to their high sensitivity and ease of operation.6,7 However, when the ﬂuorescence is quantiﬁed using an optical microscopy system, the presence of ﬂuorophores in o",
     "doi": "10.1021/ac303471x",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -440,9 +440,9 @@
     "abstract": "A microscopicdynamiclightscatteringmeasurementsystemisproposedtomeetthedemandsofdetecting theparticlesizeofminutebiologicalsamples.Traditionaldynamiclightscatteringtechniquestypicallyrequiresamplesat themilliliterlevel,makingthemunsuitablefordetectingminutebiologicalsamples.Toaddressthisissue,amicroscopic dynamiclightscatteringsystem wasdesignedthatintegratesconventionalmicroscopyanddynamiclightscatteringtech灢 nologies.Bycombiningthesetwotechniques,thesamplevolumewassuccessfullyreducedtotensofmicroliters,achie灢 vingatwo灢order灢of灢magnitudeimprovementandsignificantlyreducingsampleconsumption,thusmeetingthelaboratory's requirementsfortracebiologicaldetection.Tovalidatethefeasibilityofthesystem,differentmaterialsandsizesofnano灢 particlesaswellasbiologicalextracellularvesiclesampleswereevaluated.Theexperimentalresultsshowedthatthe measurementsizeerrorsforpolystyrenemicrospheresparticlesat60nmandexosomesparticlesat208.6nm were1.5% and -3.4%,respectively,whichwereingoodagreementwiththeactualsize,confirmingthepracticalityofthesystem inpracticalapplications.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -450,26 +450,26 @@
     ]
   },
   "1.Journal Articles/41.AnalChem2024.pdf": {
-    "title": "Highly Sensitive Multiplexed Sensing of miRNAs in a Gastric Cancer Patient’s Liquid Biopsy",
+    "title": "Highly Sensitive Multiplexed Sensing of miRNAs in a Gastric Cancer Patient’s",
     "abstract": "Gastric cancer (GC) is one of the leading causes of cancer mortality in the world. Most patients are in the advanced stage of the disease at the time of diagnosis because the symptoms of early gastric cancer patients are not obvious. Early diagnosis of gastric cancer is still challenging due to the high cost, invasiveness, and low accuracy of traditional diagnostic methods such as endoscopy and biopsy. Herein, we develop clinically accurate and highly sensitive detection of multiple GC miRNA biomarkers in human serum using an isothermal nucleic acid primer exchange reaction (PER). The isothermal nucleic acid primer exchange reaction demonstrates high sensitivity and robustness, exemplified by a one-pot reaction achieving a detection limit of 28.71 fM. By quantifying the levels of three miRNA biomarkers selected through bioinformatics analysis in gastric cancer serum samples, the diagnostic approach effectively distinguished between clinical gastric cancer patients (n = 25) and noncancer controls (n = 10). The performance of our three-miRNA signature in discriminating between GC and controls was as follows: area under the curve (AUC): 0.808, sensitivity: 89%, specificity: 88%, positive predictive value (PPV): 96%, and negative predictive value (NPV): 70%. ■",
     "doi": "10.1021/acs.analchem.4c04639",
     "authors": [],
-    "journal": "",
+    "journal": "Analytical Chemistry",
     "year": null,
-    "venue": "",
+    "venue": "Analytical Chemistry",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/42.AdvFuncMater2024.pdf": {
-    "title": "Fast Electrodeposition of MXene/PDA Composites for High‐Performance Bioelectronic Interfaces: An In Vitro Evaluation",
+    "title": "Fast Electrodeposition of MXene/PDA Composites for High-Performance Bioelectronic Interfaces: An In Vitro Evaluation",
     "abstract": "",
     "doi": "10.1002/adfm.202312770",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "微流控与单细胞分析",
       "柔性微纳器件"
@@ -480,9 +480,9 @@
     "abstract": "",
     "doi": "10.1002/lpor.202300999",
     "authors": [],
-    "journal": "",
+    "journal": "Laser & Photonics Reviews",
     "year": null,
-    "venue": "",
+    "venue": "Laser & Photonics Reviews",
     "directions": [
       "等离激元纳米光子学",
       "生物传感与即时检测"
@@ -493,61 +493,61 @@
     "abstract": "The precise recognition, detection, and analysis of protein biomarkers are essential for disease diagnosis and fundamental life sciences research. Antibody probes, known for their high specificity and stability, are central to 收稿日期： XXXX-XX-XX 修回日期： XXXX-XX-XX 基金项目： 国家自然科学基金（62475279）；医学成像科学与技术系统重点实验室研究基金 引用本文： 谭骁天， 李睿涵， 杨慧. 生物分子传感中的抗体探针：由碳基计算走向硅基计算［J］. 合成生物学， 2024， 5. DOI： 10.12211/2096-8280.2024-085 Citation： TAN Xiaotian， LI Ruihan， YANG Hui. Antibody probes in biomolecular sensing： transitioning from carbon-based computing to silicon-based computing ［J］. Synthetic Biology Journal， 2024， 5. DOI： 10.12211/2096-8280.2024-085 DOI: 10.12211/2096-8280.2024-085 评论 合成生物学 第 5 卷 biomolecular sensing assays. Traditionally, antibody development has relied on \"carbon-based\" approaches using animal immune systems. However, we are currently undergoing a transformative shift toward \"silicon-based\" methods driven by artificial intelligence (AI). Conventional techniques, such as animal-based antibody production and phage display – based directed evolution, have long been hindered by low efficiency and limited control over epitope specificity and binding affinity. Recent AI advancements, including de novo protein design and deep learning-driven protein binding protein (PBP) generation, are revolutionizing antibody development. These innovations enable the rapid creation of protein-based biosensing probes (e. g., antibodies and nanobodies) with enhanced specificity and affinity, along with accurate predictions of epitopes and structural features. By overcoming the limitations of traditional methods, AI-driven technologies offer unprecedented control over the design and performance of antibody probes. Furthermore, \"silicon-based evaluation\" plays a crucial role in PBP generation, allowing for quantitative assessment of binding affinity, stability, and robustness. AI-designed biosensing probes offer the potential to capture a broader spectrum of biomolecular information than traditio",
     "doi": "10.12211/2096-8280.2024-085",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/45.ACSSensors2025-Tan.pdf": {
-    "title": "A Quantitative First Passage Time Model for Tubular Microfluidic Immunoassays",
+    "title": "Quantitative Microfluidic Immunoassays",
     "abstract": "Solid-phase immunosorbent reactions, such as ELISA, are widely used for detecting, identifying, and quantifying protein markers. However, traditional centimeter scale well-based immunoreactors suffer from low surface-to-volume (S/V) ratios, leading to large sample consumption and a long assay time. Microfluidic technologies, particularly tubular microfluidic immunoreactors, have emerged as promising alternatives due to their high S/ V ratios. Despite experimental advancements, multifactor theoretical studies on tubular microfluidic systems are limited. In this study, we present a theoretical model based on the first passage time method to analyze diffusion- controlled reaction kinetics in tubular microfluidic immunoreactors. We focus on key parameters including binding kinetics, reactor size, and solution viscosity. To validate the model, controlled laboratory experiments were conducted using our in-house developed tip optofluidic immunoassay (TOI). These experimental results confirmed the reliability of theoretical models in the behavior prediction of tubular microfluidic systems under real-world conditions. Our model revealed that accurate and rapid protein biomarker quantification requires not only the development of microscale bioreactors but also the design of next-generation probes with extraordinary binding affinity and specificity. This work offers insights into optimizing critical design parameters in future microfluidic immunoassay development, paving ways for next generation microliter-sized biomolecular analysis.",
     "doi": "10.1021/acssensors.4c03336",
     "authors": [],
-    "journal": "",
+    "journal": "ACS Sensors",
     "year": null,
-    "venue": "",
+    "venue": "ACS Sensors",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/46.AnalChem2025-Tan.pdf": {
-    "title": "Consolidated Microscale Interferon-γ Release Assay with Tip Optofluidic Immunoassay for Dynamic Parallel Diagnosis of Tuberculosis Infection",
+    "title": "Consolidated Microscale Interferon Optofluidic Immunoassay Diagnosis Tuberculosis Infection",
     "abstract": "Interferon-γ release assay (IGRA) is one of the most important diagnostic tools for tuberculosis (TB) infection. Despite its high accuracy, conventional IGRA has several drawbacks, including complicated procedures, large blood volume requirements, lengthy incubation times, and difficulties in parallel testing. Efforts have been made to develop miniaturized and highly sensitive biosensors for interferon-γ or to evaluate the specific immune response through microfluidic platforms. However, the need for sophisticated consumables and equipment, as well as the partial experimental design, has limited the application of these advanced techniques in TB diagnosis and disease control. Here, we report the development of a tip optofluidic immunoassay (TOI)- based consolidated microscale IGRA (CM-IGRA) for the dynamic and parallel evaluation of TB infection, refining both the blood incubation and interferon-γ quantification processes. The TOI system comprises 12 microfluidic immuno-reactors and a portable chemiluminescent imaging station, capable of quantifying interferon-γ with high sensitivity (8.00 pg/mL in plasma) and a wide detection range (∼104). The results generated with CM-IGRA achieved 98.39% agreement with the standard IGRA while reducing blood sample consumption to 50 μL per assay (20-fold reduction) and significantly shortening the incubation time from 20 to 10 h. This diagnostic method simplifies operations and improves efficiency for the parallel assays required in IGRA, providing a promising solution for TB screening in patients for whom current methods are inconvenient, such as children and older adults. ■",
     "doi": "10.1021/acs.analchem.4c05390",
     "authors": [],
-    "journal": "",
+    "journal": "Analytical Chemistry",
     "year": null,
-    "venue": "",
+    "venue": "Analytical Chemistry",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/47.Microsystems&Nanoengineering2025.pdf": {
-    "title": "Power-free plasma separation based on negative magnetophoresis for rapid biochemical analysis",
+    "title": "Power-free separation magnetophoresis biochemical",
     "abstract": "We present a versatile platform for label-free magnetic separation of plasma, tailored to accommodate diverse environments. This innovative device utilizes an advanced long-short alternating double Halbach magnetic array, speciﬁcally engineered for optimal magnetic separation. The array’s adaptability allows for seamless integration with separation channels of varying sizes, enabling static separation of whole blood. The platform has a highly ﬂexible processing throughput, spanning from 100 μL to 3 mL per separation cycle without sacriﬁcing separation efﬁciency. A key aspect of this device is its power-free operation throughout the separation process, obviating the complexity of conventional separation devices. Its effectiveness is demonstrated by the extraction of 40 μL of plasma from 100 μL of rat whole blood within 8 min. The separated plasma proved effective for subsequent analysis of antibody concentration and size in the separated plasma for pharmacokinetic investigations, yielding results on par with those obtained via centrifugation. Furthermore, the device’s high-throughput capability was validated using human whole blood, achieving 3 mL of plasma separation in just 1 min. In a follow-up study on COVID-19 IgG antibody detection, the results matched those from centrifugation. The device demonstrates a separation efﬁciency of 99.9% for cells larger than 1 μm in both rat and human blood samples, with a plasma recovery rate of 72.7%. In summary, our magnetic separation device facilitates rapid plasma extraction from whole blood, with a capacity of up to 3 mL per minute in human blood, without compromising subsequent plasma-based analyses, thereby highlighting its broad applicability across diverse settings.",
     "doi": "10.1038/s41378-024-00837-8",
     "authors": [],
-    "journal": "",
+    "journal": "Microsystems & Nanoengineering",
     "year": null,
-    "venue": "",
+    "venue": "Microsystems & Nanoengineering",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/48.ACSSensors2025-Full.pdf": {
-    "title": "ascefj.2025.10.issue-4.xlargecover-2.jpg (2453×3262)",
+    "title": "",
     "abstract": "Bacterial infections often lead to severe health consequences owing to their ability to infiltrate multiple anatomical sites, including the bloodstream, respiratory tract, and digestive tract, posing substantial diagnostic and therapeutic challenges. Consequently, a rapid and versatile detection method capable of identifying a broad spectrum of bacterial pathogens is urgently required to facilitate precise antibiotic prescriptions. Addressing this need, we introduce MiND-DMF (Multibacterial Infection Nucleic Acid Detection on a Digital Microfluidic Platform), a cost-effective digital microfluidic platform tailored for multiplexed bacterial detection. This system integrates DNA extraction, recombinase polymerase amplification (RPA), and CRISPR-based detection technologies, enabling the efficient identification of six common infectious bacteria. Operating at a constant temperature of 37 °C, MiND-DMF completes the entire diagnostic process in just 55 min and is compatible with human reference genes. In spiked samples, the platform demonstrated a detection limit of 100 CFU/mL, highlighting its exceptional sensitivity and quantification capability. In clinical evaluations, MiND-DMF exhibited outstanding performance, achieving 100% sensitivity and 98%−100% specificity compared to conventional PCR methods across 50 samples derived from diverse tissue sources. This robust platform demonstrates strong anti- interference capabilities, making it suitable for analyzing various tissue fluids including blood, alveolar lavage fluid, urine, nasal secretions, appendiceal pus, and ear pus. The versatility and precision of MiND-DMF support the monitoring of hospital-acquired bacterial infection origins, empowering physicians to prescribe targeted antibiotics and enhancing overall infection prevention and control strategies. By accurately detecting bacteria from multiple sources, MiND-DMF can play a pivotal role in improving patient outcomes and public health.",
     "doi": "10.1021/acssensors.4c02701",
     "authors": [],
-    "journal": "",
+    "journal": "ACS Sensors",
     "year": null,
-    "venue": "",
+    "venue": "ACS Sensors",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -555,13 +555,13 @@
     ]
   },
   "1.Journal Articles/48.ACSSensors2025.pdf": {
-    "title": "Rapid Bacterial Identification through Multiplexed Nucleic Acid Detection on a Digital Microfluidic Platform for Enhanced Clinical Intervention against Infections",
+    "title": "Bacterial Identification Multiplexed Detection Microfluidic Intervention Infections",
     "abstract": "Bacterial infections often lead to severe health consequences owing to their ability to infiltrate multiple anatomical sites, including the bloodstream, respiratory tract, and digestive tract, posing substantial diagnostic and therapeutic challenges. Consequently, a rapid and versatile detection method capable of identifying a broad spectrum of bacterial pathogens is urgently required to facilitate precise antibiotic prescriptions. Addressing this need, we introduce MiND-DMF (Multibacterial Infection Nucleic Acid Detection on a Digital Microfluidic Platform), a cost-effective digital microfluidic platform tailored for multiplexed bacterial detection. This system integrates DNA extraction, recombinase polymerase amplification (RPA), and CRISPR-based detection technologies, enabling the efficient identification of six common infectious bacteria. Operating at a constant temperature of 37 °C, MiND-DMF completes the entire diagnostic process in just 55 min and is compatible with human reference genes. In spiked samples, the platform demonstrated a detection limit of 100 CFU/mL, highlighting its exceptional sensitivity and quantification capability. In clinical evaluations, MiND-DMF exhibited outstanding performance, achieving 100% sensitivity and 98%−100% specificity compared to conventional PCR methods across 50 samples derived from diverse tissue sources. This robust platform demonstrates strong anti- interference capabilities, making it suitable for analyzing various tissue fluids including blood, alveolar lavage fluid, urine, nasal secretions, appendiceal pus, and ear pus. The versatility and precision of MiND-DMF support the monitoring of hospital-acquired bacterial infection origins, empowering physicians to prescribe targeted antibiotics and enhancing overall infection prevention and control strategies. By accurately detecting bacteria from multiple sources, MiND-DMF can play a pivotal role in improving patient outcomes and public health.",
     "doi": "10.1021/acssensors.4c02701",
     "authors": [],
-    "journal": "",
+    "journal": "ACS Sensors",
     "year": null,
-    "venue": "",
+    "venue": "ACS Sensors",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -569,39 +569,39 @@
     ]
   },
   "1.Journal Articles/49.MicrochemicalJournal2025.pdf": {
-    "title": "Intelligent microscopic imaging system based on microwell array chip for high-throughput analysis of single-cell heterogeneity",
+    "title": "Microchemical Journal",
     "abstract": "With the increasing importance of single-cell analysis in many fields, such as biology and medicine, developing efficient and accurate high-throughput single-cell analysis technology has become a research hotspot. Herein, an intelligent microscopic imaging system based on microarray chips is reported to achieve high-throughput analysis of single cells. The system integrates a special microwell array chip, which can accurately locate and fix many single cells, providing a stable basis for the subsequent single-cell heterogeneity analysis. At the same time, it is equipped with an intelligent microscopic imaging module, which can obtain single-cell image data quickly and efficiently through an automated image acquisition program. The system, combined with advanced image analysis algorithms, can accurately extract key features such as the morphology and fluorescence signals of single cells from massive images and then realize in-depth analysis of multiple biological characteristics of single cells. As a proof of concept, six different types of cancer cells were selected A549, H1299, CT2A, SAOS-2, SH-SY5Y, U87, respectively. By processing 3900 microwell arrays on the chip, 2000 single cells were located and fixed simultaneously. The experimental results showed that the intelligent microscopic imaging system had shown good accuracy (90 %), repeatability, and high efficiency in high-throughput single-cell analysis, which is expected to provide strong technical support for many fields such as basic research in life science, disease diagnosis, and drug development, and significantly promote the research progress at the single-cell level.",
     "doi": "10.1016/j.microc.2025.113136",
     "authors": [],
-    "journal": "",
+    "journal": "Microchemical Journal",
     "year": null,
-    "venue": "",
+    "venue": "Microchemical Journal",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/5-1.Small2014Cover.pdf": {
-    "title": "Fluorescence Imaging: SuperResolution Biological Microscopy Using Virtual Imaging by a Microsphere Nanoscope (Small 9/2014)",
+    "title": "www.small-journal.com",
     "abstract": "",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学"
     ]
   },
   "1.Journal Articles/5-2.YangSmall2014.pdf": {
-    "title": "SuperResolution Biological Microscopy Using Virtual Imaging by a Microsphere Nanoscope",
+    "title": "communications",
     "abstract": "",
     "doi": "10.1002/smll.201302942",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学"
     ]
@@ -611,9 +611,9 @@
     "abstract": "",
     "doi": "10.1002/smll.201302942",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -623,9 +623,9 @@
     "abstract": "Nanomanipulation based on atomic force microscopy (AFM) is widely used in various fields, including nanoparticle assembly, nanostructure construction, and semiconductor device manufacturing. However, a challenge remains in the lack of nanoscale visual feedback, which limits operational efficiency and accuracy. Here, we present a method for nanomanipulation under the visual guidance of real- time super-resolution imaging. The method involves coupling a microlens to the end of a conventional AFM probe cantilever and depositing a diamond tip onto the surface of the microlens using focused ion beam (FIB). The resulting microlens-AFM probe enhances the imaging resolution of traditional AFM optical systems, providing super-resolution capability with a multiple 3× increase in optical imaging magnification and enabling synchronous imaging and manipulation of silver nanowires with a characteristic size of 200 nm. This advancement bridges the key gap in AFM-based nanomanipulation by providing in-situ, real-time, non-destructive, and ultra-high-resolution visual feedback. This technology has the potential to provide new methods and key technologies for research in a wide range of applications, including nanorobots, nanoobservation, nanomanipulation, and manufacturing.",
     "doi": "10.26599/NR.2025.94907397",
     "authors": [],
-    "journal": "",
+    "journal": "Nanoscale",
     "year": null,
-    "venue": "",
+    "venue": "Nanoscale",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析",
@@ -637,9 +637,9 @@
     "abstract": "Nanomanipulation based on atomic force microscopy (AFM) is widely used in various fields, including nanoparticle assembly, nanostructure construction, and semiconductor device manufacturing. However, a challenge remains in the lack of nanoscale visual feedback, which limits operational efficiency and accuracy. Here, we present a method for nanomanipulation under the visual guidance of real- time super-resolution imaging. The method involves coupling a microlens to the end of a conventional AFM probe cantilever and depositing a diamond tip onto the surface of the microlens using focused ion beam (FIB). The resulting microlens-AFM probe enhances the imaging resolution of traditional AFM optical systems, providing super-resolution capability with a multiple 3× increase in optical imaging magnification and enabling synchronous imaging and manipulation of silver nanowires with a characteristic size of 200 nm. This advancement bridges the key gap in AFM-based nanomanipulation by providing in-situ, real-time, non-destructive, and ultra-high-resolution visual feedback. This technology has the potential to provide new methods and key technologies for research in a wide range of applications, including nanorobots, nanoobservation, nanomanipulation, and manufacturing.",
     "doi": "10.26599/NR.2025.94907397",
     "authors": [],
-    "journal": "",
+    "journal": "Nanoscale",
     "year": null,
-    "venue": "",
+    "venue": "Nanoscale",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析",
@@ -647,26 +647,26 @@
     ]
   },
   "1.Journal Articles/51.hLife2025.pdf": {
-    "title": "Tip optofluidic immunoassay: Evaluating COVID-19 antibody protection with 1 &mu;L fingertip blood",
+    "title": "uidic immunoassay: Evaluating COVID- 19 antibody protection with 1 ngertip blood",
     "abstract": "HIGHLIGHTS d Multimodal COVID-19 antibody protection evaluation with tip optoﬂuidic immunoassay: binding, kinetics, and neutralization. d Requires only 1 mL of ﬁngertip blood, delivers full results in 40 min; rapid and patient-friendly. d Lower limit of detection of 0.1 ng/mL, 3–4 log dynamic range, signal-to-noise ratio \u000110,000; ensures high precision and sensitivity. d Identiﬁed 4 volunteers with broad-spectrum antibody protection against two strains of SARS-CoV-2. 338 | Vol. 3 | Issue 7 | Jul. 2025 ARTICLE Tip optoﬂuidic immunoassay: Evaluating COVID-19 antibody protection with 1 mL ﬁngertip blood Xiaotian Tan1,2,*,#, Yujuan Chai3,*,#, Ruihan Li1,2,#, Binmao Zhang1,3,#, Hao Li1,4,#, Jie Zhang5, Tianen Zhu6, Weishu Wu7, Lixiang An4, Shi Hu1,2,8, Bin Yang5, Li Wang5, Zhenqiu Cao9, Hongjiu Zhang9, Peng Wang10, Lingling Yu10, Shan Yin10, Xingyu Li10, Fei Shao10, Jianheng Huang1,3, Jinze Li1, Fan Yang2,11, Chao Zhao1,2, Jiajia Guo1,2, Lin Zeng1,2, Dong Liang1,2, Zhengting Zou9, Hairong Zheng1,2,*, Xudong Fan7,*, Liangzhi Xie5,12,13,*, Yunlong Cao10,14,*, Hui Yang1,2,* 1Institute of Biomedical and Health Engineering, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Guangdong, China 2State Key Laboratory of Biomedical Imaging Science and System, Guangdong, China 3Department of Biomedical Engineering, Shenzhen University Medical School, Shenzhen University, Guangdong, China 4National Innovation Center for Advanced Medical Devices, Guangdong, China 5Beijing Key Laboratory of Monoclonal Antibody Research and Development, Sino Biological Inc., Beijing, China 6Emergency Department, Shenzhen University General Hospital, Shenzhen University, Guangdong, China 7Department of Biomedical Engineering, University of Michigan, Michigan, USA 8University of Chinese Academy of Sciences, Beijing, China 9Institute of Zoology, Chinese Academy of Sciences, Beijing, China 10Changping Laboratory, Beijing, China 11Institute of Biomedicine and Biotechnology, Shenzhen Ins",
     "doi": "10.1016/j.hlife.2025.04.005",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/52.Microfluidics&Nanofluidics2025.pdf": {
-    "title": "On-chip inductive sensor for ultra-high-throughput integrated detection of oil contamination and viscosity",
+    "title": "On‑chip inductive sensor for ultra‑high‑throughput integrated detection of oil contamination and viscosity",
     "abstract": "A novel on-chip inductive detection sensor has been developed, offering a new method for analyzing contaminants and viscosity in hydraulic oil. An ultra-high-throughput microchannel with a rectangular cross-section has been designed, along with a dual-core coil resonant method to generate a large-scale magnetic field with high sensitivity on the chip. The induc- tive sensing unit consists of two symmetrically arranged rectangular magnetic core coils, creating a detection area with a high magnetic field strength. A rectangular microchannel with a cross-sectional area of up to 6 ­mm2 passes between the two magnetic core coils. Compared to traditional micro-inductive sensors, the throughput increased by nearly 2 orders of mag- nitude, reaching 120 mL/h. Using the microchannel and resonance measurement method, we successfully detected 30 μm iron particles and 80 μm copper particles. Furthermore, we have established a model that correlates oil viscosity with its transit time through the microchannel. Through the inductance signal, we can determine the time it takes for the oil to pass through the coils and subsequently calculate its viscosity using our theoretical model. This method allows for the integration of inductive detection and viscosity measurement without the need for additional sensor. In the experiment, we measured hydraulic oils of different viscosities and compared the results with measurements obtained using a viscometer to verify the accuracy of the viscosity measurements.",
     "doi": "10.1007/s10404-025-02824-5",
     "authors": [],
-    "journal": "",
+    "journal": "Nature",
     "year": null,
-    "venue": "",
+    "venue": "Nature",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -674,25 +674,25 @@
     ]
   },
   "1.Journal Articles/53.SmallMethods2025-正文&封面.pdf": {
-    "title": "On&#x02010;Chip Light&#x02010;Scattering Enhancement Enabled by a Microlens Array for High&#x02010;Performance Single&#x02010;Particle Tracking under Conventional Bright&#x02010;Field Microscopy",
+    "title": "www.small-methods.com",
     "abstract": "",
     "doi": "10.1002/smtd.202402238",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学"
     ]
   },
   "1.Journal Articles/53.SmallMethods2025-正文.pdf": {
-    "title": "On&#x02010;Chip Light&#x02010;Scattering Enhancement Enabled by a Microlens Array for High&#x02010;Performance Single&#x02010;Particle Tracking under Conventional Bright&#x02010;Field Microscopy",
+    "title": "On-Chip Light-Scattering Enhancement Enabled by a Microlens Array for High-Performance Single-Particle Tracking under Conventional Bright-Field Microscopy",
     "abstract": "",
     "doi": "10.1002/smtd.202402238",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学"
     ]
@@ -702,9 +702,9 @@
     "abstract": "Rapid wound closure is crucial to prevent microbial invasion during skin trauma. Delayed diagnosis and treatment of wound infection may lead to complications such as impaired healing and sepsis. Conventional clinical dressings (e.g., cotton and gauze) mainly provide physical isolation but fail to establish an antibacterial microenvironment. These dressings often adhere to wound tissues, resulting in secondary injury during removal, and lack the capability for real-time monitoring of wound conditions. This study innovatively integrates multimodal pressure sensing with wound repair functions, enabling the synergistic development of smart sensing wound dressings (SSWD) that offer real-time visual monitoring. The dressing employs gradient cross-linking to fabricate a dynamic self-adaptive Janus-structured organic hydrogel. The upper non- adhesive ion-sensing layer incorporates micro-nano surface structures, enabling high-resolution real-time responses to mechanical signals from wound swelling and tissue regeneration. This capability, when coupled with an image acquisition system, enables visual monitoring of the healing process. The lower adhesive layer ensures robust interfacial integration with the wounds’ bed via hydrogen bonding while allowing controlled sustained release of drugs that promote healing. This system propels the development of intelligent dressings towards diagnosis-treatment integration and offers an innovative solution for precision wound management.",
     "doi": "10.1007/s42114-025-01510-y",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
@@ -715,57 +715,57 @@
     "abstract": "",
     "doi": "10.1038/s41551-025-01561-y",
     "authors": [],
-    "journal": "",
+    "journal": "Nature",
     "year": null,
-    "venue": ""
+    "venue": "Nature"
   },
   "1.Journal Articles/56.JEV2025.pdf": {
-    "title": "Universal Microfluidic Platform for Multifunctional Surface Modification of Small Extracellular Vesicles",
+    "title": "Universal Microfluidic Multifunctional Modification Extracellular",
     "abstract": "Small Extracellular vesicles (sEVs) hold great promise as therapeutic delivery vehicles due to their inherent biocompatibility. However, their clinical translation is limited by donor cell source dependency and inadequate targeting capabilities. To overcome these challenges, we introduce a universal surface engineering strategy that integrates lipid membrane anchoring with targeted ligand conjugation. At the core of this approach is the sEV Surface-Engineering microfluidic device (ExoSE), a dual-functional platform combining nanofluidic and microfluidic architectures. ExoSE consists of two interconnected modules: (1) a loading module that employs mechanoporation via nanochannels to transiently generate pores in sEV membranes, enabling highly efficient insertion of functionalized lipids and (2) a mixing module with specialized structures that facilitate rapid, covalent attachment of targeting ligands via optimized chemical reactions. This approach achieved lipid incorporation efficiencies of 97.93% for HEK293T-dervied sEVs and 98.47% for milk-derived sEVs, surpassing conventional co-incubation techniques. NanoFCM analysis revealed a 3- to 6-fold increase in ligand binding per sEV. Functionally, RGE peptide-modified sEVs exhibited a 54.13% increase in transmembrane transport efficiency in the in vitro model and enhanced infiltration into glioma spheroid, while AS1411 aptamer-conjugated sEVs showed 77.8% targeting specificity towards breast cancer cells, compared to 32.5% for normal breast cells. In vivo tracking in BALB/c-nude mice confirmed significantly improved brain accumulation of engineered sEVs, with no detectable hepatic or renal toxicity. Unlike traditional donor-cell-dependent genetic modification approaches, ExoSE enables universal, scalable modification of sEVs from diverse sources, including highly abundant milk-derived sEVs, and accommodates diverse ligand types such as peptides, aptamers and proteins. This device represents a transformative advancement ",
     "doi": "10.1002/jev2.70215",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/57.AdvancedScience2026.pdf": {
-    "title": "Rapid and Direct Detection of Methamphetamine in Biofluids using a MXene‐Enabled Electrochemical Sensor",
+    "title": "Detection Methamphetamine Biofluids MXene-Enabled Electrochemical",
     "abstract": "Illicit drug abuse presents a global challenge to public health and security, creating an urgent need for reliable detection methods to curb trafficking and mitigate societal harm. Methamphetamine (METH), a highly addictive and widely circulated stimulant, requires urgent monitoring solutions. We introduce an approach for the rapid and direct detection of METH using an electrochemical sensor enhanced with MXene nano-interfaces that operates on the principle of electrochemical oxidation. Theoretical simulations are conducted to elucidate the reaction pathway of METH and to analyze the molecular interactions between METH and the MXene surface, providing key insights into the underlying molecular dynamics. The rich surface functionalities of MXene enable a favorable structural affinity with METH, facilitating enhanced interfacial interactions that promote oxidation kinetics and amplify electrochemical responses. The sensor demonstrates a linear response to METH across a concentration range from 2 ngmL− 1 to 50 µg mL− 1 , alongside satisfactory anti-interference performance and repeatability, rendering it appropriate for on-site preliminary screening of positive samples. Its successful validation in complex biological matrices confirms its broad applicability. By combining user-friendly operation with a rapid response, this method establishes a robust theoretical framework and a practical solution for the on-site screening of METH and related illicit substances. 1",
     "doi": "10.1002/advs.202521857",
     "authors": [],
-    "journal": "",
+    "journal": "Advanced Science",
     "year": null,
-    "venue": "",
+    "venue": "Advanced Science",
     "directions": [
       "生物传感与即时检测",
       "柔性微纳器件"
     ]
   },
   "1.Journal Articles/58.MicrochemicalJournal2026.pdf": {
-    "title": "Recent advances in microfluidic biosensing Technologies for the Detection of infectious pathogens",
+    "title": "Microchemical Journal",
     "abstract": "Rapid detection of infectious pathogens is essential for public-health surveillance and clinical diagnosis. While conventional methods remain reliable, they are limited by prolonged processing times and reliance on bulky instrumentation. By integrating biosensing technologies into miniaturized platforms, microfluidic chips offer unique advantages in sample manipulation, fluid control, and signal transduction, enabling automated end-to- end pathogen detection workflows from sample preprocessing to result readout. This review summarizes recent advances in microfluidic biosensing for direct pathogen detection, immunoassays, molecular diagnostics, and artificial intelligence–enabled sensing; comparatively analyzes the performance of optical and electrical biosensing platforms in pathogen detection with respect to sensitivity, limits of detection, and multiplexing capability; and discusses the key challenges that remain in terms of system stability, integration, and clinical translation.",
     "doi": "10.1016/j.microc.2026.117188",
     "authors": [],
-    "journal": "",
+    "journal": "Microchemical Journal",
     "year": null,
-    "venue": "",
+    "venue": "Microchemical Journal",
     "directions": [
       "微流控与单细胞分析",
       "生物传感与即时检测"
     ]
   },
   "1.Journal Articles/6.YangNanoLett2015.pdf": {
-    "title": "nl5044067 1..6",
+    "title": "Photonic Nanojet Array for Fast Detection of Single Nanoparticles in",
     "abstract": "We detect by optical microscopy Au and ﬂuorescent nanoparticles (NPs) during their motion in water-based medium, using an array of dielectric microspheres that are patterned in a microwell array template. The microspheres act as lenses focusing the light originating from a microscope objective into so-called photonic nanojets that expose the medium within a microﬂuidic channel. When a NP is randomly transported through a nanojet, its backscattered light (for a bare Au NP) or its ﬂuorescent emission is instantaneously detected by video microscopy. Au NPs down to 50 nm in size, as well as ﬂuorescent NPs down to 20 nm in size, are observed by using a low magniﬁcation/low numerical aperture microscope objective in bright-ﬁeld or ﬂuorescence mode, respectively. Compared to the NPs present outside of the photonic nanojets, the light scattering or ﬂuorescence intensity of the NPs in the nanojets is typically enhanced by up to a factor of ∼40. The experimental intensity is found to be proportional to the area occupied by the NP in the nanojet. The technique is also used for immunodetection of biomolecules immobilized on Au NPs in buﬀer and, in future, it may develop into a versatile tool to detect nanometric objects of environmental or biological importance, such as NPs, viruses, or other biological agents.",
     "doi": "10.1021/nl5044067",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -773,26 +773,26 @@
     ]
   },
   "1.Journal Articles/7.YangMicroelectronEng2015.pdf": {
-    "title": "Optical microscopy using a glass microsphere for metrology of sub-wavelength nanostructures",
+    "title": "Microelectronic Engineering",
     "abstract": "A technique that allows direct optical imaging of nanostructures and determines quantitatively geomet- ric nanofeatures beyond the classical diffraction limit by using high-refractive index glass microspheres is introduced. The glass microsphere is put on a nanostructure that is immersed in oil and collects the sample’s near-ﬁeld evanescent wave and transforms it into a propagating one, thereby generating a magniﬁed image in the far-ﬁeld which is recorded by a conventional oil-immersion microscope objective. Experimental results on nanostructures demonstrates a resolution of \u0002k/4–k/7, where k is the illumina- tion wavelength, by using a 60 lm glass microsphere and a normal wideband halogen lamp as illumina- tion source. A two-dimensional numerical study of the light propagation through a glass microsphere using ﬁnite element method (FEM) is performed, providing key insight into the microsphere’s superior imaging capability. \u0002 2015 Elsevier B.V. All rights reserved.",
     "doi": "10.1016/j.mee.2015.03.072",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析"
     ]
   },
   "1.Journal Articles/8.YangNanoLett2016.pdf": {
-    "title": "nl6b01255 1..9",
+    "title": "Super-Resolution Imaging of a Dielectric Microsphere Is Governed by",
     "abstract": "Dielectric microspheres with appropriate refractive index can image objects with super-resolution, that is, with a precision well beyond the classical diﬀraction limit. A microsphere is also known to generate upon illumination a photonic nanojet, which is a scattered beam of light with a high-intensity main lobe and very narrow waist. Here, we report a systematic study of the imaging of water- immersed nanostructures by barium titanate glass microspheres of diﬀerent size. A numerical study of the light propagation through a microsphere points out the light focusing capability of microspheres of diﬀerent size and the waist of their photonic nanojet. The former correlates to the magniﬁcation factor of the virtual images obtained from linear test nanostructures, the biggest magniﬁcation being obtained with microspheres of ∼6−7 μm in size. Analyzing the light intensity distribution of microscopy images allows determining analytically the point spread function of the optical system and thereby quantiﬁes its resolution. We ﬁnd that the super-resolution imaging of a microsphere is dependent on the waist of its photonic nanojet, the best resolution being obtained with a 6 μm Ø microsphere, which generates the nanojet with the minimum waist. This comparison allows elucidating the super-resolution imaging mechanism.",
     "doi": "10.1021/acs.nanolett.6b01255",
     "authors": [],
-    "journal": "",
+    "journal": "Nano Letters",
     "year": null,
-    "venue": "",
+    "venue": "Nano Letters",
     "directions": [
       "等离激元纳米光子学"
     ]
@@ -802,9 +802,9 @@
     "abstract": "High-refractive index dielectric microspheres positioned within the field of view of a microscope objective in a dielectric medium can focus the light into a so-called photonic nanojet. A sample placed in such nanojet can be imaged by the objective with super- resolution, i.e. with a resolution beyond the classical diffraction limit. However, when imaging nanostructures on a substrate, the propagation distance of a light wave in the dielectric medium in between the substrate and the microsphere must be small enough to reveal the sample’s nanometric features. Therefore, only the central part of an image obtained through a microsphere shows super-resolution details, which are typically ∼100 nm using white light (peak at λ = 600 nm). We have performed finite element simulations of the role of this critical distance in the super-resolution effect. Super-resolution imaging of a sample placed beneath the microsphere is only possible within a very restricted central area of ∼10 μm2, where the separation distance between the substrate and the microsphere surface is very small (∼1 μm). To generate super-resolution images over larger areas of the sample, we have fixed a microsphere on a frame attached to the microscope objective, which is automatically scanned over the sample in a step-by-step fashion. This generates a set of image tiles, which are subsequently stitched into a single super-resolution image (with resolution of λ/4-λ/5) of a sample area of up to ∼104 μm2. Scanning a standard optical microscope objective with microsphere therefore enables super-resolution microscopy over the complete field-of-view of the objective. © 2017 Optical Society of America OCIS codes: (100.6640) Superresolution; (180.4243) Near-field microscopy; (180.5810) Scanning microscopy; (220.3630) Lenses; (220.4000) Microstructure fabrication; (240.3990) Micro-optical devices. References and links",
     "doi": "10.1364/OE.25.015079",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析",
@@ -842,40 +842,40 @@
     "abstract": "Self-assembled dielectric microlenses are used for focusing of the fluorescent signal emitted from a surface-based immunoassay, performed on silane micropatterns as assay substrates, to enhance the detection signal. In our model system, a fluorescent immunocomplex is formed on (3-aminopropyl)triethoxysilane (APTES) microstructures, and then carboxyl-functionalized melamine microparticles with two different sizes are electrostatically self-assembled on the microstructures. Mouse IgG diluted in phosphate buffered saline (PBS) is used as model target antigen and easily detected down to a concentration of 2 ng/mL. We also present a detailed two-dimensional numerical study using the Finite Element Method (FEM).",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学"
     ]
   },
   "2.Conference Proceedings/12.YangMNE2014.pdf": {
-    "title": "",
+    "title": "Figure 2. Measurement of nanolines with a width of 200 nm and inter-space of 200 nm, by both SEM and by optical microscopy using a microsphere in combination with an oil immersion objective. Figure 5. FEM simulation on the propagation microsphere and immersion oil, showing that the light is highly f",
     "abstract": "",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": ""
+    "venue": "Small"
   },
   "2.Conference Proceedings/13.CornagliaMNE2014.pdf": {
-    "title": "Desktop publishing template for MNE08 abstract book",
+    "title": "[1] Ottevaere, H.; Cox, R.; Herzig, H. P.; Miyashita, T.; Naessens, K.; Taghizadeh, M.; Volkel, R.; Woo, H. J.; Thienpont, H. J Opt a-Pure Appl Op 8 (2006) S407-S429. [2] Kim, M. S.; Scharf, T.; Muhlig, S.; Rockstuhl, C.; Herzig, H. P. Opt Express 19 (2011) 10206-10220. Electrostatic self-assembly o",
     "abstract": "",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": ""
+    "venue": "Small"
   },
   "2.Conference Proceedings/14.YangMicroTAS2014.pdf": {
-    "title": "LENS ARRAY BY ELECTROSTATIC PATTERNING OF DIELECTRIC MICROSPHERES IN A PARYLENE-C WELL TEMPLATE",
+    "title": "LENS ARRAY BY ELECTROSTATIC PATTERNING OF DIELECTRIC MICROSPHERES IN A PARYLENE-C WELL TEMPLATE , M. Cornaglia and Martin A. M. Gijs Laboratory of Microsystems, École Polytechnique Fédérale de Lausanne, Switzerland",
     "abstract": "We present the fabrication of a microlens array which can be integrated into a microfluidic device. In the demonstrated technique, a microwell array is firstly fabricated in a Parylene-C layer by a standard cleanroom process. Afterwards, the optically transparent dielectric microspheres with high refractive index are patterned inside the well template by utilizing an electrostatic technique. The mechanism of microsphere patterning is studied, and the lens effect of the microsphere is experimentally verified in a water-based medium. We also present a detailed two-dimensional numerical optical simulation study on the patterned microspheres using the Finite Element Method (FEM).",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析",
@@ -887,9 +887,9 @@
     "abstract": "We propose the use of a high-refractive index glass microsphere in combination with a conventional fluorescence microscope for imaging sub-cellular organelles and biomolecules. The microsphere is placed on a sample that is immersed in water, collects the near-field nano-features of the sample and generates a magnified virtual image in the far- field, which is recorded through a conventional water immersion objective. We first investigate the imaging capability of the microspheres on size-calibrated fluorescent micro-/nano-particles. The experimental results obtained from a microsphere with 60 μm in diameter demonstrate imaging capability of features of ~λ/7-size (λ is the wavelength) with a magnification factor of 5.4. The position of the virtual image, the field-of-view (FOV) of the microsphere and the magnification factor are studied by using microspheres with different sizes. Finite Element Method (FEM) simulations are performed, providing key insight into the imaging effect of the microspheres with super-resolution capability. Moreover, the distribution and complex shape of different sub-cellular organelles, like centrioles, mitochondria and chromosomes in the AML12 cell line, are imaged with help of the glass microspheres. Thereafter, the subcellular location of mitochondrial encoded proteins could be studied.",
     "doi": "10.1117/12.2078360",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学"
@@ -900,22 +900,22 @@
     "abstract": "We demonstrate a method to determine the Brownian motion and the diffusion coefficient of a nanoparticle in water in a plane that is parallel to a solid boundary and as function of the distance normal to that boundary by using an optical tweezers instrument. A solution of 190 nm-diameter fluorescent polystyrene nanoparticles in de-ionized (DI) water is introduced in a micro-chamber built from two thin glass substrates. A single particle is trapped by the tweezers and optically moved in the z-direction normal to a substrate. By analyzing a scatter plot of the time-dependent positions of the nanoparticle in the x-y plane in a histogram, the diffusion coefficient parallel to the substrate of the Brownian particle constrained by the substrate is determined as a function of the distance between the substrate and the nanoparticle. The experimental results indicate the increased drag effect on the nanoparticle when it is close to the substrate, as evidenced by an experimental diffusion coefficient nearby the substrate that is about half of that of the particle in the bulk fluid.",
     "doi": "10.1117/12.2078341",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/17.YangMicroTAS2015.pdf": {
-    "title": "1843_T.527g",
+    "title": "FAST DETECTION OF SINGLE NANOPARTICLES IN A MICROFLUIDIC CHANNEL BY A MICROLENS ARRAY IN COMBINATION WITH A CONVENTIONAL OPTICAL MICROSCOPE , M. Cornaglia and M.A.M. Gijs Laboratory of Microsystems, Ecole Polytechnique Fédérale de Lausanne, Switzerland",
     "abstract": "We present the use of a microlens array in combination with a conventional optical microscope set-up for the detection of single nanoparticles (NPs) in fluid medium. Optically transparent dielectric microspheres are patterned in a microfabricated well array template and used as microlenses focusing the light originating from a microscope objective into so-called photonic nanojets that expose the medium within the microfluidic channel. When the NPs pass the nanojets, the detection signal is highly enhanced, Au NPs with size down to 50 nm, fluorescent NPs down to 20 nm in size, as well as biomolecule-linked NPs are clearly observed.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -923,32 +923,32 @@
     ]
   },
   "2.Conference Proceedings/18.HuszkaTransducers2017.pdf": {
-    "title": "DIELECTRIC MICROSPHERE-BASED OPTICAL SYSTEM FOR SUPER-RESOLUTION MICROSCOPY",
+    "title": "DIELECTRIC MICROSPHERE-BASED OPTICAL SYSTEM FOR SUPER-RESOLUTION MICROSCOPY Gergely Huszka, Hui Yang and Martin A. M. Gijs Laboratory of Microsystems, École Polytechnique Fédérale de Lausanne (EPFL), SWITZERLAND We present a dielectric microsphere-based super- resolution optical microscope that can ",
     "abstract": "We present a dielectric microsphere-based super- resolution optical microscope that can image a sample beyond the classical diffraction limit [1]. The super- resolution imaging capability of a single microsphere normally is restricted to an area of ~10 μm2, which essentially is the area of close contact of a microsphere with the sample. By fixing the microsphere on a frame attached to a microscope objective, we perform automatic step-by- step scanning and imaging of the sample. Later, the generated image set is synthesized into a single wide-field super-resolution image using a dedicated algorithm. Furthermore, we propose an array fabrication process for placing multiple microspheres in the optical path of the microscope objective, thereby parallelizing the imaging process.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "柔性微纳器件"
     ]
   },
   "2.Conference Proceedings/19.IEEE MEMS 2021_0108_EI_杜静.pdf": {
-    "title": "Magnetic Force-Based Microfluidic Chip for Plant Seed Levitation to Simulate Microgravity Environment",
+    "title": "MAGNETIC FORCE-BASED MICROFLUIDIC CHIP FOR PLANT SEED LEVITATION TO SIMULATE MICROGRAVITY ENVIRONMENT Jing Du, Lin Zeng, Zitong Yu, Xi Chen, Yi Zhang and Hui Yang* Laboratory of Biomedical Microsystems and Nano Devices, Center for Bionic Sensing and Intelligence, Institute of Bio-medical and Health ",
     "abstract": "For plants on Earth, gravitropism is essential for seedling establishment and plant growth. As an integrated part of plant development, gravitropic response is mainly mediated by changes of photohormone auxin. Study on auxin responses in microgravity condition is critical for illustrating how plants perceive environmental gravity conditions and then initiating auxin signaling pathway, ultimately, helping to reveal how plants response to gravity stimulus. Nevertheless, key barriers to answering these questions are the lack of a tool that can provide simulated microgravity condition. In this work, we have developed a microfluidic negative-magnetophoresis (MNM) platform to levitate Arabidopsis seeds in an equilibrium plane where magnetic force and buoyancy force are equal and opposite in directions. With the advantage of the MNM platform to simulate a microgravity environment, it’s found that auxin response is obviously decreased after seed levitation during early seed germination. This can enable the study of the physiological process and molecular mechanism of auxin in a simulated microgravity condition and benefit further applications for optimizing plant growth in space.",
     "doi": "10.1109/MEMS51782.2021.9375185",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/2.GuoIEEEMEMS2007.pdf": {
-    "title": "MEMS索引合体.indd",
+    "title": "BETAVOLTAIC MICROBATTERIES USING POROUS SILICON , Hui Yang and Ying Zhang Pen-Tung Sah MEMS Research Center, Xiamen University, Xiamen, Fujian 361005, China Chemistry and Chemical Biology Department, Cornell University, Ithaca, NY 14853, USA Tel 86-592-2181340, Fax 86-592-2187196, Email hangguo@xmu.",
     "abstract": "In this paper, we present a new type of betavoltaic microbattery using porous silicon pn junction device. Investigations are made on using high energy radioisotopes as the source and mechanisms of increased energy bandgap and electron trapping in porous silicon for increasing power output and energy conversion efficiency. The device is fabricated and experimental result shows that this new type of microbattery is a promising technology for developing nuclear microbatteries with the increased power output and conversion efficiency.",
     "doi": "",
     "authors": [],
@@ -961,51 +961,51 @@
     ]
   },
   "2.Conference Proceedings/20.IEEE MEMS 2021_0244_EI_于子桐.pdf": {
-    "title": "A Human Cornea-On-A-Chip",
+    "title": "A HUMAN CORNEA-ON-A-CHIP Zitong Yu, Rui Hao, Yi Zhang and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sciences, Shenzhen, CHINA ",
     "abstract": "This paper describes a microfluidic platform to reconstitute human cornea and the complexity of its interface to external environment. To recapitulate the structural complexity and biological phenotype of the cornea, we embedded a collagen-coated porous membrane in a double-layer microfluidic chip for three-dimensional (3D) culture of cells derived from the human cornea. Moreover, a pressure-driven flow was used for long-term cultivation, which not only forms a bionic human cornea, but also simulates the microenvironment of the human ocular surface. We demonstrated a novel micro-engineered device that would improve the interaction between the in vitro model and the external environment, providing a potential solution to obtain predictive results to in vivo observations.",
     "doi": "10.1109/MEMS51782.2021.9375292",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/21.IEEE MEMS 2021_0265_EI_郝锐.pdf": {
-    "title": "A High-Throughput Nanofluidic Device for Small Extracellular Vesicle Nanoporation",
+    "title": "A HIGH-THROUGHPUT NANOFLUIDIC DEVICE FOR SMALL EXTRACELLULAR VESICLE NANOPORATION , Zitong Yu , Jing Du , Hang Guo , Yi Zhang , and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Instit",
     "abstract": "We propose a nanofluidic device named “small extracellular vesicle nanoporator (sEVN)” for high-throughput nanoporation of small extracellular vesicles (sEVs). By transporting sEVs through constriction nanochannel with height comparable to their dimension, transient nanopores are introduced on the sEVs membrane by mechanical membrane disruption, while maintaining sEV integrity. The sEVN consisting of 30,000 nanochannels demonstrates a high sample throughput and absence on clogging issues, and the working mechanism of the device is elucidated through experimental and numerical study. This platform provides a way for high-throughput sEV nanoporation and offers promises for engineering sEVs as universal drug delivery vehicles for biomedical applications.",
     "doi": "10.1109/MEMS51782.2021.9375443",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/22.IEEE MEMS 2021_0267_EI_陈思卉.pdf": {
-    "title": "In-Flow Extraction of RNA in Extracellular Vesicles Using a Silicon-Based Microfluidic Device",
+    "title": "IN-FLOW EXTRACTION OF RNA IN EXTRACELLULAR VESICLES USING A SILICON-BASED MICROFLUIDIC DEVICE Sihui Chen , Xi Chen , Jing Du , Yi Zhang , and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Center for Bionic Sensing and Intelligence, Institute of Biomedical and Health Engineering, S",
     "abstract": "Extracellular vesicles (EVs) transport proteins, signaling lipids, and nucleic acids from donor cells to recipient cells, therefore have been verified to serve as mediators of intercellular communications. EV-resident RNAs have been widely used as biomarkers of disease and prognostic indicators. Thus, in situ extraction of RNAs in a microfluidic flow is of great importance for developing integrated microsystems to realize on-chip PCR. This paper presents a silicon-based microfluidic device for solid-phase extraction of EV-resident RNAs. The microfluidic device contains micro-pillar arrays within an area of 0.25cm2 on the silicon substrate, different structures with various surface-to-volume ratio (SVR) are investigated to compare their RNA extraction efficiencies. A 20% extraction efficiency is obtained and characterized by using a Nanodrop UV-Vis spectrophotometer. The proposed on-chip extraction of EV-resident RNAs would provide new approaches to develop integrated microfluidic systems to realize PCR for point-of-care applications.",
     "doi": "10.1109/MEMS51782.2021.9375365",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/23.IEEE MEMS 2021_0269_EI_曾霖.pdf": {
-    "title": "Ultrahigh Resolution On-Chip Separation System Using Negative Magnetophoresis",
+    "title": "ULTRAHIGH RESOLUTION ON-CHIP SEPARATION SYSTEM USING NEGATIVE MAGNETOPHORESIS , Xi Chen , Jing Du , Zitong Yu , Rongrong Zhang , Yi Zhang , and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, She",
     "abstract": "A high-resolution magnetic separation microfluidic system used for the negative magnetophoretic separation of nanoparticles is presented in this paper. The chip can generate an ultrahigh gradient magnetic field greater than 105 T/m in the separation channel by integrating two on-chip magnetic pole arrays. A label-free separation of nanoparticle is achieved by this microfluidic system with a mixed sample of 0.2 μm and 1 μm polystyrene particles, where the recovery rate of 0.2 μm particles is 91.20%, and the purity reaches 94.72%. The experimental results show that the chip can efficiently separate nano-scale particles with ultrahigh resolution, and in future, it may develop into a versatile and robust tool for the separation and purification of nano-biological samples.",
     "doi": "10.1109/MEMS51782.2021.9375202",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析"
@@ -1016,9 +1016,9 @@
     "abstract": "Owing to the properties like narrow beam waist and high intensity focusing, photonic nanojet (PNJ) has attracted sustainable attention in many fields, such as single nanoparticle or molecular detection, fluorescent or Raman scattering enhancement, subwavelength nanopatterning, super-resolution imaging, etc. The characteristics of PNJ are mainly affected by the material compositions and morphology features of the investigated microstructures. In this paper, we present a microfluidic channel structure to produce PNJs for biofluid monitoring. The proposed scheme is numerically studied by using the finite element method. Through the change of PNJ parameters, such as the maximum light intensity, working distance and full width at half-maximum, the refractive indices of the injected biofluids can be determined. I.\u0001 BACKGROUND Biofluid monitoring plays an important role in the field of life science. The physical properties of biofluid such as refractive index, density, viscosity, conductivity and opacity can provide abundant information for monitoring [1]. Refractive index is a very interesting property as it contains a lot of important formation on such as blood glucose level and label-free molecular interaction [2, 3]. Optical measurement on the refractive index has attracted wide attentions owning to its reliability, fast response and high sensitivity [4]. Photonic nanojet (PNJ), a scattered beam of light with a high-intensity main lobe and very narrow waist that can be generated upon illumination on a transparent dielectric symmetric microstructure. Therefore, PNJ is a good candidate for monitoring the refractive index of liquid [5, 6], as the field distributions and shape features of the PNJ are mainly determined by the geometrical morphologies and material properties of the microstructures [7-11]. The experimental characterization of PNJ can be performed using the method proposed in Ref. [12]. Here, we design a microfluidic channel structure consisted of a glass tube",
     "doi": "10.1109/NEMS51815.2021.9451384",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1030,9 +1030,9 @@
     "abstract": "For plants on Earth, gravitropism is essential element affecting seedling establishment and plant development. As an integrated part of plant growth and development, gravitropic response is mainly mediated by alternation of photohormone auxin. In microgravity environment, the study of auxin responses is critical to illustrate how plants perceive environmental gravity conditions and then initiate auxin signaling pathway. Nevertheless, the major challenge is the lack of a tool that can provide a simulated microgravity condition. In this study, we developed a microfluidic negative-magnetophoresis (MNM) platform to levitate Arabidopsis seeds in an equilibrium plane where the applied magnetic force compensates gravitational acceleration. With the advantage of the MNM platform to mimic a microgravity environment on chip, it’s found that auxin response is significantly repressed during seed levitation. The MNM can enable the study of physiological process and molecular mechanism of hormone in a simulated microgravity condition, which benefits further applications for plant space biology.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Science",
     "year": null,
-    "venue": "",
+    "venue": "Science",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -1042,9 +1042,9 @@
     "abstract": "We present a microfluidic platform to recapitulate human cornea's complexity and its interface with external environment. According to the cornea's anatomy, the fully integrated human cornea on the chip consists of human corneal cells and a porous membrane embedded in a microfluidic platform, replicating multi-scale structural organization and biological phenotypes. Using this system, we discover and verify the fully integrated human cornea barrier function on the chip. Besides, we develop an in vitro model of the corneal epithelial wound to study the cell-free therapy efficacy using extracellular vesicles (EVs). We find that EVs derived from bone marrow mesenchymal stem cells (BM- MSCs) can significantly accelerate corneal epithelial wound healing. A dose-dependent effect is also observed in the experiments. This work improves our ability to simulate the interaction between human cornea and external world in vitro. It may contribute to the future development of new screening platforms for biopharmaceuticals.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Nature",
     "year": null,
-    "venue": "",
+    "venue": "Nature",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -1054,9 +1054,9 @@
     "abstract": "Dielectric microbeads can converge light into a narrow beam with high intensity which allows for enhancing the fluorescent signals. However, a critical challenge for the experimental realization is introducing the fluorescent samples into this extremely small beam area. Here, we design and fabricate dielectric microbeads with semi-open microwells in which localized converging light beam of high intensity can be generated. We show that fluorescent microspheres can be efficiently loaded into the semi-open microwells and thus simultaneously illuminated by the converging beam generated by the micro-optical structures without any further manipulations. Pronounced fluorescent enhancement of around 9 folds can be obtained in comparison with the fluorescent microspheres on glass substrates, stemming from the excellent convergent effect of this micro-optical structure.",
     "doi": "10.1109/NEMS51815.2021.9451517",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1064,33 +1064,33 @@
     ]
   },
   "2.Conference Proceedings/28.MicroTAS2021_0271曾霖.pdf": {
-    "title": "A MICROFLUIDIC SYSTEM FOR LABEL-FREE AND HIGH-THROUGHPUT MAGNETIC SEPARATION OF NANOPARTICLES",
+    "title": "A microfluidic system for label-free and high-throughput magnetic separation of nanoparticles , Rongrong Zhang , Xi Chen , Yi Zhang , and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen ",
     "abstract": "A microfluidic system for label-free and high-throughput magnetic separation of nanoparticles is reported, and the performance of the microfluidic system is studied under different flow rates. An ultrahigh magnetic field is generated in the microfluidic channel by fabricating an on-chip integrated magnetic micro-pole array, hereby establishing a negative magnetophoretic technique to separate nanoparticles in this device. The optimal flow rate of 2.5 μL/min is obtained from both simulation and experimental results..",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/29.MicroTAS2021_0475郝锐.pdf": {
-    "title": "A HIGH-THROUGHPUT NANOFLUIDIC DEVICE FOR EXOSOME LOADING",
+    "title": "A HIGH-THROUGHPUT NANOFLUIDIC DEVICE FOR EXOSOME LOADING , Zitong Yu , Jing Du , Hang Guo , Yi Zhang , and Hui Yang Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China Pen-Tung",
     "abstract": "This paper presents a high-throughput nanofluidic chip named “exosome nanoporator (ENP)” enabling cargo loading into exosomes. Through the nanoconfinement of the nanochannels with a height comparable to the exosome size, transient nanopores are introduced on the exosome membrane, allowing the diffusion of cargo molecules into the exosomes from the surrounding medium. The ENP device consisting of 30,000 equivalent nanochannels demonstrates a high sample throughput. ENP-treated exosomes present enhanced drug delivery capacity to tumor cells, indicating the potential opportunities in preparing drug-carrying exosomes for biomedical applications.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/3.YangIEEEUltrasonics2007-1.pdf": {
-    "title": "P2E-2 Study of Particles Separation in the Ultrasonic Microdevice",
+    "title": "Study of Particles Separation in The Ultrasonic Microdevice",
     "abstract": "In this paper, a new MEMS device that can separate microparticles on-chip by the use of bulk-mode excited membrane vibration is proposed, designed and microfabricated. By starting from the one-dimensional analytical mode of forces acting on particles,the force for ultrasonically separating particles is profoundly studied, and finite element method in ANSYS is used to analyze the vibration modes, the acoustic field and flow field in the microdevice due to the membrane vibration. With these analyses, we obtain the ultrasonic radiation force acting on different kinds of particles in the water, blood plasma and milk medium when the microdevice vibrates at different frequencies and then study their separation.",
     "doi": "",
     "authors": [],
@@ -1103,13 +1103,13 @@
     ]
   },
   "2.Conference Proceedings/30.MicroTAS2021_0526张鹏程.pdf": {
-    "title": "LOCALIZED PHOTONIC NANOJET ENABLED QUANTITATIVE OPTICAL ENHANCEMENT",
+    "title": "LOCALIZED PHOTONIC NANOJET ENABLED QUANTITATIVE OPTICAL ENHANCEMENT Pengcheng Zhang , Bing Yan , Guoqiang Gu , Zitong Yu , Xi Chen , Zengbo Wang Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institute of Advanced Technology, Chinese Academy of Scien",
     "abstract": "Method of developing quantitative optical enhancement through photonic nanojet (PNJ) is previously undescribed. In this work, we localize PNJ in a semi-open microwell by utilizing dielectric microsphere based optical microstructures. We demonstrate that individual fluorescent microsphere can be introduced to the designated position in the PNJ and generates reproducible enhanced fluorescence signals, achieving quantitative optical enhancement.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1117,62 +1117,62 @@
     ]
   },
   "2.Conference Proceedings/31.IEEE NEMS 2022_张鹏程.pdf": {
-    "title": "Detection of Molecules Based on Enhanced Backscattering Effect in Microsphere Lens",
+    "title": "������������������������������������������������������������������ �����������������",
     "abstract": "",
     "doi": "10.1109/NEMS54180.2022.9791144",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学"
     ]
   },
   "2.Conference Proceedings/32.MicroTAS2022_于子桐.pdf": {
-    "title": "MESENCHYMAL STEM CELL-DERIVED EXTRACELLULAR VESICLES PROMOTE REPAIRING OF CORNEAL WOUND IN HUMAN CORNEA-ON-A-CHIP",
+    "title": "MESENCHYMAL STEM CELL-DERIVED EXTRACELLULAR VESICLES PROMOTE REPAIRING OF CORNEAL WOUND IN HUMAN CORNEA-ON-A- Zitong Yu , Rui Hao , Xi Chen , Yi Zhang and Hui Yang Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institutes of Advanced Technology, Chin",
     "abstract": "In this work, a microfluidic platform consisting of human corneal cells and a porous membrane was developed, replicating the multi-scale structural organization and biological phenotype of human cornea. Using this human cornea-on-a-chip, we develop an in vitro model of the corneal epithelial wound to study the cell-free therapy efficacy using extracellular vesicles (EVs).",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Nature",
     "year": null,
-    "venue": "",
+    "venue": "Nature",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/33.MicroTAS2022_曾霖.pdf": {
-    "title": "A MICROFLUIDC SYSTEM FOR LABEL-FREE AND BIO-COMPATIBLE MAGNETIC SEPARATION OF SMALL EXTRACELLULAR VESICLES",
+    "title": "A MICROFLUIDC SYSTEM FOR LABEL-FREE AND BIO-COMPATIBLE MAGNETIC SEPARATION OF SMALL EXTRACELLULAR VESICLES , Xi Chen , Pengcheng Zhang , Guoqiang Gu , Yuye Wang , Hongpeng Zhang and Hui Yang Laboratory of Biomedical Microsystems and Nano Devices, Bionic Sensing and Intelligence Center, Institute of ",
     "abstract": "A microfluidic system for label-free and biocompatible magnetic separation of small extracellular vesicles is reported. By using the on-chip magnetic pole arrays, the magnetic field gradient in the microchannel is drastically increased. Therefore, the on-chip negative magnetophoretic separation with nanoscale resolution is realized using the ferrofluid of extremely low concentration. In the experiments, the sEVs are successfully separated from cell culture supernatant, the recovery rate and purity of sEVs are 85.80% and 80.45%, superiorly exceeding the performance that ultracentrifugation method can provide.",
     "doi": "10.1039/D2LC00217E",
     "authors": [],
-    "journal": "",
+    "journal": "RSC journals",
     "year": null,
-    "venue": "",
+    "venue": "RSC journals",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/34.MicroTAS2022_郝锐.pdf": {
-    "title": "A MICROFLUIDIC DEVICE TO PROMOTE EXOSOME SECRETION",
+    "title": "A MICROFLUIDIC DEVICE TO PROMOTE EXOSOME SECRETION , Xi Chen , Huitao Zhang , Zitong Yu , Hang Guo , and Hui Yang Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China Pen-Tung S",
     "abstract": "In this paper, we propose a high-throughput microfluidic device to promote exosome secretion from mesenchymal stem cells. Through a microchannel with ridge gap height smaller than cell size, mechanical stimulation acting on the cells when they pass through the ridge gaps can effectively permeabilize the cell membrane, thus boosting the cells to secrete exosomes into extracellular space. The results show that the secretion amount of exosomes from the cells treated by the microfluidic device increases by 3.1-fold without affecting their bio-activity, thus providing a potential platform to improve exosome yield for biomedical research.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析"
     ]
   },
   "2.Conference Proceedings/35.MicroTAS2022_张鹏程.pdf": {
-    "title": "MICROSPHERE ASSISTED LIGHT-SCATTERING IMAGING OF PLASMONIC NANOPARTICLES AT THE SINGLE PARTICLE LEVEL",
+    "title": "MICROSPHERE ASSISTED LIGHT-SCATTERING IMAGING OF PLASMONIC NANOPARTICLES AT THE SINGLE PARTICLE LEVEL Pengcheng Zhang, Guoqiang Gu, Sha Xue, Xiaoqin Huo, Xi Chen, Lin Zeng and Hui Yang* Institute of Biomedical and Health Engineering, Shenzhen Institutes of Advanced Technology, Chinese Academy of Sci",
     "abstract": "We present a microsphere assisted imaging approach for recording the scattered light of a single plasmonic nanoparticle. Upon the utilization of microspheres, single gold nanoparticle with diameter below the classic optical diffraction limit can be imaged under the conventional light microscope.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors",
     "directions": [
       "等离激元纳米光子学",
       "微流控与单细胞分析"
@@ -1183,9 +1183,9 @@
     "abstract": "Developing precise extracellular vesicle (EV) labelling techniques with minimal disturbance is of great importance to the follow-up EV detection and analysis. Here we introduce a microfluidic platform for enhancing EVs’ labelling efficiency. The platform provides an excellent sample throughput and possesses the merits of a higher labelling efficiency with 50% relative improvement and lower background noise compared to conventional co-incubation approach. The characterization results showed that our EV labelling platform could maintain the size and morphology of EVs, holding good potentials in the precise labelling of EVs, which is essential to the subsequent EV detection and analysis.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
@@ -1196,9 +1196,9 @@
     "abstract": "This paper reports a high-throughput microfluidic device to promote exosome secretion from mesenchymal stem cells. Through a microchannel with ridge gap height smaller than cell size, mechanical stimulation acting on the cells when they pass through the squeezing ridges can effectively permeabilize the cell membrane, thus boosting the cells to secrete exosomes into extracellular space. The results show that the secretion amount of exosomes from the cells treated by the microfluidic device increases by 3.1-fold without affecting their bio- activity, thus providing a potential platform to improve exosome yield for biomedical research.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析"
     ]
@@ -1208,9 +1208,9 @@
     "abstract": "Here, we have revealed the potential of exploiting phase change materials (PCM) for ultrasensitive plasmonic biosensing through simulations and theoretical analysis. We have demonstrated that the detection sensitivity of the plasmonic sensors can be optimized and significantly improved by precisely engineering the configuration of PCM on the plasmonic sensing substrate and inducing a giant lateral position shift. These results will provide new opportunities for the ultrasensitive detection of biomolecules in various application scenarios.",
     "doi": "10.1109/ACP55869.2022.10088747",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1222,9 +1222,9 @@
     "abstract": "A dielectric microbottle lens constituted by circular glass microcylinder and parabolic-shaped polymer covering layer is demonstrated here. The microbottle lens is fabricated by transferring, wetting and photocuring of UV-curable polymer on a tapered optical microfiber. By using such microbottle lens, periodic grating structures with subwavelength pitch of 360 nm can be imaged in two different imaging modes. When the pitch of the grating structures decreases to 260 nm, clear imaging of the grating structures can only be achieved in the case that the grating stripes are parallel to the microfiber axis of the microbottle lens. The results are analyzed and discussed by finite element simulation.",
     "doi": "10.1109/ACP55869.2022.10088533",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1232,13 +1232,13 @@
     ]
   },
   "2.Conference Proceedings/4.YangIEEEUltrasonics2007-2.pdf": {
-    "title": "P6H-8 Design of a Bulk-Micromachined Piezoelectric Accelerometer",
+    "title": "Design of A Bulk-Micromachined Piezoelectric Accelerometer",
     "abstract": "A bulk-micromachined piezoelectric accelerometer is proposed and designed, in which the bulk-micromachined silicon seismic mass is suspended by the cantilevers and part of cantilever is covered with ZnO piezoelectric thin film. In this paper, we first derive the one-dimensional analytical model of the piezoelectric cantilever to study the factors affecting the sensitivity of the accelerometer, and then design the piezoelectric accelerometers with straight and folded cantilever structures. Totally, 12 different structures of the microaccelemeter are investigated. The results show that this type of bulk- micromachined piezoelectric accelerometer can own high sensitivity and wide working range to meet requirement of some applications in aerospace and mechanical shock inspection for vehicles.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析",
       "柔性微纳器件"
@@ -1249,21 +1249,21 @@
     "abstract": "Photonic nanojet (PNJ) is a highly focused light beam generated on the shadow side surface of a plane-wave- illuminated dielectric microcylinder, microsphere or hemisphere lens. Compound microsphere lenses allow image magnification and better resolution. Here, we report the PNJ generated by using a combination of a dielectric microsphere lens and a hemisphere lens. The numerical simulation results demonstrate that full width at half-maximum (FWHM) and working distance (WD) show a decreasing trend with the increases of the distance between the microsphere and the hemisphere. Compared with the hemisphere lens of smaller radius, the hemisphere lens with larger radius has greater FWHM and WD. The minimum FWHM is ~0.82λ and the corresponding WD is ~2λ.",
     "doi": "10.1109/ACP55869.2022.10088954",
     "authors": [],
-    "journal": "",
+    "journal": "IEEE",
     "year": null,
-    "venue": "",
+    "venue": "IEEE",
     "directions": [
       "等离激元纳米光子学"
     ]
   },
   "2.Conference Proceedings/41.IEEE CLEO2023_王煜烨.pdf": {
-    "title": "Exploiting 2D MXene nanosheets for ultrasensitive plasmonic biosensing",
+    "title": "Exploiting�2D�MXene�nanosheets�for�ultrasensitive� plasmonic�biosensing",
     "abstract": "We revealed the potential of exploiting 2D MXene nanosheets as plasmonic substrates for enhanced biosensing. The detection of BSA molecules based on MXene-on-Au substrate was successfully demonstrated with a detection limit down to 10 fM.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Nanoscale",
     "year": null,
-    "venue": "",
+    "venue": "Nanoscale",
     "directions": [
       "生物传感与即时检测",
       "等离激元纳米光子学",
@@ -1272,38 +1272,38 @@
     ]
   },
   "2.Conference Proceedings/5.YangMicroNano2008.pdf": {
-    "title": "On the Ultrasonic Manipulation of Micro/Nano Particles",
+    "title": "MicroNano2008-70193",
     "abstract": "In this paper, we study the ultrasonic manipulation of micro/nano in an ultrasonic standing wave field. Starting from the forces acting on particles in stationary standing wave field, we studied the factors affecting ultrasonic manipulation of micro/nano particles within the fluidic medium. Based on analyzing particles’ motion in an ultrasound – gravity coupled field, we proposed and discussed a new application using ultrasonic manipulation of particles to categorize different kinds of micro/nano particles in fluidic medium.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "柔性微纳器件"
     ]
   },
   "2.Conference Proceedings/6.GuoMicroNano2008.pdf": {
-    "title": "Design and Fabrication of a Micro-Knife for Minimally Invasive Surgery",
+    "title": "MicroNano2008-70195",
     "abstract": "In this paper, a micro-knife for minimally invasive surgery is proposed. It is a silicon horn shape and works in an ultrasonic longitudinal vibration mode to realize the precise incision with its sharp tip at one end. Finite element method in ANSYS is used to analyze and design the device to obtain the vibration frequency and displacement amplitude of the longitudinal mode. In the end, microfabrication of the proposed micro-knife is presented.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析",
       "柔性微纳器件"
     ]
   },
   "2.Conference Proceedings/7.GuoISAPE2008.pdf": {
-    "title": "Preparation of Papers in Two-Column Format for the Proceedings of the 2004 Sarnoff Symposium",
+    "title": "Acoustic Damping of A Four-Clamped Membrane in Ultrasonic Microdevice",
     "abstract": "In this paper, we present an analytical model of the acoustic damping of a four-clamped membrane in a ultrasonic microelectromechanical system device. The model is used to analyze effects of acoustic damping on the dynamic behavior of the microdevice, in which four-clamped membranes vibrate at ultrasonic frequency, as well as a flow goes through the cavity under the membrane. A modified Reynolds equation that is derived from the Navier-Stokes equation is used to model the flow under the membrane. The analytical solutions for the damping pressure and force are obtained. Factors that affect the damping pressure and force are discussed. Furthermore, the result of the microdevice’s performance form analytical calculation is compared with that from the finite element method in ANSYS.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Small",
     "year": null,
-    "venue": "",
+    "venue": "Small",
     "directions": [
       "微流控与单细胞分析",
       "柔性微纳器件"
@@ -1323,13 +1323,13 @@
     ]
   },
   "2.Conference Proceedings/9.SivagnanamAIPProc2010.pdf": {
-    "title": "Title Goes Here",
+    "title": "Study of Spatio-Temporal Immunofluorescence on Bead Patterns in a Microfluidic Channel",
     "abstract": ". We performed a direct immunoassay inside a microfluidic channel on patterned streptavidin-coated beads, which captured fluorescently-labeled biotin target molecules from a continuous flow. We arranged the beads in a dot array at the bottom of the channel and demonstrated their position- and flow rate-dependent fluorescence. As the target analyte gets gradually depleted from the flow when passing downstream the channel, the highest fluorescence intensity was observed on the most upstream positioned dot patterns. We propose a simple analytical convection model to explain this spatio-temporal fluorescence.",
     "doi": "",
     "authors": [],
-    "journal": "",
+    "journal": "Biosensors",
     "year": null,
-    "venue": "",
+    "venue": "Biosensors",
     "directions": [
       "生物传感与即时检测",
       "微流控与单细胞分析"
