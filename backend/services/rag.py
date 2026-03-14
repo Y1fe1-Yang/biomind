@@ -26,12 +26,12 @@ _index: "BM25Index | None" = None
 
 class BM25Index:
     def __init__(self, entries: list[dict]) -> None:
-        from rank_bm25 import BM25Okapi
+        from rank_bm25 import BM25Plus
 
         self._entries = entries
         if entries:
             corpus = [_tokenise(entry) for entry in entries]
-            self._bm25: "BM25Okapi | None" = BM25Okapi(corpus)
+            self._bm25: "BM25Plus | None" = BM25Plus(corpus)
         else:
             self._bm25 = None
 
@@ -63,12 +63,16 @@ class BM25Index:
 
 def _tokenise(entry: dict) -> list[str]:
     """Turn an entry into a bag of lowercase ASCII tokens."""
+    steps_text = " ".join(entry.get("steps", []))
     parts = [
         entry.get("title", ""),
         entry.get("type", ""),
         " ".join(entry.get("tags", [])),
         entry.get("venue", ""),
         str(entry.get("year", "")),
+        entry.get("abstract", ""),
+        entry.get("purpose", ""),
+        steps_text,
     ]
     text = " ".join(parts)
     return _split(text)
@@ -113,6 +117,37 @@ def retrieve(query: str, top_k: int = 5) -> list[dict]:
     """Return up to *top_k* entries most relevant to *query*."""
     index = _load_index()
     return index.search(query, top_k=top_k)
+
+
+def _extract_content(entry: dict) -> str:
+    """Return the content text to pass to the AI for this entry."""
+    if entry.get("type") == "sop":
+        steps = entry.get("steps", [])[:8]
+        text = "\n".join(f"{i + 1}. {s}" for i, s in enumerate(steps))
+        return text[:1500]
+    return entry.get("abstract", "")[:600]
+
+
+def retrieve_with_content(query: str, top_k: int = 5) -> list[dict]:
+    """
+    Like retrieve(), but each hit gains a 'content' key with the actual
+    text (SOP steps or paper abstract) to pass to the AI.
+
+    Total content across all returned hits is capped at 4000 characters;
+    hits are filled in descending score order until the budget is exhausted.
+    """
+    hits = retrieve(query, top_k=top_k)
+    budget = 4000
+    result: list[dict] = []
+    for hit in hits:
+        if budget <= 0:
+            break
+        content = _extract_content(hit)[:budget]
+        entry = dict(hit)
+        entry["content"] = content
+        budget -= len(content)
+        result.append(entry)
+    return result
 
 
 def reload() -> None:

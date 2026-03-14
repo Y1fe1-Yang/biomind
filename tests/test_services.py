@@ -156,3 +156,158 @@ def test_conv_new_id_is_unique():
 
     ids = {new_conv_id() for _ in range(100)}
     assert len(ids) == 100
+
+
+# ---------------------------------------------------------------------------
+# RAG enrichment tests (abstracts, SOP steps, retrieve_with_content)
+# ---------------------------------------------------------------------------
+
+def test_rag_indexes_abstract(tmp_path, monkeypatch):
+    """BM25 finds papers by keywords that appear only in their abstract."""
+    import backend.services.rag as rag_mod
+
+    data = {
+        "papers": [
+            {"id": "paper-exo", "title": "Unrelated Title", "type": "journal",
+             "abstract": "exosome separation by differential ultracentrifugation",
+             "tags": [], "year": 2023},
+            {"id": "paper-other", "title": "Something Else", "type": "journal",
+             "abstract": "photonics and optics", "tags": [], "year": 2022},
+        ],
+        "books": [], "sops": [], "presentations": [],
+    }
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve("ultracentrifugation exosome", top_k=5)
+    assert len(hits) >= 1
+    assert hits[0]["id"] == "paper-exo"
+
+
+def test_rag_indexes_sop_steps(tmp_path, monkeypatch):
+    """BM25 finds SOPs by keywords that appear only in their steps."""
+    import backend.services.rag as rag_mod
+
+    data = {
+        "papers": [],
+        "books": [],
+        "sops": [
+            {"id": "sop-pdms", "title": "Chip Fabrication", "type": "sop",
+             "steps": ["Mix PDMS 10:1 ratio", "Cure at 65°C for 2 hours"],
+             "tags": [], "purpose": ""},
+        ],
+        "presentations": [],
+    }
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve("PDMS cure temperature", top_k=5)
+    assert len(hits) >= 1
+    assert hits[0]["id"] == "sop-pdms"
+
+
+def test_retrieve_with_content_sop_includes_steps(tmp_path, monkeypatch):
+    """retrieve_with_content attaches steps text for SOP hits."""
+    import backend.services.rag as rag_mod
+
+    data = {
+        "papers": [],
+        "books": [],
+        "sops": [
+            {"id": "sop-1", "title": "Protocol", "type": "sop",
+             "steps": ["Step A", "Step B", "Step C"],
+             "tags": ["protocol"], "purpose": "test"},
+        ],
+        "presentations": [],
+    }
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve_with_content("protocol", top_k=5)
+    assert len(hits) >= 1
+    assert "content" in hits[0]
+    assert "Step A" in hits[0]["content"]
+
+
+def test_retrieve_with_content_paper_includes_abstract(tmp_path, monkeypatch):
+    """retrieve_with_content attaches abstract for paper hits."""
+    import backend.services.rag as rag_mod
+
+    data = {
+        "papers": [
+            {"id": "paper-1", "title": "Nano Study", "type": "journal",
+             "abstract": "A detailed study of nanoparticles in microfluidics",
+             "tags": ["nano"], "year": 2023},
+        ],
+        "books": [], "sops": [], "presentations": [],
+    }
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve_with_content("nanoparticles microfluidics", top_k=5)
+    assert len(hits) >= 1
+    assert "content" in hits[0]
+    assert "nanoparticles" in hits[0]["content"]
+
+
+def test_retrieve_with_content_respects_budget(tmp_path, monkeypatch):
+    """Total content across all hits does not exceed 4000 characters."""
+    import backend.services.rag as rag_mod
+
+    # 10 SOPs each with a very long steps list
+    long_step = "X" * 300
+    sops = [
+        {"id": f"sop-{i}", "title": f"SOP {i}", "type": "sop",
+         "steps": [long_step] * 20, "tags": ["test"], "purpose": ""}
+        for i in range(10)
+    ]
+    data = {"papers": [], "books": [], "sops": sops, "presentations": []}
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve_with_content("SOP test", top_k=10)
+    total = sum(len(h.get("content", "")) for h in hits)
+    assert total <= 4000
+
+
+def test_retrieve_with_content_missing_fields(tmp_path, monkeypatch):
+    """Missing abstract or steps returns empty content without crashing."""
+    import backend.services.rag as rag_mod
+
+    data = {
+        "papers": [
+            {"id": "paper-noabs", "title": "Paper No Abstract", "type": "journal",
+             "tags": ["test"], "year": 2021},
+        ],
+        "books": [],
+        "sops": [
+            {"id": "sop-nosteps", "title": "SOP No Steps", "type": "sop",
+             "tags": ["test"], "purpose": ""},
+        ],
+        "presentations": [],
+    }
+    data_file = tmp_path / "data" / "data.json"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(json.dumps(data), encoding="utf-8")
+    monkeypatch.setattr(rag_mod, "DATA_FILE", data_file)
+    monkeypatch.setattr(rag_mod, "_index", None)
+
+    hits = rag_mod.retrieve_with_content("test", top_k=5)
+    for h in hits:
+        assert "content" in h  # key always present
+        assert isinstance(h["content"], str)  # never None
