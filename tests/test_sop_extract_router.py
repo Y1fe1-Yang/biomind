@@ -81,7 +81,7 @@ def test_extract_sop_success_sse(client, monkeypatch, tmp_path):
     )
 
     # Mock the extraction to avoid real API call
-    async def fake_extract(p, root, api_key, existing):
+    async def fake_extract(paper, root, api_key, existing_sops):
         return [{
             "id": "sop-labchip2022-1", "title": "PDMS Chip", "status": "auto",
             "source_paper_id": "labchip2022", "category": "微流控器件",

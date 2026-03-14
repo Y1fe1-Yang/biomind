@@ -22,6 +22,7 @@ from pydantic import BaseModel
 from backend.config import CLAUDE_API_KEY
 from backend.deps import current_user
 import backend.services.sop_service as sop_service
+import scripts.build as _build
 
 router = APIRouter(prefix="/api")
 
@@ -59,7 +60,8 @@ async def extract_sop(
             yield _sse({"type": "progress", "status": "ai_processing",
                         "message": "AI 分析中..."})
             new_entries = await sop_service.extract_sop_for_paper(
-                paper, _ROOT, CLAUDE_API_KEY, existing_sops
+                paper=paper, root=_ROOT, api_key=CLAUDE_API_KEY,
+                existing_sops=existing_sops,
             )
 
             if not new_entries:
@@ -67,17 +69,19 @@ async def extract_sop(
                             "message": "无法提取 SOP：PDF 文本不足且无 DOI 摘要"})
                 return
 
-            # Write to data.json
-            data["sops"] = existing_sops + new_entries
+            # Write to data.json (idempotent: remove any prior auto SOPs for this paper)
+            data["sops"] = [
+                s for s in existing_sops
+                if s.get("source_paper_id") != req.paper_id
+            ] + new_entries
             data_path.write_text(
                 json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
             )
 
             # Regenerate data.js in thread pool (non-blocking)
-            from scripts.build import generate_data_files
             loop = asyncio.get_running_loop()
             await loop.run_in_executor(
-                None, lambda: generate_data_files(root=_ROOT, rebuild=False)
+                None, lambda: _build.generate_data_files(root=_ROOT, rebuild=False)
             )
 
             yield _sse({"type": "done", "sop_ids": [e["id"] for e in new_entries]})
