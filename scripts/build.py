@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 
 DEFAULT_META = {
     "lab": "BioMiND",
-    "directions": ["微流控", "光学检测", "细胞分析", "生物传感器"],
+    "directions": ["生物传感与即时检测", "等离激元纳米光子学", "微流控与单细胞分析", "柔性微纳器件"],
 }
 
 # Source directories relative to project root
@@ -390,6 +390,8 @@ def _apply_meta(entry: dict, cached: dict) -> None:
         entry["journal"] = cached["venue"]
     elif not entry.get("journal") and cached.get("journal"):
         entry["journal"] = cached["journal"]
+    if not entry.get("directions") and cached.get("directions"):
+        entry["directions"] = cached["directions"]
 
 
 if __name__ == "__main__":

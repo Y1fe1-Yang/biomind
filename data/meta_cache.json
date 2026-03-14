@@ -6,7 +6,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/10.YangChemSocRev2018.pdf": {
     "title": "Micro-optics for microfluidic analytical applications",
@@ -15,7 +19,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/11.PhotonRes2019.pdf": {
     "title": "Optofluidics bio-imaging applications",
@@ -33,7 +40,13 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/13.Analyst2020.pdf": {
     "title": "Aptasensor-enabled quantitative analysis of nano-sized extracellular vesicles by flow cytometry",
@@ -42,7 +55,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/14.Micromachines2020.pdf": {
     "title": "Large-Scale Fabrication of Photonic Nanojet Array via Template-Assisted Self-Assembly",
@@ -51,7 +68,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/15.Micromachines2020.pdf": {
     "title": "Study on Functionality and Surface Modification of a Stair-Step Liquid-Triggered Valve for On-Chip Flow Control",
@@ -60,7 +82,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/16.Nanoscale2021.pdf": {
     "title": "Label-free separation of nanoscale particles by an ultrahigh gradient magnetic field in a microfluidic device",
@@ -69,7 +94,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/17.PhotonicsResearch2021.pdf": {
     "title": "Inflection perspective",
@@ -78,7 +106,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/18.RSCAdvances2021.pdf": {
     "title": "MALDI-MS-based biomarker analysis of extracellular vesicles from human lung carcinoma cells",
@@ -87,7 +118,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/19.Small2021.pdf": {
     "title": "smll.202102150-3.pdf",
@@ -105,7 +140,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/20.MicrosysNanoeng2022.pdf": {
     "title": "A magnetically enabled simulation of microgravity represses the auxin response during early seed germination on a microfluidic platform",
@@ -114,7 +153,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/21.SenActuaB2022.pdf": {
     "title": "Localized photonic nanojet based sensing platform for highly efficient signal amplification and quantitative biosensing",
@@ -123,7 +165,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/22.Micromachines2022.pdf": {
     "title": "High-Resolution Separation of Nanoparticles Using a Negative Magnetophoretic Microfluidic System",
@@ -132,7 +179,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/23.ACSOmega2022-Yang Liangtao.pdf": {
     "title": "Insight into the Contact Impedance between the Electrode and the Skin Surface for Electrophysical Recordings",
@@ -141,7 +193,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/24.iScience2022.pdf": {
     "title": "A human cornea-on-a-chip for the study of epithelial wound healing by extracellular vesicles",
@@ -150,7 +206,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/25.LabChip2022.pdf": {
     "title": "Extraction of small extracellular vesicles by label-free and biocompatible on-chip magnetic separation",
@@ -159,7 +218,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/26.MaterialsTodayBio2023.pdf": {
     "title": "Mechanical stimulation on a microfluidic device to highly enhance small extracellular vesicle secretion of mesenchymal stem cells",
@@ -168,7 +230,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/27.Biosensors2023-Liu Qing.pdf": {
     "title": "Type of the Paper (Article",
@@ -177,7 +243,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/28.StarProtocols2023.pdf": {
     "title": "Protocol to develop a microfluidic human corneal barrier-on-a-chip to evaluate the corneal epithelial wound repair process",
@@ -186,7 +257,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/29.Talanta2023.pdf": {
     "title": "First-passage time analysis of diffusion-controlled reactions in single-molecule detection",
@@ -195,7 +269,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/3.YangAnalChem2010.pdf": {
     "title": "Microfluidic Preconcentrator Microchannel-Integrated Experiment",
@@ -204,7 +282,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/30.Biosen&Bioelectron2023.pdf": {
     "title": "CRISPR/Cas12a-Assisted isothermal amplification for rapid and specific diagnosis of respiratory virus on an microfluidic platform",
@@ -213,7 +294,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/31.Biosensors2023.pdf": {
     "title": "Microlens-Assisted Light-Scattering Imaging of Plasmonic Nanoparticles at the Single Particle Level",
@@ -222,7 +308,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/32.LabChip2023Cover.pdf": {
     "title": "A low-temperature digital microfluidic system used for protein–protein interaction detection",
@@ -231,7 +322,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/33.Nanophotonics2023.pdf": {
     "title": "Ultrasensitive label-free miRNA-21 detection based on MXene-enhanced plasmonic lateral displacement measurement",
@@ -240,7 +335,13 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/34.ChinChemLett2024.pdf": {
     "title": "Highly efficient labelling of extracellular vesicles for enhanced detection on a microfluidic platform",
@@ -249,7 +350,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/35.BiologyBulletin2024.pdf": {
     "title": "BioBull2360258Zhang.fm",
@@ -258,7 +363,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/36.ChemEngJ2024.pdf": {
     "title": "DNA-AuNP encoders array Integrating a multi-modal coupled analysis approach for noninvasive precision screening of myocardial function injury disease in children",
@@ -267,7 +376,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/37.SenActuaB2024.pdf": {
     "title": "Triple-enhanced Raman scattering sensor based on superhydrophobic/-philic microsphere platform and heating evaporation assisted for high-sensitivity detection",
@@ -276,7 +389,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/38.ChemicalEngineering&Processing2024.pdf": {
     "title": "Numerical and experimental investigation of Tesla micromixers with different three-dimensional herringbone structures",
@@ -285,7 +403,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/39.SenActuaB2025.pdf": {
     "title": "A cross-reactive imaging matrix of membrane protein profiling for single-cell analysis",
@@ -294,7 +415,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "生物传感与即时检测"
+    ]
   },
   "1.Journal Articles/4.YangAnalChem2013.pdf": {
     "title": "ac303471x 1..8",
@@ -303,7 +428,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/40.光学技术2024.pdf": {
     "title": "用于微量生物样本检测的显微动态光散射系统研制",
@@ -312,7 +442,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/41.AnalChem2024.pdf": {
     "title": "Highly Sensitive Multiplexed Sensing of miRNAs in a Gastric Cancer Patient’s Liquid Biopsy",
@@ -321,7 +456,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/42.AdvFuncMater2024.pdf": {
     "title": "Fast Electrodeposition of MXene/PDA Composites for High‐Performance Bioelectronic Interfaces: An In Vitro Evaluation",
@@ -330,7 +469,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/43.Laser&PhotonicsReviews2025.pdf": {
     "title": "Recent Advances in Plasmonic Sensing Techniques for Exosome Detection and Composition Analysis",
@@ -339,7 +482,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "生物传感与即时检测"
+    ]
   },
   "1.Journal Articles/44.合成生物学2025.pdf": {
     "title": "生物分子传感中的抗体探针：由碳基计算走向硅基计算",
@@ -348,7 +495,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/45.ACSSensors2025-Tan.pdf": {
     "title": "A Quantitative First Passage Time Model for Tubular Microfluidic Immunoassays",
@@ -357,7 +508,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/46.AnalChem2025-Tan.pdf": {
     "title": "Consolidated Microscale Interferon-γ Release Assay with Tip Optofluidic Immunoassay for Dynamic Parallel Diagnosis of Tuberculosis Infection",
@@ -366,7 +521,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/47.Microsystems&Nanoengineering2025.pdf": {
     "title": "Power-free plasma separation based on negative magnetophoresis for rapid biochemical analysis",
@@ -375,7 +534,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/48.ACSSensors2025-Full.pdf": {
     "title": "ascefj.2025.10.issue-4.xlargecover-2.jpg (2453×3262)",
@@ -384,7 +547,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/48.ACSSensors2025.pdf": {
     "title": "Rapid Bacterial Identification through Multiplexed Nucleic Acid Detection on a Digital Microfluidic Platform for Enhanced Clinical Intervention against Infections",
@@ -393,7 +561,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/49.MicrochemicalJournal2025.pdf": {
     "title": "Intelligent microscopic imaging system based on microwell array chip for high-throughput analysis of single-cell heterogeneity",
@@ -402,7 +575,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/5-1.Small2014Cover.pdf": {
     "title": "Fluorescence Imaging: SuperResolution Biological Microscopy Using Virtual Imaging by a Microsphere Nanoscope (Small 9/2014)",
@@ -411,7 +588,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/5-2.YangSmall2014.pdf": {
     "title": "SuperResolution Biological Microscopy Using Virtual Imaging by a Microsphere Nanoscope",
@@ -420,7 +601,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/5.YangSmall2014.pdf": {
     "title": "www.small-journal.com",
@@ -429,7 +613,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/50.NanoResearch.pdf": {
     "title": "Real-time observation and synchronous nanomanipulation platform based on microlens and atomic force microscopy coupling",
@@ -438,7 +625,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/50.NanoResearch2025-Full.pdf": {
     "title": "",
@@ -447,7 +639,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/51.hLife2025.pdf": {
     "title": "Tip optofluidic immunoassay: Evaluating COVID-19 antibody protection with 1 &mu;L fingertip blood",
@@ -456,7 +653,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/52.Microfluidics&Nanofluidics2025.pdf": {
     "title": "On-chip inductive sensor for ultra-high-throughput integrated detection of oil contamination and viscosity",
@@ -465,7 +666,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/53.SmallMethods2025-正文&封面.pdf": {
     "title": "On&#x02010;Chip Light&#x02010;Scattering Enhancement Enabled by a Microlens Array for High&#x02010;Performance Single&#x02010;Particle Tracking under Conventional Bright&#x02010;Field Microscopy",
@@ -474,7 +680,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/53.SmallMethods2025-正文.pdf": {
     "title": "On&#x02010;Chip Light&#x02010;Scattering Enhancement Enabled by a Microlens Array for High&#x02010;Performance Single&#x02010;Particle Tracking under Conventional Bright&#x02010;Field Microscopy",
@@ -483,7 +692,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/54.AdvancedComposites&HybridMaterials2025.pdf": {
     "title": "Multifunctional Janus organic hydrogel enables in situ wound visual monitoring and healing",
@@ -492,7 +704,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/55.NatBioMedEng2025.pdf": {
     "title": "Label-free navigation system for grading prostate tumour malignancy in situ via tissue pH and prostate-specific antigen activity",
@@ -510,7 +726,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/57.AdvancedScience2026.pdf": {
     "title": "Rapid and Direct Detection of Methamphetamine in Biofluids using a MXene‐Enabled Electrochemical Sensor",
@@ -519,7 +739,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "柔性微纳器件"
+    ]
   },
   "1.Journal Articles/58.MicrochemicalJournal2026.pdf": {
     "title": "Recent advances in microfluidic biosensing Technologies for the Detection of infectious pathogens",
@@ -528,7 +752,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "生物传感与即时检测"
+    ]
   },
   "1.Journal Articles/6.YangNanoLett2015.pdf": {
     "title": "nl5044067 1..6",
@@ -537,7 +765,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/7.YangMicroelectronEng2015.pdf": {
     "title": "Optical microscopy using a glass microsphere for metrology of sub-wavelength nanostructures",
@@ -546,7 +779,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "1.Journal Articles/8.YangNanoLett2016.pdf": {
     "title": "nl6b01255 1..9",
@@ -555,7 +792,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "1.Journal Articles/9.HuszkaOptExpress2017.pdf": {
     "title": "Microsphere-based super-resolution scanning optical microscope",
@@ -564,7 +804,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/1.YangIEEENEMS2007.pdf": {
     "title": "Fabrication Ultrasonic Microdevice Microparticles Separation",
@@ -573,7 +818,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/10.YangTransducers2011.pdf": {
     "title": "HIGH-PERFORMANCE PROTEIN PRECONCENTRATOR USING MICROCHANNEL-INTEGRATED NAFION STRIP H. Yang, M. Shen, V. Sivagnanam and M. A. M. Gijs Laboratory of Microsystems, École Polytechnique Fédérale de Lausanne, Lausanne, SWITZERLAND A microfluidic device for protein preconcentration based on the electrokin",
@@ -582,7 +831,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/11.YangMicroTAS2013.pdf": {
     "title": "SELF-ASSEMBLED MELAMINE MICROLENS ARRAYS FOR IMMUNOFLUORESCENCE ENHANCEMENT",
@@ -591,7 +844,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学"
+    ]
   },
   "2.Conference Proceedings/12.YangMNE2014.pdf": {
     "title": "",
@@ -618,7 +875,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/15.YangProcSPIE2015-1.pdf": {
     "title": "PROCEEDINGS OF SPIE",
@@ -627,7 +889,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学"
+    ]
   },
   "2.Conference Proceedings/16.YangProcSPIE2015-2.pdf": {
     "title": "PROCEEDINGS OF SPIE",
@@ -636,7 +902,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/17.YangMicroTAS2015.pdf": {
     "title": "1843_T.527g",
@@ -645,7 +915,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/18.HuszkaTransducers2017.pdf": {
     "title": "DIELECTRIC MICROSPHERE-BASED OPTICAL SYSTEM FOR SUPER-RESOLUTION MICROSCOPY",
@@ -654,7 +929,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/19.IEEE MEMS 2021_0108_EI_杜静.pdf": {
     "title": "Magnetic Force-Based Microfluidic Chip for Plant Seed Levitation to Simulate Microgravity Environment",
@@ -663,7 +942,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/2.GuoIEEEMEMS2007.pdf": {
     "title": "MEMS索引合体.indd",
@@ -672,7 +954,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/20.IEEE MEMS 2021_0244_EI_于子桐.pdf": {
     "title": "A Human Cornea-On-A-Chip",
@@ -681,7 +967,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/21.IEEE MEMS 2021_0265_EI_郝锐.pdf": {
     "title": "A High-Throughput Nanofluidic Device for Small Extracellular Vesicle Nanoporation",
@@ -690,7 +979,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/22.IEEE MEMS 2021_0267_EI_陈思卉.pdf": {
     "title": "In-Flow Extraction of RNA in Extracellular Vesicles Using a Silicon-Based Microfluidic Device",
@@ -699,7 +992,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/23.IEEE MEMS 2021_0269_EI_曾霖.pdf": {
     "title": "Ultrahigh Resolution On-Chip Separation System Using Negative Magnetophoresis",
@@ -708,7 +1005,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/24.IEEE NEMS 2021_508_EI_顾国强.pdf": {
     "title": "Photonic Nanojet Produced by A Microfluidic Channel for Biofluid Monitoring*",
@@ -717,7 +1018,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/25.IEEE NEMS 2021_544_杜静.pdf": {
     "title": "Magnetic Force Enabled Plant Seed Levitation to Simulate Microgravity Environment on A Microfluidic Chip",
@@ -726,7 +1032,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/26.IEEE NEMS 2021_591_于子桐.pdf": {
     "title": "A Human Cornea-on-a-Chip for the Study of Epithelial Wound Healing by Extracellular Vesicles*",
@@ -735,7 +1044,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/27.IEEE NEMS 2021_660_EI_张鹏程.pdf": {
     "title": "Fluorescence Enhancement Utilizing Dielectric Microbeads Semi-open Microwells",
@@ -744,7 +1056,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/28.MicroTAS2021_0271曾霖.pdf": {
     "title": "A MICROFLUIDIC SYSTEM FOR LABEL-FREE AND HIGH-THROUGHPUT MAGNETIC SEPARATION OF NANOPARTICLES",
@@ -753,7 +1070,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/29.MicroTAS2021_0475郝锐.pdf": {
     "title": "A HIGH-THROUGHPUT NANOFLUIDIC DEVICE FOR EXOSOME LOADING",
@@ -762,7 +1083,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/3.YangIEEEUltrasonics2007-1.pdf": {
     "title": "P2E-2 Study of Particles Separation in the Ultrasonic Microdevice",
@@ -771,7 +1096,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/30.MicroTAS2021_0526张鹏程.pdf": {
     "title": "LOCALIZED PHOTONIC NANOJET ENABLED QUANTITATIVE OPTICAL ENHANCEMENT",
@@ -780,7 +1109,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/31.IEEE NEMS 2022_张鹏程.pdf": {
     "title": "Detection of Molecules Based on Enhanced Backscattering Effect in Microsphere Lens",
@@ -789,7 +1123,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学"
+    ]
   },
   "2.Conference Proceedings/32.MicroTAS2022_于子桐.pdf": {
     "title": "MESENCHYMAL STEM CELL-DERIVED EXTRACELLULAR VESICLES PROMOTE REPAIRING OF CORNEAL WOUND IN HUMAN CORNEA-ON-A-CHIP",
@@ -798,7 +1136,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/33.MicroTAS2022_曾霖.pdf": {
     "title": "A MICROFLUIDC SYSTEM FOR LABEL-FREE AND BIO-COMPATIBLE MAGNETIC SEPARATION OF SMALL EXTRACELLULAR VESICLES",
@@ -807,7 +1148,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/34.MicroTAS2022_郝锐.pdf": {
     "title": "A MICROFLUIDIC DEVICE TO PROMOTE EXOSOME SECRETION",
@@ -816,7 +1160,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/35.MicroTAS2022_张鹏程.pdf": {
     "title": "MICROSPHERE ASSISTED LIGHT-SCATTERING IMAGING OF PLASMONIC NANOPARTICLES AT THE SINGLE PARTICLE LEVEL",
@@ -825,7 +1172,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/36.CSEV2022_胡师.pdf": {
     "title": "Highly Efficient Labelling of Extracellular Vesicles for Enhanced Detection on a Microfluidic Platform Shi Hu, Rui Hao, Zitong Yu, Huitao Zhang, Hui Yang* Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institute of Advanced Technology, Chinese Academ",
@@ -834,7 +1185,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/37.CSEV2022_郝锐.pdf": {
     "title": "A MICROFLUIDIC DEVICE TO PROMOTE EXOSOME SECRETION , Xi Chen , Huitao Zhang , Zitong Yu , Hang Guo , and Hui Yang Bionic Sensing and Intelligence Center, Institute of Biomedical and Health Engineering, Shenzhen Institute of Advanced Technology, Chinese Academy of Sciences, Shenzhen, China Pen-Tung S",
@@ -843,7 +1198,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/38.IEEE ACP2022_王煜烨.pdf": {
     "title": "Ultrasensitive Plasmonic Biosensing Based on Critical Tuning of Phase Change Materials",
@@ -852,7 +1210,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/39.IEEE ACP2022_顾国强.pdf": {
     "title": "Subwavelength Nano-imaging with a Microbottle Lens",
@@ -861,7 +1224,12 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析"
+    ]
   },
   "2.Conference Proceedings/4.YangIEEEUltrasonics2007-2.pdf": {
     "title": "P6H-8 Design of a Bulk-Micromachined Piezoelectric Accelerometer",
@@ -870,7 +1238,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/40.IEEE ACP2022_马璐.pdf": {
     "title": "A Simulation Study of Photonic Nanojet Generated by a Combination of a Dielectric Microsphere and a Hemisphere Lens",
@@ -879,7 +1251,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "等离激元纳米光子学"
+    ]
   },
   "2.Conference Proceedings/41.IEEE CLEO2023_王煜烨.pdf": {
     "title": "Exploiting 2D MXene nanosheets for ultrasensitive plasmonic biosensing",
@@ -888,7 +1263,13 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "等离激元纳米光子学",
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/5.YangMicroNano2008.pdf": {
     "title": "On the Ultrasonic Manipulation of Micro/Nano Particles",
@@ -897,7 +1278,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/6.GuoMicroNano2008.pdf": {
     "title": "Design and Fabrication of a Micro-Knife for Minimally Invasive Surgery",
@@ -906,7 +1290,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/7.GuoISAPE2008.pdf": {
     "title": "Preparation of Papers in Two-Column Format for the Proceedings of the 2004 Sarnoff Symposium",
@@ -915,7 +1303,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/8.YangSPAWDA2010.pdf": {
     "title": "ACOUSTIC CHARACTER ANALYSIS OF MEMS ULTRASONIC DEVICE FOR MICRO/NANO PARTICLES SEPARATION In this paper, the acoustic character of a new MEMS device that can separate micro/nano particles on-chip by",
@@ -924,7 +1316,11 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "微流控与单细胞分析",
+      "柔性微纳器件"
+    ]
   },
   "2.Conference Proceedings/9.SivagnanamAIPProc2010.pdf": {
     "title": "Title Goes Here",
@@ -933,6 +1329,10 @@
     "authors": [],
     "journal": "",
     "year": null,
-    "venue": ""
+    "venue": "",
+    "directions": [
+      "生物传感与即时检测",
+      "微流控与单细胞分析"
+    ]
   }
 }
