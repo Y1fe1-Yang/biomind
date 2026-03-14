@@ -4,4 +4,5 @@ python-dotenv
 httpx
 PyJWT>=2.0
 passlib[bcrypt]
+bcrypt
 rank-bm25
