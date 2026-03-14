@@ -10,7 +10,6 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import AsyncIterator
 
 try:
     import fitz  # PyMuPDF
@@ -152,7 +151,12 @@ def parse_json_response(text: str) -> list[dict]:
     if m:
         text = m.group(1)
     text = text.strip()
-    parsed = json.loads(text)
+    try:
+        parsed = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            f"Claude returned invalid JSON: {exc}. Response preview: {text[:200]!r}"
+        ) from exc
     if isinstance(parsed, dict):
         parsed = [parsed]
     return parsed
@@ -237,7 +241,7 @@ async def extract_sop_for_paper(
 
     Returns a list of new SOP entry dicts (empty list if extraction failed).
     """
-    pdf_path = root / paper["file"]
+    pdf_path = root / paper.get("file", "")
     methods_text = extract_pdf_methods(pdf_path)
     abstract_only = False
 
