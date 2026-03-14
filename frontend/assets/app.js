@@ -363,9 +363,15 @@ function paperCard(p) {
   const notes = currentLang === "zh" ? p.notes?.zh : p.notes?.en;
   return `
     <div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-sm transition cursor-pointer" onclick="this.querySelector('.card-detail').classList.toggle('hidden')">
-      <div class="flex items-start gap-2">
-        <span class="text-xs px-2 py-0.5 rounded-full font-medium ${paperTypeColor(p.type)}">${t("type." + p.type)}</span>
+      <div class="flex items-start gap-3">
+        <div class="flex-shrink-0 w-14">
+          <img src="/data/thumbs/${p.id}.png" onerror="this.parentElement.style.display='none'"
+               class="w-14 rounded border border-gray-200 object-cover object-top" style="height:80px" alt="">
+        </div>
         <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+            <span class="text-xs px-2 py-0.5 rounded-full font-medium ${paperTypeColor(p.type)}">${t("type." + p.type)}</span>
+          </div>
           <p class="text-sm font-medium text-gray-900 leading-snug">${p.title || p.file.split("/").pop()}</p>
           <p class="text-xs text-gray-500 mt-0.5">${(p.authors || []).join(", ")} ${p.journal ? "· " + p.journal : ""} ${p.year ? "· " + p.year : ""}</p>
         </div>
