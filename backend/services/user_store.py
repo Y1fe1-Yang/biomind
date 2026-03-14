@@ -98,3 +98,12 @@ def list_users() -> list[dict]:
             "SELECT id, username, is_admin, created_at FROM users ORDER BY created_at"
         ).fetchall()
     return [dict(r) for r in rows]
+
+
+def ensure_admin_exists() -> None:
+    """Create default admin/admin account if no users exist yet."""
+    _ensure_tables()
+    with _conn() as c:
+        count = c.execute("SELECT COUNT(*) FROM users").fetchone()[0]
+    if count == 0:
+        register_user("admin", "admin")

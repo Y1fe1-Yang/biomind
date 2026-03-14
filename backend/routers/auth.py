@@ -14,7 +14,7 @@ import jwt as pyjwt
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from backend.deps import current_user
+from backend.deps import admin_required, current_user
 from backend.services.user_store import register_user, verify_password
 
 router = APIRouter(prefix="/api/auth")
@@ -61,7 +61,7 @@ def _issue_token(username: str, is_admin: bool) -> str:
 # ---------------------------------------------------------------------------
 
 @router.post("/register", response_model=TokenResponse)
-def register(req: RegisterRequest) -> dict:
+def register(req: RegisterRequest, _: dict = Depends(admin_required)) -> dict:
     if not req.username.strip():
         raise HTTPException(status_code=400, detail="Username cannot be empty")
     if len(req.password) < 6:

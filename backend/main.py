@@ -7,8 +7,14 @@ from backend.routers.auth import router as auth_router
 from backend.routers.chat import router as chat_router
 from backend.routers.conversations import router as conversations_router
 from backend.routers.sop_extract import router as sop_extract_router
+from backend.services.user_store import ensure_admin_exists
 
 app = FastAPI(title="BioMiND")
+
+
+@app.on_event("startup")
+def startup():
+    ensure_admin_exists()
 
 app.include_router(auth_router)
 app.include_router(files_router)

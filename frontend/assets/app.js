@@ -98,15 +98,14 @@ function hideAuthModal() {
 }
 
 function switchAuthTab(tab) {
-  const isLogin = tab === "login";
-  document.getElementById("auth-login-form").classList.toggle("hidden", !isLogin);
-  document.getElementById("auth-register-form").classList.toggle("hidden", isLogin);
+  // Registration is invite-only (admin creates accounts via API).
+  // Always show login form; hide register tab.
+  document.getElementById("auth-login-form").classList.remove("hidden");
+  document.getElementById("auth-register-form").classList.add("hidden");
   document.getElementById("tab-login").className =
-    `flex-1 py-3 text-sm font-medium transition border-b-2 ${isLogin ? "text-blue-600 border-blue-600" : "text-gray-500 border-transparent hover:text-gray-700"}`;
-  document.getElementById("tab-register").className =
-    `flex-1 py-3 text-sm font-medium transition border-b-2 ${!isLogin ? "text-blue-600 border-blue-600" : "text-gray-500 border-transparent hover:text-gray-700"}`;
+    "flex-1 py-3 text-sm font-medium transition border-b-2 text-blue-600 border-blue-600";
+  document.getElementById("tab-register").classList.add("hidden");
   document.getElementById("login-error").classList.add("hidden");
-  document.getElementById("reg-error").classList.add("hidden");
 }
 
 function showError(elId, msg) {
