@@ -66,7 +66,7 @@ _PROMPT_ABSTRACT = """\
 从以下论文摘要提取基本信息（无完整 Methods 文本）。
 仅填充 title/category/subcategory/tags/purpose，steps/materials 留空列表。
 category 只能从以下四项选一：微流控器件 / 生物样本处理 / 检测与表征 / 数据分析
-所有字段使用中文。
+所有字段必须使用中文（数值参数如浓度、温度、时间、转速保留原文数字和单位）。
 返回格式：单个 JSON 对象（非数组）。
 
 论文信息：
