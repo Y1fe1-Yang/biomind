@@ -254,9 +254,7 @@ function renderHome() {
 
   // Named `buildCard` to avoid shadowing the module-level `paperCard` function
   function buildCard(p) {
-    const href = p.doi
-      ? `https://doi.org/${p.doi}`
-      : p.file ? `/api/files/${encodeURIComponent(p.file).replace(/%2F/g, "/")}` : "#";
+    const href = p.doi ? `https://doi.org/${p.doi}` : "#";
     const dirTags = (p.directions || [])
       .map(d => `<span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-lg">${d}</span>`)
       .join("");
@@ -371,7 +369,6 @@ function paperTypeColor(type) {
 
 function paperCard(p) {
   const doi = p.doi ? `<a href="https://doi.org/${p.doi}" target="_blank" class="text-xs text-blue-500 hover:underline ml-2">${t("paper.doi")}: ${p.doi}</a>` : "";
-  const pdfLink = p.file ? `<a href="/api/files/${encodeURIComponent(p.file).replace(/%2F/g,'/')}" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 ml-2">↗ ${t("paper.openPdf")}</a>` : "";
   const notes = currentLang === "zh" ? p.notes?.zh : p.notes?.en;
 
   // Admin-only SOP button
@@ -405,7 +402,7 @@ function paperCard(p) {
       <div class="card-detail hidden mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600 space-y-1">
         ${p.abstract ? `<p>${p.abstract}</p>` : `<p class="text-gray-400">${t("paper.noAbstract")}</p>`}
         ${notes ? `<p class="text-blue-700 bg-blue-50 rounded p-2 mt-2">${notes}</p>` : ""}
-        <div class="flex gap-2 mt-2 flex-wrap">${doi}${pdfLink}${sopBtn}</div>
+        <div class="flex gap-2 mt-2 flex-wrap">${doi}${sopBtn}</div>
       </div>
     </div>`;
 }
@@ -449,8 +446,6 @@ function sopCard(s) {
       ${stps ? `<div class="mb-3"><p class="text-xs font-semibold text-gray-600 mb-1">${t("sop.fieldSteps")}</p><ol class="text-xs text-gray-600 list-decimal ml-4">${stps}</ol></div>` : ""}
       ${nts  ? `<div class="mb-2"><p class="text-xs font-semibold text-gray-600 mb-1">${t("sop.fieldNotes")}</p><ul class="text-xs text-gray-600 list-disc ml-4">${nts}</ul></div>` : ""}
       ${s.reference ? `<p class="text-xs text-gray-400 italic mt-2">${t("sop.fieldSource")}: ${s.reference}</p>` : ""}`;
-  } else if (s.file) {
-    expandedContent = `<a href="/api/files/${encodeURIComponent(s.file).replace(/%2F/g,'/')}" target="_blank" class="text-xs text-blue-500 hover:underline">↗ ${t("sop.openPdf")}</a>`;
   }
 
   return `
@@ -472,7 +467,6 @@ function sopCard(s) {
 }
 
 function sopSearchCard(s) {
-  const pdfLink = s.file ? `<a href="/api/files/${encodeURIComponent(s.file).replace(/%2F/g,'/')}" target="_blank" class="text-blue-500 hover:underline text-xs">${t("sop.openPdf")}</a>` : "";
   return `
     <div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-sm transition">
       <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full">${t("type.sop")}</span>
@@ -481,12 +475,10 @@ function sopSearchCard(s) {
       <div class="flex flex-wrap gap-1 mt-2">
         ${(s.tags || []).map(tag => `<span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-0.5 rounded-full">${tag}</span>`).join("")}
       </div>
-      <div class="mt-3">${pdfLink}</div>
     </div>`;
 }
 
 function presentationCard(p) {
-  const pdfLink = p.file ? `<a href="/api/files/${encodeURIComponent(p.file).replace(/%2F/g,'/')}" target="_blank" class="text-xs text-blue-500 hover:underline">${t("presentation.openPdf")}</a>` : "";
   const summary = currentLang === "zh" ? p.summary?.zh : p.summary?.en;
   return `
     <div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-sm transition">
@@ -497,7 +489,6 @@ function presentationCard(p) {
       <div class="flex flex-wrap gap-1 mt-2">
         ${(p.tags || []).map(tag => `<span class="text-xs bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full">${tag}</span>`).join("")}
       </div>
-      <div class="mt-3">${pdfLink}</div>
     </div>`;
 }
 
