@@ -194,3 +194,41 @@ class TestGenerateThumbs:
         from scripts.build import generate_thumbs
         generate_thumbs(papers, tmp_path)  # must not raise
         assert not (tmp_path / "data" / "thumbs" / "ghost.png").exists()
+
+
+def test_rebuild_preserves_auto_sops(tmp_path):
+    """--rebuild must keep status='auto' SOPs; file-based SOPs come first."""
+    from scripts.build import generate_data_files
+    import json
+
+    # Seed data.json with one file-based SOP and one auto SOP
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    seed = {
+        "meta": {"lab": "BioMiND", "directions": []},
+        "papers": [], "books": [], "presentations": [],
+        "sops": [
+            {"id": "sop-manual", "title": "Manual SOP", "version": "v1.0",
+             "updated": "", "author": "", "file": "files/sops/manual.pdf",
+             "tags": [], "archived": False},
+            {"id": "sop-labchip2022-1", "title": "PDMS Chip Prep",
+             "status": "auto", "source_paper_id": "labchip2022",
+             "category": "微流控器件", "steps": ["Step 1"]},
+        ],
+    }
+    (data_dir / "data.json").write_text(json.dumps(seed), encoding="utf-8")
+
+    generate_data_files(root=tmp_path, data_dir=data_dir, rebuild=True)
+
+    result = json.loads((data_dir / "data.json").read_text(encoding="utf-8"))
+    sop_ids = [s["id"] for s in result["sops"]]
+    auto_sops = [s for s in result["sops"] if s.get("status") == "auto"]
+
+    assert len(auto_sops) == 1, "auto SOP must be preserved"
+    assert auto_sops[0]["id"] == "sop-labchip2022-1"
+    # File-based SOPs appear before auto SOPs
+    if len(sop_ids) > 1:
+        auto_idx = sop_ids.index("sop-labchip2022-1")
+        for sid in sop_ids[:auto_idx]:
+            matching = next(s for s in result["sops"] if s["id"] == sid)
+            assert matching.get("status") != "auto"

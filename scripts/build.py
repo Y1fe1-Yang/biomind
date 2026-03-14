@@ -311,6 +311,9 @@ def generate_data_files(
             scanned[key] = deduplicate_ids(scanned[key])
 
         new_data = scanned
+        # Preserve auto SOPs (AI-extracted) — they are not file-based
+        auto_sops = [s for s in existing_data.get("sops", []) if s.get("status") == "auto"]
+        new_data["sops"] = new_data["sops"] + auto_sops
         # Merge notes from existing — enumerate so mutations persist in list
         for key in ("papers", "books", "sops", "presentations"):
             for i, entry in enumerate(new_data[key]):
