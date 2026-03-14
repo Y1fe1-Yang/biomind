@@ -27,14 +27,18 @@ document.getElementById("lang-toggle").addEventListener("click", () => {
 function getToken()    { return localStorage.getItem("biomind_token"); }
 function getUsername() { return localStorage.getItem("biomind_username"); }
 
-function setAuth(token, username) {
+function setAuth(token, username, isAdmin) {
   localStorage.setItem("biomind_token", token);
   localStorage.setItem("biomind_username", username);
+  localStorage.setItem("biomind_is_admin", isAdmin ? "true" : "false");
+  window.__isAdmin = isAdmin === true;
 }
 
 function clearAuth() {
   localStorage.removeItem("biomind_token");
   localStorage.removeItem("biomind_username");
+  localStorage.removeItem("biomind_is_admin");
+  window.__isAdmin = false;
 }
 
 function authHeaders() {
@@ -127,7 +131,7 @@ document.getElementById("login-submit").addEventListener("click", async () => {
       return;
     }
     const data = await resp.json();
-    setAuth(data.access_token, data.username);
+    setAuth(data.access_token, data.username, data.is_admin === true);
     updateNavUser();
     hideAuthModal();
   } catch {
@@ -156,7 +160,7 @@ document.getElementById("reg-submit").addEventListener("click", async () => {
       return;
     }
     const data = await resp.json();
-    setAuth(data.access_token, data.username);
+    setAuth(data.access_token, data.username, data.is_admin === true);
     updateNavUser();
     hideAuthModal();
   } catch {
@@ -797,6 +801,7 @@ document.getElementById("chat-input").addEventListener("input", function() {
 
 // ── Boot ──────────────────────────────────────────────────────────
 async function boot() {
+  window.__isAdmin = localStorage.getItem("biomind_is_admin") === "true";
   applyI18n();
   updateNavUser();
   const hash = location.hash.replace("#", "") || "home";
