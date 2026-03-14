@@ -6,6 +6,7 @@ from backend.routers.downloads import router as downloads_router
 from backend.routers.auth import router as auth_router
 from backend.routers.chat import router as chat_router
 from backend.routers.conversations import router as conversations_router
+from backend.routers.sop_extract import router as sop_extract_router
 
 app = FastAPI(title="BioMiND")
 
@@ -14,6 +15,7 @@ app.include_router(files_router)
 app.include_router(downloads_router)
 app.include_router(chat_router)
 app.include_router(conversations_router)
+app.include_router(sop_extract_router)
 
 @app.get("/api/health")
 def health():
