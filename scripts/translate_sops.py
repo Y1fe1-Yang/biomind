@@ -107,51 +107,7 @@ def _parse_json_response(text: str) -> dict:
     m = re.search(r"```(?:json)?\s*(\{.*?)\s*```", text, re.DOTALL)
     if m:
         text = m.group(1)
-    text = text.strip()
-    # Replace Unicode curly-quotes with escaped forms so they don't break JSON
-    text = text.replace("\u201c", "\\u201c").replace("\u201d", "\\u201d")
-    # Try direct parse first
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        pass
-    # Fallback: fix unescaped ASCII double-quotes inside JSON string values.
-    # Strategy: for each "key": "value" pair, re-escape any bare " inside the value.
-    def _fix_inner_quotes(s: str) -> str:
-        """Replace bare " inside JSON string values with \". """
-        out = []
-        in_string = False
-        escaped = False
-        i = 0
-        while i < len(s):
-            c = s[i]
-            if escaped:
-                out.append(c)
-                escaped = False
-            elif c == "\\":
-                out.append(c)
-                escaped = True
-            elif c == '"':
-                if not in_string:
-                    in_string = True
-                    out.append(c)
-                else:
-                    # Peek: is this a closing quote? Check if followed by :, ,, } or ]
-                    # (with optional whitespace). If yes, it's a structural quote.
-                    rest = s[i + 1:].lstrip()
-                    if rest and rest[0] in (':', ',', '}', ']', '\n'):
-                        in_string = False
-                        out.append(c)
-                    else:
-                        # Inner unescaped quote — escape it
-                        out.append('\\"')
-            else:
-                out.append(c)
-            i += 1
-        return "".join(out)
-
-    fixed = _fix_inner_quotes(text)
-    return json.loads(fixed)
+    return json.loads(text.strip())
 
 
 def translate_sop(sop: dict) -> dict:
