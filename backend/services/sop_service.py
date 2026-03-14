@@ -38,6 +38,8 @@ _PROMPT_FULL = """\
 - 若原文包含多个独立 protocol，分别生成多个对象（返回 JSON 数组）
 - 不得用"按常规操作"等模糊表述替代具体步骤
 - materials 列出所有试剂和仪器（含型号/货号如有）
+- 所有字段必须使用中文（数值参数如浓度、温度、时间、转速保留原文数字和单位）
+- category 只能从以下四项选一：微流控器件 / 生物样本处理 / 检测与表征 / 数据分析
 
 返回格式：JSON 数组，每个元素包含以下字段：
   title (string)          - 简明描述该操作，如"PDMS 芯片制备"
@@ -63,6 +65,8 @@ Methods 文本：
 _PROMPT_ABSTRACT = """\
 从以下论文摘要提取基本信息（无完整 Methods 文本）。
 仅填充 title/category/subcategory/tags/purpose，steps/materials 留空列表。
+category 只能从以下四项选一：微流控器件 / 生物样本处理 / 检测与表征 / 数据分析
+所有字段使用中文。
 返回格式：单个 JSON 对象（非数组）。
 
 论文信息：
