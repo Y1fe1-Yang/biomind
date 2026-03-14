@@ -373,7 +373,7 @@ function paperCard(p) {
             <span class="text-xs px-2 py-0.5 rounded-full font-medium ${paperTypeColor(p.type)}">${t("type." + p.type)}</span>
           </div>
           <p class="text-sm font-medium text-gray-900 leading-snug">${p.title || p.file.split("/").pop()}</p>
-          <p class="text-xs text-gray-500 mt-0.5">${(p.authors || []).join(", ")} ${p.journal ? "· " + p.journal : ""} ${p.year ? "· " + p.year : ""}</p>
+          <p class="text-xs text-gray-500 italic mt-0.5">${[p.journal, p.year].filter(Boolean).join(" · ") || (p.year || "")}</p>
         </div>
       </div>
       <div class="card-detail hidden mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600 space-y-1">
