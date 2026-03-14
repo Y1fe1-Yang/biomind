@@ -1,0 +1,18 @@
+services:
+  biomind:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file: .env
+    environment:
+      - AI_PROVIDER=claude
+      - HOST=0.0.0.0
+    volumes:
+      # Persist user data, conversations, and lab files outside the container
+      - ./data:/app/data
+      - ./conversations:/app/conversations
+      - ./files:/app/files
+      - ./1.Journal Articles:/app/1.Journal Articles
+      - ./2.Conference Proceedings:/app/2.Conference Proceedings
+      - ./3.Books:/app/3.Books
+    restart: unless-stopped
