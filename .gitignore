@@ -6,11 +6,21 @@ __pycache__/
 files/generated/
 conversations/*
 !conversations/.gitkeep
-data/data.json
-data/data.js
 *.egg-info/
 node_modules/
 frontend/assets/input.css
 package*.json
 tailwind.config.js
 data/thumbs/
+data/users.db
+
+# Large binary/media files — not hosted on GitHub
+1.Journal Articles/
+2.Conference Proceedings/
+3.Books/
+ALL PUBLISHED.zip
+
+# Local tooling
+.DS_Store
+.claude/
+.superpowers/

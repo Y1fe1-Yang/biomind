@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: biomind
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: AI_PROVIDER
+        value: zhipu
+      - key: HOST
+        value: 0.0.0.0
+      - key: ZHIPU_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
