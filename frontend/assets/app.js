@@ -63,14 +63,17 @@ function updateNavUser() {
   const username = getUsername();
   const display = document.getElementById("user-display");
   const logoutBtn = document.getElementById("logout-btn");
+  const loginBtn = document.getElementById("nav-login-btn");
   if (username) {
     display.textContent = username;
     display.classList.remove("hidden");
     logoutBtn.classList.remove("hidden");
+    if (loginBtn) loginBtn.classList.add("hidden");
     document.getElementById("ai-fab").classList.remove("hidden");
   } else {
     display.classList.add("hidden");
     logoutBtn.classList.add("hidden");
+    if (loginBtn) loginBtn.classList.remove("hidden");
     document.getElementById("ai-fab").classList.add("hidden");
   }
 }
@@ -200,9 +203,15 @@ function renderCurrentView() {
 }
 
 document.querySelectorAll(".nav-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    showView(btn.dataset.view);
-    renderView(btn.dataset.view);
+  btn.addEventListener("click", async () => {
+    const view = btn.dataset.view;
+    if (view === "sops" && !getUsername()) {
+      await showAuthModal();
+      if (!getUsername()) return;
+    }
+    showView(view);
+    renderView(view);
+    closeMobileMenu();
   });
 });
 
@@ -310,7 +319,7 @@ function renderHome() {
                 class="ml-auto text-sm text-blue-600 font-medium hover:underline"
                 data-i18n="home.viewAll"></button>
       </div>
-      <div class="grid grid-cols-2 gap-5">
+      <div class="home-papers-grid">
         ${papers.map(buildCard).join("")}
       </div>
     </section>
@@ -324,11 +333,11 @@ function renderHome() {
                 class="ml-auto text-sm text-blue-600 font-medium hover:underline"
                 data-i18n="home.directionsMore"></button>
       </div>
-      <div class="grid grid-cols-4 gap-4">${dirCards}</div>
+      <div class="home-dirs-grid">${dirCards}</div>
     </section>
 
     <!-- Footer -->
-    <footer class="-mx-4 mt-0 px-10 py-8 flex justify-between items-center" style="background:#1a2d6d;color:rgba(255,255,255,.8)">
+    <footer class="home-footer -mx-4 mt-0 px-10 py-8 flex justify-between items-center" style="background:#1a2d6d;color:rgba(255,255,255,.8)">
       <div>
         <p class="font-black text-lg text-white mb-1">BioMiND</p>
         <p class="text-xs leading-relaxed">
@@ -933,17 +942,27 @@ async function _handleSopAction(e) {
   }
 }
 
+// ── Mobile menu ───────────────────────────────────────────────────
+function toggleMobileMenu() {
+  document.getElementById("mobile-nav-menu").classList.toggle("hidden");
+}
+
+function closeMobileMenu() {
+  document.getElementById("mobile-nav-menu").classList.add("hidden");
+}
+
 // ── Boot ──────────────────────────────────────────────────────────
 async function boot() {
   window.__isAdmin = localStorage.getItem("biomind_is_admin") === "true";
   applyI18n();
   updateNavUser();
-  const hash = location.hash.replace("#", "") || "home";
+  let hash = location.hash.replace("#", "") || "home";
+  // SOP library requires login — redirect to home if not authenticated
+  if (hash === "sops" && !getUsername()) hash = "home";
   showView(hash);
   renderView(hash);
   // One-time event delegation for extract-sop / view-sop buttons on paper cards
   document.querySelector("main").addEventListener("click", _handleSopAction);
-  if (!getUsername()) showAuthModal();
 }
 
 boot();

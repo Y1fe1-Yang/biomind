@@ -10,6 +10,28 @@
   <script src="/data/data.js"></script>
   <script src="/i18n/zh.js"></script>
   <script src="/i18n/en.js"></script>
+  <style>
+    /* ── Mobile responsive ── */
+    @media (max-width: 767px) {
+      #nav-desktop-items { display: none !important; }
+      #nav-search-wrap   { display: none !important; }
+      #hamburger-btn     { display: flex !important; }
+    }
+    @media (min-width: 768px) {
+      #hamburger-btn     { display: none !important; }
+      #mobile-nav-menu   { display: none !important; }
+    }
+    /* Home page responsive grids */
+    .home-papers-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .home-dirs-grid   { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    @media (max-width: 639px) {
+      .home-papers-grid { grid-template-columns: 1fr; }
+      .home-dirs-grid   { grid-template-columns: repeat(2, 1fr); }
+      .home-footer      { flex-direction: column !important; align-items: flex-start !important; gap: .75rem; }
+      /* Chat panel: hide conv list on mobile so messages take full width */
+      #conv-list        { display: none !important; }
+    }
+  </style>
 </head>
 <body class="h-full bg-gray-50 text-gray-900">
 
@@ -69,22 +91,40 @@
 
   <!-- Top navigation -->
   <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-4 flex items-center h-14 gap-6">
-      <span class="font-bold text-blue-700 text-lg mr-4">BioMiND</span>
-      <button data-view="home" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.home"></button>
-      <button data-view="timeline" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.timeline"></button>
-      <button data-view="directions" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.directions"></button>
-      <button data-view="sops" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.sops"></button>
-      <button data-view="presentations" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.presentations"></button>
-      <div class="ml-auto flex items-center gap-3">
-        <!-- Search -->
-        <input id="search-input" type="text" class="border rounded-lg px-3 py-1.5 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n-placeholder="search.placeholder">
-        <!-- Language toggle -->
-        <button id="lang-toggle" class="text-sm text-gray-500 hover:text-gray-800 transition">中/EN</button>
-        <!-- User info -->
-        <span id="user-display" class="text-sm text-gray-600 font-medium hidden"></span>
-        <button id="logout-btn" class="text-sm text-gray-400 hover:text-red-500 transition hidden" data-i18n="auth.logout"></button>
+    <div class="max-w-7xl mx-auto px-4 flex items-center h-14">
+      <span class="font-bold text-blue-700 text-lg mr-4 flex-shrink-0">BioMiND</span>
+      <!-- Desktop nav items (hidden on mobile) -->
+      <div id="nav-desktop-items" class="flex items-center gap-5">
+        <button data-view="home" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.home"></button>
+        <button data-view="timeline" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.timeline"></button>
+        <button data-view="directions" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.directions"></button>
+        <button data-view="sops" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.sops"></button>
+        <button data-view="presentations" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.presentations"></button>
       </div>
+      <!-- Right controls -->
+      <div class="ml-auto flex items-center gap-2">
+        <div id="nav-search-wrap">
+          <input id="search-input" type="text" class="border rounded-lg px-3 py-1.5 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n-placeholder="search.placeholder">
+        </div>
+        <button id="lang-toggle" class="text-sm text-gray-500 hover:text-gray-800 transition flex-shrink-0">中/EN</button>
+        <span id="user-display" class="text-sm text-gray-600 font-medium hidden flex-shrink-0"></span>
+        <button id="nav-login-btn" class="text-sm text-blue-600 font-medium hover:text-blue-800 transition hidden flex-shrink-0" data-i18n="auth.loginTab" onclick="showAuthModal()"></button>
+        <button id="logout-btn" class="text-sm text-gray-400 hover:text-red-500 transition hidden flex-shrink-0" data-i18n="auth.logout"></button>
+        <!-- Hamburger (mobile only) -->
+        <button id="hamburger-btn" class="hidden flex-col justify-center items-center gap-1.5 p-2 ml-1" onclick="toggleMobileMenu()" aria-label="菜单">
+          <span class="block w-5 h-0.5 bg-gray-600"></span>
+          <span class="block w-5 h-0.5 bg-gray-600"></span>
+          <span class="block w-5 h-0.5 bg-gray-600"></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-nav-menu" class="hidden bg-white border-t border-gray-100 shadow-sm">
+      <button data-view="home" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.home"></button>
+      <button data-view="timeline" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.timeline"></button>
+      <button data-view="directions" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.directions"></button>
+      <button data-view="sops" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.sops"></button>
+      <button data-view="presentations" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600" data-i18n="nav.presentations"></button>
     </div>
   </nav>
 
