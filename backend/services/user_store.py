@@ -13,12 +13,10 @@ import sqlite3
 import time
 from pathlib import Path
 
-from passlib.context import CryptContext
+import bcrypt
 
 ROOT = Path(__file__).parent.parent.parent
 DB_PATH = ROOT / "data" / "users.db"
-
-_pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 # ---------------------------------------------------------------------------
@@ -52,7 +50,7 @@ def _ensure_tables() -> None:
 def register_user(username: str, password: str) -> dict:
     """Create a user. First user becomes admin. Raises ValueError if username taken."""
     _ensure_tables()
-    hashed = _pwd.hash(password)
+    hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
     with _conn() as c:
         count = c.execute("SELECT COUNT(*) FROM users").fetchone()[0]
         is_admin = 1 if count == 0 else 0
@@ -76,7 +74,7 @@ def verify_password(username: str, password: str) -> dict | None:
         ).fetchone()
     if row is None:
         return None
-    if not _pwd.verify(password, row["password_hash"]):
+    if not bcrypt.checkpw(password.encode(), row["password_hash"].encode()):
         return None
     return {"username": row["username"], "is_admin": bool(row["is_admin"])}
 
