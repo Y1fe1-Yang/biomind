@@ -7,7 +7,7 @@
       "微流控与单细胞分析",
       "柔性微纳器件"
     ],
-    "generated": "2026-03-14T15:14:32.531187+00:00"
+    "generated": "2026-03-14T15:32:21.555833+00:00"
   },
   "papers": [
     {
@@ -2006,7 +2006,7 @@
       "version": "v1.0",
       "source_paper_id": "yangchemsocrev2018",
       "source_doi": "10.1039/c5cs00649j",
-      "responsible": "",
+      "responsible": "Hui Yang",
       "updated": "2018",
       "tags": [
         "微光学",
@@ -2034,7 +2034,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2019",
       "source_doi": "10.3390/mi10060405",
-      "responsible": "",
+      "responsible": "Hui Yang",
       "updated": "2019",
       "tags": [
         "生物成像",
@@ -2064,7 +2064,7 @@
       "version": "v1.0",
       "source_paper_id": "analyst2020",
       "source_doi": "10.1039/d0an01652g",
-      "responsible": "",
+      "responsible": "Jing Du",
       "updated": "2020",
       "tags": [
         "流式细胞术",
@@ -2091,7 +2091,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-14",
       "source_doi": "10.3390/mi11050473",
-      "responsible": "（原文未列出作者姓名）",
+      "responsible": "Pengcheng Zhang",
       "updated": "2020",
       "tags": [
         "微加工",
@@ -2148,7 +2148,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-14",
       "source_doi": "10.3390/mi11050473",
-      "responsible": "（原文未列出作者姓名）",
+      "responsible": "Pengcheng Zhang",
       "updated": "2020",
       "tags": [
         "自组装",
@@ -2202,7 +2202,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-14",
       "source_doi": "10.3390/mi11050473",
-      "responsible": "（原文未列出作者姓名）",
+      "responsible": "Pengcheng Zhang",
       "updated": "2020",
       "tags": [
         "光子纳米射流",
@@ -2247,7 +2247,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-15",
       "source_doi": "10.3390/mi11070690",
-      "responsible": "未提供",
+      "responsible": "Xi Chen",
       "updated": "2020",
       "tags": [
         "微流控",
@@ -2306,7 +2306,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-15",
       "source_doi": "10.3390/mi11070690",
-      "responsible": "未提供",
+      "responsible": "Xi Chen",
       "updated": "2020",
       "tags": [
         "表面修饰",
@@ -2358,7 +2358,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2020-15",
       "source_doi": "10.3390/mi11070690",
-      "responsible": "未提供",
+      "responsible": "Xi Chen",
       "updated": "2020",
       "tags": [
         "接触角",
@@ -2412,7 +2412,7 @@
       "version": "v1.0",
       "source_paper_id": "photonicsresearch2021",
       "source_doi": "10.1364/PRJ.419106",
-      "responsible": "",
+      "responsible": "Guoqiang Gu",
       "updated": "2021",
       "tags": [
         "光子纳米射流",
@@ -2441,7 +2441,7 @@
       "version": "v1.0",
       "source_paper_id": "rscadvances2021",
       "source_doi": "10.1039/d1ra04305f",
-      "responsible": "",
+      "responsible": "Zitong Yu",
       "updated": "2021",
       "tags": [
         "MALDI-TOF MS",
@@ -2467,7 +2467,7 @@
       "version": "v1.0",
       "source_paper_id": "nanoscale2021",
       "source_doi": "10.1039/d0nr08383f",
-      "responsible": "N/A",
+      "responsible": "Lin Zeng",
       "updated": "2021",
       "tags": [
         "铁磁流体",
@@ -2502,7 +2502,7 @@
       "version": "v1.0",
       "source_paper_id": "nanoscale2021",
       "source_doi": "10.1039/d0nr08383f",
-      "responsible": "N/A",
+      "responsible": "Lin Zeng",
       "updated": "2021",
       "tags": [
         "微流控",
@@ -2549,7 +2549,7 @@
       "version": "v1.0",
       "source_paper_id": "nanoscale2021",
       "source_doi": "10.1039/d0nr08383f",
-      "responsible": "N/A",
+      "responsible": "Lin Zeng",
       "updated": "2021",
       "tags": [
         "负磁泳",
@@ -2597,7 +2597,7 @@
       "version": "v1.0",
       "source_paper_id": "nanoscale2021",
       "source_doi": "10.1039/d0nr08383f",
-      "responsible": "N/A",
+      "responsible": "Lin Zeng",
       "updated": "2021",
       "tags": [
         "COMSOL",
@@ -2930,7 +2930,7 @@
       "version": "v1.0",
       "source_paper_id": "biosensors2023-liu-qing",
       "source_doi": "10.3390/bios13010101",
-      "responsible": "",
+      "responsible": "Qing Liu",
       "updated": "2023",
       "tags": [
         "脑电图",
@@ -3247,7 +3247,7 @@
       "version": "v1.0",
       "source_paper_id": "labchip2023cover",
       "source_doi": "10.1039/d3lc00386h",
-      "responsible": "",
+      "responsible": "Jienan Shen",
       "updated": "2023",
       "tags": [
         "数字微流控",
@@ -3273,7 +3273,7 @@
       "version": "v1.0",
       "source_paper_id": "biosensors2023",
       "source_doi": "10.3390/bios13090871",
-      "responsible": "未提供",
+      "responsible": "Pengcheng Zhang",
       "updated": "2023",
       "tags": [
         "微透镜",
@@ -3329,7 +3329,7 @@
       "version": "v1.0",
       "source_paper_id": "biosensors2023",
       "source_doi": "10.3390/bios13090871",
-      "responsible": "未提供",
+      "responsible": "Pengcheng Zhang",
       "updated": "2023",
       "tags": [
         "AuNPs",
@@ -3376,7 +3376,7 @@
       "version": "v1.0",
       "source_paper_id": "biosensors2023",
       "source_doi": "10.3390/bios13090871",
-      "responsible": "未提供",
+      "responsible": "Pengcheng Zhang",
       "updated": "2023",
       "tags": [
         "有限元仿真",
@@ -3746,7 +3746,7 @@
       "version": "v1.0",
       "source_paper_id": "senactuab2024",
       "source_doi": "10.1016/j.snb.2024.136332",
-      "responsible": "第一作者（论文未注明姓名）",
+      "responsible": "Jian Yu",
       "updated": "2024",
       "tags": [
         "铜基底",
@@ -3795,7 +3795,7 @@
       "version": "v1.0",
       "source_paper_id": "senactuab2024",
       "source_doi": "10.1016/j.snb.2024.136332",
-      "responsible": "第一作者（论文未注明姓名）",
+      "responsible": "Jian Yu",
       "updated": "2024",
       "tags": [
         "PDMS",
@@ -3845,7 +3845,7 @@
       "version": "v1.0",
       "source_paper_id": "senactuab2024",
       "source_doi": "10.1016/j.snb.2024.136332",
-      "responsible": "第一作者（论文未注明姓名）",
+      "responsible": "Jian Yu",
       "updated": "2024",
       "tags": [
         "SEM",
@@ -3886,7 +3886,7 @@
       "version": "v1.0",
       "source_paper_id": "senactuab2024",
       "source_doi": "10.1016/j.snb.2024.136332",
-      "responsible": "第一作者（论文未注明姓名）",
+      "responsible": "Jian Yu",
       "updated": "2024",
       "tags": [
         "SERS",
@@ -3932,7 +3932,7 @@
       "version": "v1.0",
       "source_paper_id": "senactuab2024",
       "source_doi": "10.1016/j.snb.2024.136332",
-      "responsible": "第一作者（论文未注明姓名）",
+      "responsible": "Jian Yu",
       "updated": "2024",
       "tags": [
         "FDTD",
@@ -3974,7 +3974,7 @@
       "version": "v1.0",
       "source_paper_id": "laser-photonicsreviews2025",
       "source_doi": "10.1002/lpor.202300999",
-      "responsible": "",
+      "responsible": "Yurui Hu",
       "updated": "2025",
       "tags": [
         "外泌体",
@@ -4358,7 +4358,7 @@
       "version": "v1.0",
       "source_paper_id": "smallmethods2025-53-2",
       "source_doi": "10.1002/smtd.202402238",
-      "responsible": "",
+      "responsible": "Pengcheng Zhang",
       "updated": "2025",
       "tags": [
         "单粒子追踪",
@@ -4388,7 +4388,7 @@
       "version": "v1.0",
       "source_paper_id": "advancedcomposites-hybridmaterials2025",
       "source_doi": "10.1007/s42114-025-01510-y",
-      "responsible": "",
+      "responsible": "Yu Cheng",
       "updated": "2025",
       "tags": [
         "伤口愈合",
@@ -4418,7 +4418,7 @@
       "version": "v1.0",
       "source_paper_id": "jev2025",
       "source_doi": "10.1002/jev2.70215",
-      "responsible": "",
+      "responsible": "Yanhang Hong",
       "updated": "2025",
       "tags": [
         "胞外囊泡",
@@ -4568,7 +4568,7 @@
       "version": "v1.0",
       "source_paper_id": "yangprocspie2015-2",
       "source_doi": "10.1117/12.2078341",
-      "responsible": "未提供",
+      "responsible": "Hui Yang",
       "updated": "2015",
       "tags": [
         "光镊",
@@ -4623,7 +4623,7 @@
       "version": "v1.0",
       "source_paper_id": "yangprocspie2015-2",
       "source_doi": "10.1117/12.2078341",
-      "responsible": "未提供",
+      "responsible": "Hui Yang",
       "updated": "2015",
       "tags": [
         "荧光纳米粒子",
@@ -4681,7 +4681,7 @@
       "version": "v1.0",
       "source_paper_id": "huszkaoptexpress2017",
       "source_doi": "10.1364/OE.25.015079",
-      "responsible": "未提供",
+      "responsible": "Gergely Huszka",
       "updated": "2017",
       "tags": [
         "BTG微球",
@@ -4734,7 +4734,7 @@
       "version": "v1.0",
       "source_paper_id": "huszkaoptexpress2017",
       "source_doi": "10.1364/OE.25.015079",
-      "responsible": "未提供",
+      "responsible": "Gergely Huszka",
       "updated": "2017",
       "tags": [
         "超分辨成像",
@@ -4940,7 +4940,7 @@
       "version": "v1.0",
       "source_paper_id": "microtas2022-33",
       "source_doi": "10.1039/D2LC00217E",
-      "responsible": "",
+      "responsible": "Lin Zeng",
       "updated": "2022",
       "tags": [
         "微流控",
@@ -5294,7 +5294,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2022",
       "source_doi": "10.3390/mi13030377",
-      "responsible": "（原文未列出作者姓名）",
+      "responsible": "Lin Zeng",
       "updated": "2022",
       "tags": [
         "微流控",
@@ -5340,7 +5340,7 @@
       "version": "v1.0",
       "source_paper_id": "micromachines2022",
       "source_doi": "10.3390/mi13030377",
-      "responsible": "（原文未列出作者姓名）",
+      "responsible": "Lin Zeng",
       "updated": "2022",
       "tags": [
         "负磁泳",
@@ -5391,7 +5391,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "外泌体",
@@ -5449,7 +5449,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "PDMS",
@@ -5513,7 +5513,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "流式细胞术",
@@ -5562,7 +5562,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "有限元模拟",
@@ -5602,7 +5602,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "LC-MS/MS",
@@ -5661,7 +5661,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "细胞摄取",
@@ -5715,7 +5715,7 @@
       "version": "v1.0",
       "source_paper_id": "small2021",
       "source_doi": "10.1002/smll.202102150",
-      "responsible": "未提供（论文作者信息未随文本给出）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "体外药物递送",
@@ -6219,7 +6219,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "MXene",
@@ -6275,7 +6275,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "AFM",
@@ -6325,7 +6325,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "EIS",
@@ -6377,7 +6377,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "稳定性",
@@ -6422,7 +6422,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "光热",
@@ -6475,7 +6475,7 @@
       "version": "v1.0",
       "source_paper_id": "advfuncmater2024",
       "source_doi": "10.1002/adfm.202312770",
-      "responsible": "N/A（论文作者字段未提供）",
+      "responsible": "Qi Zeng",
       "updated": "2024",
       "tags": [
         "原代神经元",
@@ -6707,7 +6707,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "A549",
@@ -6751,7 +6751,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "sEV",
@@ -6787,7 +6787,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "SU-8",
@@ -6828,7 +6828,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "PDMS",
@@ -6868,7 +6868,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "RIE",
@@ -6915,7 +6915,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "氧等离子体",
@@ -6953,7 +6953,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "COMSOL",
@@ -6995,7 +6995,7 @@
       "version": "v1.0",
       "source_paper_id": "ieee-mems-2021-0265-ei",
       "source_doi": "10.1109/MEMS51782.2021.9375443",
-      "responsible": "N/A（原文未提供作者姓名）",
+      "responsible": "Rui Hao",
       "updated": "2021",
       "tags": [
         "纳米穿孔",
