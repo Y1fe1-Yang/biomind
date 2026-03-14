@@ -944,6 +944,7 @@ async function boot() {
   renderView(hash);
   // One-time event delegation for extract-sop / view-sop buttons on paper cards
   document.querySelector("main").addEventListener("click", _handleSopAction);
+  if (!getUsername()) showAuthModal();
 }
 
 boot();
