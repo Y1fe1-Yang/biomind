@@ -345,6 +345,7 @@ def test_build_context_paper_shows_abstract():
     result = _build_context([hit])
     assert "nanoscale2021" in result
     assert "摘要" in result
+    assert "步骤摘要" not in result  # must not use SOP prefix
     assert "magnetic nanoparticles" in result
 
 
@@ -357,3 +358,14 @@ def test_build_context_no_content_still_shows_title():
     result = _build_context([hit])
     assert "sop-bare" in result
     assert "Bare Protocol" in result
+
+
+def test_build_context_unknown_type_uses_fallback():
+    from backend.routers.chat import _build_context
+    hit = {
+        "id": "video-01", "title": "Lab Tour",
+        "type": "video", "content": "",
+    }
+    result = _build_context([hit])
+    assert "video-01" in result
+    assert "[资料]" in result  # unknown type → fallback label

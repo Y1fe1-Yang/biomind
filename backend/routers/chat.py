@@ -38,10 +38,36 @@ Respond in the same language the user writes in (Chinese or English).
 
 Rules:
 1. When answering based on the lab resources provided above, cite the source ID in \
-parentheses, e.g. \"(来源：sop-micromachines2022-1)\".
+parentheses, e.g. "(来源：sop-micromachines2022-1)".
 2. When the lab resources do not contain relevant information, start your answer with \
-\"[通用建议，非实验室记录] \" before responding with general knowledge.
+"[通用建议，非实验室记录] " before responding with general knowledge.
 3. Never fabricate lab data, protocol parameters, or paper conclusions."""
+
+_TYPE_LABEL = {
+    "sop": "SOP",
+    "journal": "论文",
+    "conference": "论文",
+    "book": "书籍",
+    "presentation": "分享",
+}
+
+
+def _build_context(hits: list[dict]) -> str:
+    if not hits:
+        return ""
+    lines = ["以下是实验室相关资料："]
+    for h in hits:
+        label = _TYPE_LABEL.get(h.get("type", ""), "资料")
+        title = h.get("title", "Untitled")
+        entry_id = h.get("id", "")
+        content = h.get("content", "")
+
+        lines.append(f"[{label}] {title} ({entry_id})")
+        if content:
+            prefix = "步骤摘要" if h.get("type") == "sop" else "摘要"
+            lines.append(f"{prefix}:\n{content}")
+        lines.append("")
+    return "\n".join(lines)
 
 
 class ChatRequest(BaseModel):
@@ -93,30 +119,3 @@ async def chat(
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
-
-
-_TYPE_LABEL = {
-    "sop": "SOP",
-    "journal": "论文",
-    "conference": "论文",
-    "book": "书籍",
-    "presentation": "分享",
-}
-
-
-def _build_context(hits: list[dict]) -> str:
-    if not hits:
-        return ""
-    lines = ["以下是实验室相关资料：\n"]
-    for h in hits:
-        label = _TYPE_LABEL.get(h.get("type", ""), "资料")
-        title = h.get("title", "Untitled")
-        entry_id = h.get("id", "")
-        content = h.get("content", "")
-
-        lines.append(f"[{label}] {title} ({entry_id})")
-        if content:
-            prefix = "步骤摘要" if h.get("type") == "sop" else "摘要"
-            lines.append(f"{prefix}:\n{content}")
-        lines.append("")
-    return "\n".join(lines)
