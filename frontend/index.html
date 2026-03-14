@@ -36,10 +36,10 @@
 <body class="h-full bg-gray-50 text-gray-900">
 
   <!-- Auth modal (login / register) -->
-  <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background:rgba(0,0,0,0.5)">
-    <div class="bg-white rounded-xl shadow-xl w-full mx-4" style="max-width:400px">
-      <!-- Tabs -->
-      <div class="flex border-b border-gray-200">
+  <div id="auth-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center" style="background:rgba(0,0,0,0.5)" onclick="hideAuthModal()">
+    <div class="bg-white rounded-xl shadow-xl w-full mx-4" style="max-width:400px" onclick="event.stopPropagation()">
+      <!-- Tabs + close button -->
+      <div class="flex border-b border-gray-200 relative">
         <button id="tab-login"
           class="flex-1 py-3 text-sm font-medium text-blue-600 border-b-2 border-blue-600 transition"
           onclick="switchAuthTab('login')">
@@ -50,6 +50,7 @@
           onclick="switchAuthTab('register')">
           <span data-i18n="auth.registerTab"></span>
         </button>
+        <button onclick="hideAuthModal()" class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-700 text-lg leading-none">✕</button>
       </div>
 
       <div class="p-8">
