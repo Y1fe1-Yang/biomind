@@ -13,3 +13,4 @@ JWT_SECRET = os.getenv("JWT_SECRET", "change-me-in-production-use-a-long-random-
 
 HOST = os.getenv("HOST", "127.0.0.1")
 PORT = int(os.getenv("PORT", "8080"))
+ZHIPU_API_KEY = os.getenv("ZHIPU_API_KEY", "")
