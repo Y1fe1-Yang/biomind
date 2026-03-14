@@ -313,3 +313,47 @@ def test_retrieve_with_content_missing_fields(tmp_path, monkeypatch):
         assert "content" in h  # key always present
         assert isinstance(h["content"], str)  # never None
         assert h["content"] == ""  # no abstract / no steps → empty string
+
+
+# ---------------------------------------------------------------------------
+# _build_context tests
+# ---------------------------------------------------------------------------
+
+def test_build_context_empty_returns_empty():
+    from backend.routers.chat import _build_context
+    assert _build_context([]) == ""
+
+
+def test_build_context_sop_shows_steps():
+    from backend.routers.chat import _build_context
+    hit = {
+        "id": "sop-pdms-1", "title": "PDMS Chip Fabrication",
+        "type": "sop", "content": "1. Mix PDMS 10:1\n2. Cure at 65°C",
+    }
+    result = _build_context([hit])
+    assert "sop-pdms-1" in result
+    assert "步骤" in result
+    assert "Mix PDMS" in result
+
+
+def test_build_context_paper_shows_abstract():
+    from backend.routers.chat import _build_context
+    hit = {
+        "id": "nanoscale2021", "title": "Nano Separation",
+        "type": "journal", "content": "A study of magnetic nanoparticles.",
+    }
+    result = _build_context([hit])
+    assert "nanoscale2021" in result
+    assert "摘要" in result
+    assert "magnetic nanoparticles" in result
+
+
+def test_build_context_no_content_still_shows_title():
+    from backend.routers.chat import _build_context
+    hit = {
+        "id": "sop-bare", "title": "Bare Protocol",
+        "type": "sop", "content": "",
+    }
+    result = _build_context([hit])
+    assert "sop-bare" in result
+    assert "Bare Protocol" in result
