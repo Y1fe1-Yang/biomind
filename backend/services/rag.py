@@ -2,7 +2,8 @@
 BM25-based retrieval for lab knowledge.
 
 Indexes all papers, books, SOPs, and presentations from data/data.json.
-Each entry becomes one "document" (title + type + tags joined as a bag-of-words).
+Each entry becomes one "document" (title + type + tags + venue + year +
+abstract + purpose + steps joined as a bag-of-words).
 
 Usage:
     from backend.services.rag import retrieve
@@ -89,6 +90,15 @@ def _split(text: str) -> list[str]:
     return tokens or [""]
 
 
+def _extract_content(entry: dict) -> str:
+    """Return the content text to pass to the AI for this entry."""
+    if entry.get("type") == "sop":
+        steps = entry.get("steps", [])[:8]  # first 8 steps is enough context for the AI
+        text = "\n".join(f"{i + 1}. {s}" for i, s in enumerate(steps))
+        return text[:1500]
+    return entry.get("abstract", "")[:600]
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -117,15 +127,6 @@ def retrieve(query: str, top_k: int = 5) -> list[dict]:
     """Return up to *top_k* entries most relevant to *query*."""
     index = _load_index()
     return index.search(query, top_k=top_k)
-
-
-def _extract_content(entry: dict) -> str:
-    """Return the content text to pass to the AI for this entry."""
-    if entry.get("type") == "sop":
-        steps = entry.get("steps", [])[:8]
-        text = "\n".join(f"{i + 1}. {s}" for i, s in enumerate(steps))
-        return text[:1500]
-    return entry.get("abstract", "")[:600]
 
 
 def retrieve_with_content(query: str, top_k: int = 5) -> list[dict]:

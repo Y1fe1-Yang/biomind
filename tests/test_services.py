@@ -283,6 +283,7 @@ def test_retrieve_with_content_respects_budget(tmp_path, monkeypatch):
     hits = rag_mod.retrieve_with_content("SOP test", top_k=10)
     total = sum(len(h.get("content", "")) for h in hits)
     assert total <= 4000
+    assert len(hits) < 10  # budget exhaustion must exclude at least one hit
 
 
 def test_retrieve_with_content_missing_fields(tmp_path, monkeypatch):
@@ -311,3 +312,4 @@ def test_retrieve_with_content_missing_fields(tmp_path, monkeypatch):
     for h in hits:
         assert "content" in h  # key always present
         assert isinstance(h["content"], str)  # never None
+        assert h["content"] == ""  # no abstract / no steps → empty string
