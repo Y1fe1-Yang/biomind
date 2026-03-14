@@ -58,7 +58,7 @@ _TRANSLATE_PROMPT = """\
 {sop_json}
 """
 
-_FIELDS_TO_TRANSLATE = ("title", "purpose", "subcategory", "category")
+_FIELDS_TO_TRANSLATE = ("title", "purpose", "subcategory")  # category handled by normalization step
 _LIST_FIELDS_TO_TRANSLATE = ("steps", "materials", "protocol_notes", "tags")
 
 
@@ -144,9 +144,10 @@ def _load_data() -> dict:
 
 
 def _save_data(data: dict) -> None:
-    (_ROOT / "data" / "data.json").write_text(
-        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+    target = _ROOT / "data" / "data.json"
+    tmp = target.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(target)  # atomic on same filesystem
 
 
 def _run(normalize_all: bool, dry_run: bool) -> None:
