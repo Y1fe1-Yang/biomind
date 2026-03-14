@@ -365,6 +365,20 @@ function paperCard(p) {
   const doi = p.doi ? `<a href="https://doi.org/${p.doi}" target="_blank" class="text-xs text-blue-500 hover:underline ml-2">${t("paper.doi")}: ${p.doi}</a>` : "";
   const pdfLink = p.file ? `<a href="/api/files/${encodeURIComponent(p.file).replace(/%2F/g,'/')}" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 ml-2">↗ ${t("paper.openPdf")}</a>` : "";
   const notes = currentLang === "zh" ? p.notes?.zh : p.notes?.en;
+
+  // Admin-only SOP button
+  let sopBtn = "";
+  if (window.__isAdmin === true) {
+    const hasSop = (window.DATA.sops || []).some(s => s.source_paper_id === p.id);
+    if (hasSop) {
+      sopBtn = `<button data-action="view-sop" data-paper-id="${p.id}"
+        class="text-xs text-purple-600 hover:text-purple-800 ml-2 cursor-pointer">${t("sop.btnViewSop")}</button>`;
+    } else {
+      sopBtn = `<button data-action="extract-sop" data-paper-id="${p.id}"
+        class="text-xs text-green-600 hover:text-green-800 ml-2 cursor-pointer">${t("sop.btnExtract")}</button>`;
+    }
+  }
+
   return `
     <div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-sm transition cursor-pointer" onclick="this.querySelector('.card-detail').classList.toggle('hidden')">
       <div class="flex items-start gap-3">
@@ -383,24 +397,70 @@ function paperCard(p) {
       <div class="card-detail hidden mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600 space-y-1">
         ${p.abstract ? `<p>${p.abstract}</p>` : `<p class="text-gray-400">${t("paper.noAbstract")}</p>`}
         ${notes ? `<p class="text-blue-700 bg-blue-50 rounded p-2 mt-2">${notes}</p>` : ""}
-        <div class="flex gap-2 mt-2">${doi}${pdfLink}</div>
+        <div class="flex gap-2 mt-2 flex-wrap">${doi}${pdfLink}${sopBtn}</div>
       </div>
     </div>`;
 }
 
 function sopCard(s) {
-  const pdfLink = s.file ? `<a href="/api/files/${encodeURIComponent(s.file).replace(/%2F/g,'/')}" target="_blank" class="text-blue-500 hover:underline text-xs">${t("sop.openPdf")}</a>` : "";
+  const isAuto = s.status === "auto" || s.status === "abstract-only";
+  const responsible = s.responsible || s.author || "";
+
+  // Source info line: find the source paper for journal+year
+  let sourceInfo = s.updated || "";
+  if (s.source_paper_id && window.DATA && window.DATA.papers) {
+    const src = window.DATA.papers.find(p => p.id === s.source_paper_id);
+    if (src) sourceInfo = [src.journal, s.updated].filter(Boolean).join(" ");
+  }
+
+  // Category badge (auto SOPs only)
+  const catBadge = isAuto && s.category
+    ? `<span class="text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">${s.category}${s.subcategory ? " › " + s.subcategory : ""}</span>`
+    : "";
+
+  // Status badge
+  const statusBadge = s.status === "abstract-only"
+    ? `<span class="text-xs bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">${t("sop.statusAbstractOnly")}</span>`
+    : isAuto
+    ? `<span class="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">🤖 ${t("sop.statusAutoLabel")}</span>`
+    : "";
+
+  const tags = (s.tags || [])
+    .map(tag => `<span class="text-xs bg-yellow-50 text-yellow-600 px-2 py-0.5 rounded-full">${tag}</span>`)
+    .join("");
+
+  // Expanded content: steps-based (auto) or PDF link (file-based)
+  let expandedContent = "";
+  if (s.steps && s.steps.length) {
+    const mats = (s.materials || []).map(m => `<li>${m}</li>`).join("");
+    const stps = (s.steps || []).map(st => `<li class="mb-1 pb-1 border-b border-gray-50 last:border-0">${st}</li>`).join("");
+    const nts  = (s.protocol_notes || []).map(n => `<li>${n}</li>`).join("");
+    expandedContent = `
+      ${s.purpose ? `<p class="text-xs text-gray-700 mb-3"><span class="font-semibold">${t("sop.fieldPurpose")}：</span>${s.purpose}</p>` : ""}
+      ${mats ? `<div class="mb-3"><p class="text-xs font-semibold text-gray-600 mb-1">${t("sop.fieldMaterials")}</p><ul class="text-xs text-gray-600 list-disc ml-4 space-y-0.5">${mats}</ul></div>` : ""}
+      ${stps ? `<div class="mb-3"><p class="text-xs font-semibold text-gray-600 mb-1">${t("sop.fieldSteps")}</p><ol class="text-xs text-gray-600 list-decimal ml-4">${stps}</ol></div>` : ""}
+      ${nts  ? `<div class="mb-2"><p class="text-xs font-semibold text-gray-600 mb-1">${t("sop.fieldNotes")}</p><ul class="text-xs text-gray-600 list-disc ml-4">${nts}</ul></div>` : ""}
+      ${s.reference ? `<p class="text-xs text-gray-400 italic mt-2">${t("sop.fieldSource")}: ${s.reference}</p>` : ""}`;
+  } else if (s.file) {
+    expandedContent = `<a href="/api/files/${encodeURIComponent(s.file).replace(/%2F/g,'/')}" target="_blank" class="text-xs text-blue-500 hover:underline">↗ ${t("sop.openPdf")}</a>`;
+  }
+
   return `
-    <tr class="hover:bg-gray-50">
-      <td class="py-3 px-4 text-sm font-medium">${s.title || s.id}</td>
-      <td class="py-3 px-4 text-sm text-gray-500">${s.version || ""}</td>
-      <td class="py-3 px-4 text-sm text-gray-500">${s.updated || ""}</td>
-      <td class="py-3 px-4 text-sm text-gray-500">${s.author || ""}</td>
-      <td class="py-3 px-4">
-        ${(s.tags || []).map(tag => `<span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full mr-1">${tag}</span>`).join("")}
-      </td>
-      <td class="py-3 px-4">${pdfLink}</td>
-    </tr>`;
+    <div class="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-sm transition">
+      <div class="flex items-start justify-between gap-2 cursor-pointer"
+           onclick="const d=this.closest('.bg-white').querySelector('.sop-detail');d.classList.toggle('hidden');this.querySelector('.sop-card-expand-icon').classList.toggle('open')">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1 mb-1.5 flex-wrap">
+            ${statusBadge}${catBadge}
+          </div>
+          <p class="text-sm font-medium text-gray-900">${isAuto ? "📋 " : ""}${s.title || s.id}</p>
+          <p class="text-xs text-gray-500 mt-0.5">${[responsible ? t("sop.fieldResponsible") + ": " + responsible : "", sourceInfo, s.version].filter(Boolean).join(" · ")}</p>
+          ${tags ? `<div class="flex flex-wrap gap-1 mt-1.5">${tags}</div>` : ""}
+        </div>
+        <span class="sop-card-expand-icon text-xs text-gray-400 flex-shrink-0 mt-1">▼</span>
+      </div>
+      <div class="sop-detail hidden mt-3 pt-3 border-t border-gray-100 text-sm">${expandedContent}</div>
+    </div>`;
 }
 
 function sopSearchCard(s) {
@@ -511,55 +571,65 @@ function toggleDirection(d) {
 
 // ── SOP Library ───────────────────────────────────────────────────
 let sopSearchQuery = "";
-let selectedSopTags = [];
+let selectedSopCategory = "";
+let selectedSopSubcategory = "";
+
+const _SOP_CATS = ["微流控器件", "生物样本处理", "检测与表征", "数据分析"];
 
 function renderSops() {
   const data = window.DATA;
-  let sops = data.sops.filter(s => !s.archived);
+  const allSops = data.sops.filter(s => !s.archived);
 
-  if (selectedSopTags.length > 0) {
-    sops = sops.filter(s => selectedSopTags.every(tag => (s.tags || []).includes(tag)));
+  // Category filter
+  let filtered = selectedSopCategory
+    ? allSops.filter(s => s.category === selectedSopCategory)
+    : allSops;
+
+  // Subcategory filter
+  if (selectedSopCategory && selectedSopSubcategory) {
+    filtered = filtered.filter(s => s.subcategory === selectedSopSubcategory);
   }
+
+  // Search filter (title + purpose + tags)
   if (sopSearchQuery) {
     const q = sopSearchQuery.toLowerCase();
-    sops = sops.filter(s => [s.title, s.author, s.version, ...(s.tags || [])].filter(Boolean).join(" ").toLowerCase().includes(q));
+    filtered = filtered.filter(s =>
+      [s.title, s.purpose, ...(s.tags || [])].filter(Boolean).join(" ").toLowerCase().includes(q)
+    );
   }
 
-  const allTags = [...new Set(data.sops.flatMap(s => s.tags || []))];
+  // Category tabs
+  const catTabItems = [{ label: t("sop.categoryAll"), val: "" }, ..._SOP_CATS.map(c => ({ label: c, val: c }))];
+  const catTabs = catTabItems.map(({ label, val }) => {
+    const active = selectedSopCategory === val;
+    return `<button onclick="selectedSopCategory='${val}';selectedSopSubcategory='';renderSops()"
+      class="sop-cat-tab${active ? ' active' : ''}">${label}</button>`;
+  }).join("");
+
+  // Subcategory buttons (only when a category is selected)
+  let subRow = "";
+  if (selectedSopCategory) {
+    const subs = [...new Set(
+      allSops.filter(s => s.category === selectedSopCategory && s.subcategory).map(s => s.subcategory)
+    )];
+    if (subs.length) {
+      subRow = `<div class="flex flex-wrap gap-2 mb-3">
+        ${subs.map(sub => `<button onclick="selectedSopSubcategory=selectedSopSubcategory==='${sub}'?'':'${sub}';renderSops()"
+          class="px-3 py-1 rounded-full text-xs border ${selectedSopSubcategory === sub ? 'bg-blue-600 text-white border-blue-600' : 'border-gray-300 text-gray-600 hover:border-blue-400'}">${sub}</button>`).join("")}
+      </div>`;
+    }
+  }
 
   document.getElementById("view-sops").innerHTML = `
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="border-b border-gray-200 mb-0 flex gap-0.5">${catTabs}</div>
+    <div class="bg-white border border-t-0 border-gray-200 rounded-b-lg px-4 py-3 mb-4">
+      ${subRow}
       <input type="text" placeholder="${t("search.placeholder")}"
         value="${sopSearchQuery}"
         oninput="sopSearchQuery=this.value;renderSops()"
-        class="border rounded-lg px-3 py-1.5 text-sm w-56 focus:outline-none focus:ring-2 focus:ring-blue-500">
-      ${allTags.map(tag => `
-        <button onclick="toggleSopTag('${tag}')"
-          class="px-3 py-1 rounded-full text-sm border ${selectedSopTags.includes(tag) ? 'bg-yellow-500 text-white border-yellow-500' : 'border-gray-300 text-gray-600 hover:border-yellow-400'}">
-          ${tag}
-        </button>`).join("")}
+        class="border rounded-lg px-3 py-1.5 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
-    <div class="overflow-x-auto">
-      <table class="w-full text-left border-collapse">
-        <thead>
-          <tr class="border-b border-gray-200 text-xs text-gray-500 uppercase tracking-wide">
-            <th class="py-3 px-4">${t("type.sop")}</th>
-            <th class="py-3 px-4">${t("sop.version")}</th>
-            <th class="py-3 px-4">${t("sop.updated")}</th>
-            <th class="py-3 px-4">${t("sop.author")}</th>
-            <th class="py-3 px-4">Tags</th>
-            <th class="py-3 px-4"></th>
-          </tr>
-        </thead>
-        <tbody>${sops.map(sopCard).join("") || `<tr><td colspan="6" class="py-12 text-center text-gray-400">${t("noResults")}</td></tr>`}</tbody>
-      </table>
-    </div>`;
-}
-
-function toggleSopTag(tag) {
-  const idx = selectedSopTags.indexOf(tag);
-  if (idx === -1) selectedSopTags.push(tag); else selectedSopTags.splice(idx, 1);
-  renderSops();
+    <div class="space-y-3">${filtered.map(sopCard).join("") || `<p class="text-gray-400 py-12 text-center">${t("noResults")}</p>`}</div>`;
 }
 
 // ── Presentations ─────────────────────────────────────────────────
@@ -799,6 +869,71 @@ document.getElementById("chat-input").addEventListener("input", function() {
   this.style.height = Math.min(this.scrollHeight, 120) + "px";
 });
 
+async function _handleSopAction(e) {
+  // Handle "view-sop" — navigate to SOP library
+  const viewBtn = e.target.closest("[data-action='view-sop']");
+  if (viewBtn) {
+    e.stopPropagation();
+    showView("sops");
+    renderView("sops");
+    return;
+  }
+
+  // Handle "extract-sop" — trigger SSE extraction
+  const extractBtn = e.target.closest("[data-action='extract-sop']");
+  if (!extractBtn) return;
+  e.stopPropagation();
+
+  const paperId = extractBtn.dataset.paperId;
+  extractBtn.disabled = true;
+  extractBtn.textContent = t("sop.progressExtracting");
+
+  try {
+    const resp = await apiFetch("/api/extract-sop", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ paper_id: paperId }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      extractBtn.textContent = t("sop.progressError") + (err.detail || resp.status);
+      extractBtn.disabled = false;
+      return;
+    }
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split("\n");
+      buf = lines.pop();
+      for (const line of lines) {
+        if (!line.startsWith("data: ")) continue;
+        try {
+          const ev = JSON.parse(line.slice(6));
+          if (ev.type === "progress") extractBtn.textContent = ev.message;
+          if (ev.type === "done") {
+            extractBtn.textContent = t("sop.progressDone");
+            setTimeout(() => window.location.reload(), 600);
+          }
+          if (ev.type === "error") {
+            extractBtn.textContent = t("sop.progressError") + ev.message;
+            extractBtn.disabled = false;
+          }
+        } catch { /* ignore malformed SSE */ }
+      }
+    }
+  } catch (err) {
+    extractBtn.textContent = t("sop.progressError") + err.message;
+    extractBtn.disabled = false;
+  }
+}
+
 // ── Boot ──────────────────────────────────────────────────────────
 async function boot() {
   window.__isAdmin = localStorage.getItem("biomind_is_admin") === "true";
@@ -807,6 +942,8 @@ async function boot() {
   const hash = location.hash.replace("#", "") || "home";
   showView(hash);
   renderView(hash);
+  // One-time event delegation for extract-sop / view-sop buttons on paper cards
+  document.querySelector("main").addEventListener("click", _handleSopAction);
 }
 
 boot();
