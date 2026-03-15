@@ -11,7 +11,6 @@ node_modules/
 frontend/assets/input.css
 package*.json
 tailwind.config.js
-data/thumbs/
 data/users.db
 
 # Large binary/media files — not hosted on GitHub
