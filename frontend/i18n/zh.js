@@ -30,6 +30,7 @@ window.I18N_ZH = {
     openPdf: "打开 PDF",
     noAbstract: "（摘要待补充）",
     noNotes: "（暂无背景说明）",
+    copyCitation: "复制引用",
   },
   sop: {
     version: "版本",

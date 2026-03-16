@@ -30,6 +30,7 @@ window.I18N_EN = {
     openPdf: "Open PDF",
     noAbstract: "(Abstract pending)",
     noNotes: "(No background notes yet)",
+    copyCitation: "Copy Citation",
   },
   sop: {
     version: "Version",

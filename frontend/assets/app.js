@@ -1521,6 +1521,54 @@ function paperTypeColor(type) {
   return { journal: "bg-blue-100 text-blue-700", conference: "bg-green-100 text-green-700", book: "bg-emerald-100 text-emerald-700" }[type] || "bg-gray-100 text-gray-600";
 }
 
+function copyCitationById(evt, id) {
+  evt.stopPropagation();
+  const allItems = [...(window.DATA.papers || []), ...(window.DATA.books || [])];
+  const p = allItems.find(x => x.id === id);
+  if (!p) return;
+
+  const authors = (p.authors || []);
+  let authorStr = "";
+  if (authors.length === 0)      authorStr = "";
+  else if (authors.length <= 3)  authorStr = authors.join(", ");
+  else                           authorStr = authors.slice(0, 3).join(", ") + ", et al.";
+
+  const parts = [
+    authorStr,
+    p.year ? `(${p.year})` : "",
+    p.title ? `${p.title}.` : "",
+    p.journal ? `${p.journal}.` : "",
+    p.doi ? `https://doi.org/${p.doi}` : "",
+  ].filter(Boolean);
+  const citation = parts.join(" ");
+
+  const btn = evt.currentTarget;
+  const orig = btn.innerHTML;
+  const showCopied = () => {
+    btn.innerHTML = "✓ 已复制";
+    btn.classList.add("text-green-600");
+    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove("text-green-600"); }, 2000);
+  };
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(citation).then(showCopied).catch(() => {
+      _copyFallback(citation); showCopied();
+    });
+  } else {
+    _copyFallback(citation); showCopied();
+  }
+}
+
+function _copyFallback(text) {
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.cssText = "position:fixed;opacity:0;top:0;left:0";
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand("copy"); } catch {}
+  document.body.removeChild(ta);
+}
+
 function paperCard(p) {
   const doi = p.doi ? `<a href="https://doi.org/${p.doi}" target="_blank" class="text-xs text-blue-500 hover:underline ml-2">${t("paper.doi")}: ${p.doi}</a>` : "";
   const notes = currentLang === "zh" ? p.notes?.zh : p.notes?.en;
@@ -1556,7 +1604,12 @@ function paperCard(p) {
       <div class="card-detail hidden mt-3 pt-3 border-t border-gray-100 text-xs text-gray-600 space-y-1">
         ${p.abstract ? `<p>${p.abstract}</p>` : `<p class="text-gray-400">${t("paper.noAbstract")}</p>`}
         ${notes ? `<p class="text-blue-700 bg-blue-50 rounded p-2 mt-2">${notes}</p>` : ""}
-        <div class="flex gap-2 mt-2 flex-wrap">${doi}${sopBtn}</div>
+        <div class="flex gap-2 mt-2 flex-wrap items-center">
+          ${doi}
+          <button onclick="copyCitationById(event,'${p.id}')"
+            class="text-xs text-gray-400 hover:text-blue-600 transition flex items-center gap-0.5 ml-1">📋 ${t("paper.copyCitation")}</button>
+          ${sopBtn}
+        </div>
       </div>
     </div>`;
 }
