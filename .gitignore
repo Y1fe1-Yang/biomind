@@ -10,7 +10,6 @@ conversations/*
 node_modules/
 frontend/assets/input.css
 package*.json
-tailwind.config.js
 data/users.db
 data/ai_config.json
 
