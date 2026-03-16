@@ -37,6 +37,20 @@ app.include_router(social_router)
 def health():
     return {"status": "ok"}
 
+@app.get("/api/debug/files")
+def debug_files():
+    import os
+    root = Path(__file__).parent.parent
+    data_dir = root / "data"
+    return {
+        "cwd": os.getcwd(),
+        "root": str(root),
+        "data_dir": str(data_dir),
+        "data_exists": data_dir.exists(),
+        "data_files": [f.name for f in data_dir.iterdir()][:20] if data_dir.exists() else [],
+        "frontend_exists": (root / "frontend").exists(),
+    }
+
 root = Path(__file__).parent.parent
 
 # Serve data files (data.js, data.json, user-sops/, etc.)
