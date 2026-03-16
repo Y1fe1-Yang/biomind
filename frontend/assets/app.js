@@ -1096,57 +1096,115 @@ async function renderNews() {
 
   const canWrite = !!getToken();
 
-  function newsCard(item) {
+  // Gradient palettes for articles without a cover image
+  const PALETTES = [
+    "linear-gradient(135deg,#1e3a8a,#2563eb)",
+    "linear-gradient(135deg,#064e3b,#059669)",
+    "linear-gradient(135deg,#7c2d12,#ea580c)",
+    "linear-gradient(135deg,#4c1d95,#7c3aed)",
+    "linear-gradient(135deg,#0c4a6e,#0284c7)",
+  ];
+  function coverBg(id) {
+    let h = 0; for (const c of id) h = c.charCodeAt(0) + ((h << 5) - h);
+    return PALETTES[Math.abs(h) % PALETTES.length];
+  }
+
+  function fmtDate(dateStr) {
+    const [y, m, d] = dateStr.split("-");
+    return { year: y, md: `${m}-${d}` };
+  }
+
+  function tagHtml(item) {
+    const src = (item.source || "").toLowerCase();
+    if (src.includes("somestech") || src.includes("中科创星") || src.includes("企业")) {
+      return `<span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:#fef3c7;color:#92400e;margin-bottom:.55rem">企业</span>`;
+    }
+    return `<span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;background:#eff6ff;color:#1d4ed8;margin-bottom:.55rem">科研</span>`;
+  }
+
+  function editActions(item) {
+    const canEdit = window.__isAdmin || getUsername() === item.createdBy;
+    if (!canEdit) return "";
+    return `<div class="news-card-acts" onclick="event.stopPropagation()">
+      <button class="nca-btn" style="color:#2563eb" title="${t("news.edit")}" onclick="openNewsEditor('${item.id}')">✎</button>
+      <button class="nca-btn" style="color:#dc2626" title="${t("news.delete")}" onclick="deleteNewsArticle('${item.id}')">✕</button>
+    </div>`;
+  }
+
+  function featuredCard(item) {
     const title   = currentLang === "zh" ? item.title.zh : (item.title.en || item.title.zh);
     const excerpt = currentLang === "zh" ? item.excerpt.zh : (item.excerpt.en || item.excerpt.zh);
-    const [year, month, day] = item.date.split("-");
-    const canEdit = window.__isAdmin || getUsername() === item.createdBy;
-    const editBtns = canEdit ? `
-      <div style="display:flex;gap:6px;margin-top:8px" onclick="event.stopPropagation()">
-        <button onclick="openNewsEditor('${item.id}')"
-          style="font-size:.65rem;color:#2563eb;background:#eff6ff;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">${t("news.edit")}</button>
-        <button onclick="deleteNewsArticle('${item.id}')"
-          style="font-size:.65rem;color:#dc2626;background:#fef2f2;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">${t("news.delete")}</button>
-      </div>` : "";
+    const { year, md } = fmtDate(item.date);
+    const imgInner = item.coverImage
+      ? `<img src="${item.coverImage}" alt="" class="news-card-img-v2" style="width:100%;height:100%;object-fit:cover">`
+      : `<div style="width:100%;height:100%;background:${coverBg(item.id)};display:flex;align-items:center;justify-content:center"><span style="font-size:3.5rem;opacity:.18;color:white">✦</span></div>`;
     return `
-      <div class="news-card bg-white rounded-xl border border-gray-200 overflow-hidden cursor-pointer"
-           style="box-shadow:0 1px 3px rgba(0,0,0,.06)" onclick="showNewsDetail('${item.id}')">
-        <div style="overflow:hidden;aspect-ratio:16/9">
-          <img src="${item.coverImage || ''}" alt="${title}"
-               class="news-card-img w-full h-full object-cover"
-               onerror="this.parentElement.style.background='#f3f4f6'">
-        </div>
-        <div class="p-4">
-          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:8px">
-            <span style="font-size:1.5rem;font-weight:900;color:#2563eb;line-height:1">${year}</span>
-            <span style="font-size:.75rem;color:#9ca3af;font-weight:500">${month}-${day}</span>
+      <div class="news-featured-card" onclick="showNewsDetail('${item.id}')">
+        <div style="overflow:hidden;min-height:240px">${imgInner}</div>
+        <div style="padding:1.75rem;display:flex;flex-direction:column;justify-content:center">
+          ${tagHtml(item)}
+          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:.65rem">
+            <span style="font-size:1.4rem;font-weight:900;color:#1d4ed8;line-height:1">${year}</span>
+            <span style="font-size:.72rem;color:#9ca3af;font-weight:500">${md}</span>
           </div>
-          <h3 class="line-clamp-2" style="font-size:.875rem;font-weight:700;color:#111827;line-height:1.4;margin-bottom:8px">${title}</h3>
-          <p class="line-clamp-3" style="font-size:.75rem;color:#6b7280;line-height:1.6">${excerpt}</p>
-          <div style="margin-top:12px">
-            <span style="font-size:.7rem;color:#2563eb;font-weight:600">${t("news.readMore")} →</span>
-          </div>
-          ${editBtns}
+          <h3 class="line-clamp-3" style="font-size:1.05rem;font-weight:800;color:#111827;line-height:1.5;margin-bottom:.75rem">${title}</h3>
+          <p class="line-clamp-3" style="font-size:.8rem;color:#6b7280;line-height:1.65">${excerpt}</p>
+          <div style="margin-top:1.1rem;font-size:.72rem;font-weight:700;color:#2563eb;letter-spacing:.02em">${t("news.readMore")} →</div>
         </div>
+        ${editActions(item)}
+      </div>`;
+  }
+
+  function gridCard(item) {
+    const title   = currentLang === "zh" ? item.title.zh : (item.title.en || item.title.zh);
+    const excerpt = currentLang === "zh" ? item.excerpt.zh : (item.excerpt.en || item.excerpt.zh);
+    const { year, md } = fmtDate(item.date);
+    const imgBlock = `<div style="overflow:hidden;aspect-ratio:3/2">
+      ${item.coverImage
+        ? `<img src="${item.coverImage}" alt="" class="news-card-img-v2" style="width:100%;height:100%;object-fit:cover">`
+        : `<div style="width:100%;height:100%;background:${coverBg(item.id)};display:flex;align-items:center;justify-content:center"><span style="font-size:2rem;opacity:.2;color:white">✦</span></div>`
+      }
+    </div>`;
+    return `
+      <div class="news-card-v2" onclick="showNewsDetail('${item.id}')">
+        ${imgBlock}
+        <div class="news-card-content" style="padding:.9rem 1rem">
+          ${tagHtml(item)}
+          <div style="display:flex;align-items:baseline;gap:5px;margin-bottom:.45rem">
+            <span style="font-size:1.05rem;font-weight:900;color:#1d4ed8;line-height:1">${year}</span>
+            <span style="font-size:.68rem;color:#9ca3af">${md}</span>
+          </div>
+          <h3 class="line-clamp-2" style="font-size:.8rem;font-weight:700;color:#111827;line-height:1.45;margin-bottom:.4rem">${title}</h3>
+          <p class="line-clamp-2" style="font-size:.7rem;color:#6b7280;line-height:1.6">${excerpt}</p>
+          <div class="news-card-link" style="font-size:.67rem;font-weight:700;color:#2563eb">${t("news.readMore")} →</div>
+        </div>
+        ${editActions(item)}
       </div>`;
   }
 
   const writeBtn = canWrite ? `
     <button onclick="openNewsEditor(null)"
-      style="position:absolute;right:2.5rem;top:3rem;background:#2563eb;color:#fff;border:none;border-radius:.5rem;padding:.5rem 1.25rem;font-size:.875rem;font-weight:600;cursor:pointer">
-      ${t("news.write")}
+      style="flex-shrink:0;background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.28);border-radius:.5rem;padding:.5rem 1.1rem;font-size:.825rem;font-weight:600;cursor:pointer;transition:background .2s"
+      onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+      ✏ ${t("news.write")}
     </button>` : "";
 
+  const [featured, ...rest] = _newsCache;
+
   el.innerHTML = `
-    <div style="position:relative;margin:-1.5rem -1rem 2rem;padding:3rem 2.5rem 2rem;background:#f8fafc;border-bottom:1px solid #e5e7eb;overflow:hidden">
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:900;color:rgba(37,99,235,.05);letter-spacing:-.25rem;pointer-events:none;user-select:none">NEWS</div>
-      <h2 style="font-size:1.5rem;font-weight:800;color:#1e3a8a;position:relative" data-i18n="news.title"></h2>
-      <p style="font-size:.875rem;color:#6b7280;margin-top:.25rem;position:relative" data-i18n="news.subtitle"></p>
-      ${writeBtn}
+    <div class="news-hero-bg">
+      <div class="news-hero-wm">NEWS</div>
+      <div style="position:relative;padding:2.25rem 2rem 1.75rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <div>
+          <div style="font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem">BioMiND Lab</div>
+          <h2 style="font-size:1.6rem;font-weight:900;color:white;line-height:1.1" data-i18n="news.title"></h2>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.35rem" data-i18n="news.subtitle"></p>
+        </div>
+        ${writeBtn}
+      </div>
     </div>
-    <div class="news-grid">
-      ${_newsCache.map(item => newsCard(item)).join("")}
-    </div>`;
+    ${featured ? `<div style="margin-bottom:1.75rem">${featuredCard(featured)}</div>` : ""}
+    ${rest.length ? `<div class="news-grid-v2">${rest.map(gridCard).join("")}</div>` : ""}`;
   applyI18n();
 }
 
