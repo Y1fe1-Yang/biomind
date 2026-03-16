@@ -138,5 +138,65 @@
       "en": "Researchers from SIAT, led by Senior Engineer Zhang Yi, collaborated with Prof. Peng Zhengchun at Shenzhen University to publish in Advanced Functional Materials, developing a facile electrochemical technique for MXene/PDA composite electrodes at ambient conditions.\n\n## Fabrication Method\n\nThe team developed a low-cost, mild in-situ preparation method:\n- **PDA adhesion layer** via cyclic voltammetry to enhance surface hydrophilicity\n- **MXene functional coating** via electrophoretic deposition for improved adhesion\n\n## Key Performance\n\n- Cathodal charge storage capacity: ~**140×** higher than unmodified substrates\n- Stability: Excellent performance through **100 million+** electrical pulse stimulations and **1,000** CV cycles\n- Photothermal response: ~**40×** higher photoelectric current under near-infrared laser\n\nThe strategy is broadly applicable to titanium, stainless steel, and other metal substrates, making it attractive for implantable neural electrodes and biomedical diagnostics."
     },
     "createdBy": "admin"
+  },
+  {
+    "id": "somestech-belgium-2023",
+    "date": "2023-10-16",
+    "source": "somestech.com",
+    "url": "https://somestech.com/newsinfo/6825519.html",
+    "coverImage": "/data/news-images/48515960.jpeg",
+    "title": {
+      "zh": "赴比利时交流：ExoLoad© 平台展示面向大规模临床生产的强大能力",
+      "en": "Belgium Visit: ExoLoad© Platform Demonstrates Capability for Large-Scale Clinical Production"
+    },
+    "excerpt": {
+      "zh": "中科佰乘受邀赴比利时布鲁塞尔南沙勒罗瓦生物园，参观ConvEyXO研发基地，现场展示 ExoLoad© 外泌体药物载入平台，数分钟内完成大批量外泌体高效药物载入，满足大规模临床试验需求。",
+      "en": "SomesTech visited ConvEyXO's R&D base at Brussels South Charleroi Biopark, demonstrating the ExoLoad© exosome drug loading platform's capability to complete bulk exosome drug loading within minutes for large-scale clinical trials."
+    },
+    "body": {
+      "zh": "近期，中科佰乘受邀赴比利时布鲁塞尔南沙勒罗瓦生物园，参观ConvEyXO研发基地并开展深度合作交流。ConvEyXO是比利时领先的创新生物制药公司，致力于开发大规模高产外泌体的突破性生产方法及安全有效的外泌体疗法。\n\n![比利时交流访问](/data/news-images/48515960.jpeg)\n\n访问期间，中科佰乘展示了 **ExoLoad©** 药物载入平台的强大功能。该平台具有卓越的载入效率，能在单外泌体水平实现精准操作，同时满足行业大规模外泌体生产加工所需的样品处理通量。通过创新纳米工程技术和自研微流控精密控制系统，ExoLoad© 平台实现了外泌体的可扩展处理和自动化药物载入，成功突破了从微观到宏观规模的技术瓶颈。\n\n现场测试可在**数分钟**内完成大批量外泌体的高效药物载入，满足大规模临床试验需求。ExoLoad© 平台可实现化学药物、核酸、蛋白质、多肽等物质的高效载入，为基于外泌体的创新药物实现临床转化提供高效的研发和生产工具。\n\n![产品展示](/data/news-images/48515961.jpeg)\n\nConvEyXO董事长兼CEO Jean-Paul PRIEELS 表示，中科佰乘的先进纳米工程平台、载体生物技术和人工智能算法服务助力 ConvEyXO 快速推进新型药物递送方法的开发与临床验证，其专业精神、协作精神和创新精神为双方深度合作奠定了坚实基础。",
+      "en": "SomesTech was invited to visit ConvEyXO's R&D base at Brussels South Charleroi Biopark, Belgium. ConvEyXO is a leading Belgian biopharmaceutical company developing breakthrough methods for large-scale, high-yield exosome production.\n\n![Belgium Exchange Visit](/data/news-images/48515960.jpeg)\n\nDuring the visit, SomesTech demonstrated the **ExoLoad©** drug loading platform, which exhibited excellent loading efficiency at the single exosome level while meeting large-scale production throughput requirements. The platform achieved scalable processing and automated drug loading, overcoming the technical bottleneck from micro to macro scales.\n\n![Product Demo](/data/news-images/48515961.jpeg)\n\nOn-site testing completed bulk exosome drug loading within **minutes**, meeting large-scale clinical trial requirements. The platform supports loading of chemical drugs, nucleic acids, proteins, and peptides.\n\nConvEyXO CEO Jean-Paul PRIEELS stated that SomesTech's advanced nanoengineering platform and AI algorithm services have greatly accelerated the development of novel drug delivery methods."
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "somestech-anniversary-2023",
+    "date": "2023-06-05",
+    "source": "somestech.com",
+    "url": "https://somestech.com/newsinfo/6825518.html",
+    "coverImage": "/data/news-images/48515963.jpeg",
+    "title": {
+      "zh": "中科佰乘一周年庆典：外泌体药物递送平台快速推进",
+      "en": "SomesTech 1st Anniversary: Exosome Drug Delivery Platform Rapidly Advancing"
+    },
+    "excerpt": {
+      "zh": "2023年5月31日，中科佰乘庆祝成立一周年。在创始人杨慧研究员带领下，ExoNP芯片项目完成多轮测试，外泌体药物载入研发管线快速推进，团队硕博比例超70%。",
+      "en": "On May 31, 2023, SomesTech celebrated its first anniversary. Under Dr. Yang Hui, the ExoNP chip project completed multiple rounds of testing and several R&D pipelines are rapidly advancing, with over 70% of the team holding master's or doctoral degrees."
+    },
+    "body": {
+      "zh": "2023年5月31日，中科佰乘迎来成立一周年纪念日。公司于2022年5月31日正式注册成立，在创始人兼CEO杨慧研究员的带领下，在技术创新和成果转化方面取得了显著成绩。\n\n![一周年庆典](/data/news-images/48515963.jpeg)\n\n近年来，国际大型制药公司加快了在外泌体载体领域的技术布局，越来越多的公司将外泌体用作靶向肿瘤药物治疗和基因治疗的载体。中科佰乘的纳米工程平台结合生物技术和纳米工程技术，提供了有效的高效高通量外泌体药物载入解决方案。\n\n经过一年的快速发展，多条技术生产线并行运营。**ExoNP芯片**项目发展迅速，完成了多轮测试和开发工作，有效解决了外泌体药物载体构建及工业应用的痛点。此外，提升外泌体靶向能力的高级算法平台和多个药物载入研发管线也在快速推进。\n\n![团队风采](/data/news-images/48515967.jpeg)\n\n公司目前处于扩张阶段，员工中硕士及博士学位持有者占比超过 **70%**，团队汇聚了来自苏黎世联邦理工学院、南加州大学、麻省理工学院及瑞典皇家理工学院的顶尖技术人才，以及熟悉医疗行业和人工智能领域的行业专家。",
+      "en": "On May 31, 2023, SomesTech celebrated its first anniversary. Under Dr. Yang Hui, the company has achieved significant results in technological innovation and the transformation of research achievements.\n\n![Anniversary Celebration](/data/news-images/48515963.jpeg)\n\nAfter a year of rapid development, multiple technology production lines are running in parallel. The **ExoNP chip** project has developed rapidly, completing multiple rounds of testing and development. Advanced algorithm platforms and multiple drug loading R&D pipelines are also advancing quickly.\n\n![Team](/data/news-images/48515967.jpeg)\n\nThe company is in expansion, with over **70%** of staff holding master's or doctoral degrees from institutions including ETH Zurich, USC, MIT, and KTH Royal Institute of Technology."
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "somestech-agreement-2023",
+    "date": "2023-05-30",
+    "source": "somestech.com",
+    "url": "https://somestech.com/newsinfo/6825517.html",
+    "coverImage": "/data/news-images/48515965.jpeg",
+    "title": {
+      "zh": "中科佰乘达成海外战略合作协议，推动外泌体疗法大规模产业化",
+      "en": "SomesTech Reaches Overseas Strategic Cooperation Agreement to Scale Exosome Therapy"
+    },
+    "excerpt": {
+      "zh": "2023年5月25日，比利时ConvEyXO创始人兼CEO Jean-Paul PRIEELS访问深圳先进院，与中科佰乘正式签署全面战略合作协议，携手推动外泌体疗法大规模工业化生产技术的国际合作。",
+      "en": "On May 25, 2023, Jean-Paul PRIEELS, founder and CEO of Belgium's ConvEyXO, visited SIAT and signed a comprehensive strategic cooperation agreement with SomesTech to advance large-scale industrialization of exosome therapies."
+    },
+    "body": {
+      "zh": "2023年5月25日，比利时ConvEyXO创始人兼CEO Jean-Paul PRIEELS偕副CEO Frédéric TONGLET访问中国科学院深圳先进技术研究院，中科佰乘与ConvEyXO正式签署全面战略合作协议。\n\n![签约现场](/data/news-images/48515965.jpeg)\n\nConvEyXO将围绕中科院深圳先进技术研究院研究员、中科佰乘创始人杨慧团队研发的高效高通量新型治疗性外泌体药物递送技术与载入仪器展开全面合作，进一步推动深圳先进院科技成果产业化转化的国际化进程。\n\n杨慧团队研发的高效高通量新型治疗性外泌体药物递送技术与载入仪器，是目前最接近甚至是唯一能够实现外泌体疗法快速大规模工业化生产的解决方案，有效解决了外泌体药物载体构建及其工业应用的痛点。双方团队将在外泌体药物递送载体器件工程化开发、药物载体上游来源、载体大规模生产及应用等多个方面开展深度合作。\n\n![合作交流](/data/news-images/48515966.jpeg)\n\n根据合作协议，双方将充分发挥各自优势与资源，共同建立联合创新研发中心和产业服务平台，促进科技成果的转化与传播，加速高端专有生物医药工具和创新医疗器械的落地应用。\n\n比利时驻华大使馆商业及科技参赞 Didier Denayer 表示：「在当今全球化背景下，与优秀科研团队建立稳定的合作关系，能够突破国家边界的限制，共同在生物医学创新技术研发领域寻求重大突破。」\n\n深圳先进技术研究院副院长郑海荣表示，深圳先进院通过提供开放的国际化环境和设施吸引了世界一流人才，期待双方合作为粤港澳大湾区乃至国际生物医学器件与设备领域的前沿突破作出贡献。",
+      "en": "On May 25, 2023, Jean-Paul PRIEELS, founder and CEO of Belgium's ConvEyXO, along with Deputy CEO Frédéric TONGLET, visited SIAT. On the same day, ConvEyXO and SomesTech formally signed a comprehensive strategic cooperation agreement.\n\n![Signing Ceremony](/data/news-images/48515965.jpeg)\n\nConvEyXO will engage in comprehensive cooperation focusing on the high-efficiency, high-throughput novel therapeutic exosome drug delivery technology developed by Yang Hui's team at SIAT. Both teams will cooperate in engineering development of exosome delivery devices, carrier sourcing, large-scale production, and applications.\n\n![Exchange Visit](/data/news-images/48515966.jpeg)\n\nAccording to the agreement, both parties will jointly establish an innovation R&D center and industrial service platform to promote the transformation of scientific and technological achievements and accelerate biomedical innovation."
+    },
+    "createdBy": "admin"
   }
 ]
