@@ -7,6 +7,8 @@ window.I18N_ZH = {
     presentations: "组内分享",
     members: "成员",
     news: "科研进展",
+    share: "组内分享",
+    admin: "管理",
   },
   members: {
     title: "课题组成员",

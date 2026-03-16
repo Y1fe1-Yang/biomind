@@ -7,6 +7,8 @@ window.I18N_EN = {
     presentations: "Group Sharing",
     members: "Members",
     news: "News",
+    share: "Sharing",
+    admin: "Admin",
   },
   members: {
     title: "Lab Members",
