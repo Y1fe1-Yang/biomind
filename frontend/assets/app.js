@@ -358,6 +358,8 @@ function renderView(name) {
     directions: renderDirections,
     sops: renderSops,
     presentations: renderPresentations,
+    members: renderMembers,
+    news: renderNews,
   };
   if (renders[name]) renders[name]();
 }
@@ -931,6 +933,395 @@ async function _handleSopAction(e) {
     extractBtn.textContent = t("sop.progressError") + err.message;
     extractBtn.disabled = false;
   }
+}
+
+// ── Members ───────────────────────────────────────────────────────
+const _memberPhotoIdx = {};  // { memberId: currentIndex }
+
+function _memberPhoto(id, delta) {
+  const member = (window.MEMBERS || []).find(m => m.id === id);
+  const photos = member?.photos || (member?.photo ? [member.photo] : []);
+  if (photos.length <= 1) return;
+  const cur = _memberPhotoIdx[id] || 0;
+  const next = (cur + delta + photos.length) % photos.length;
+  _memberPhotoIdx[id] = next;
+  const img = document.getElementById(`mphoto-img-${id}`);
+  if (img) {
+    img.style.opacity = "0";
+    setTimeout(() => { img.src = photos[next]; img.style.opacity = "1"; }, 150);
+  }
+  document.querySelectorAll(`#mphoto-dots-${id} .mph-dot`).forEach((d, i) => {
+    d.style.background = i === next ? "#2563eb" : "#d1d5db";
+  });
+}
+
+function renderMembers() {
+  Object.keys(_memberPhotoIdx).forEach(k => delete _memberPhotoIdx[k]);
+  const members = window.MEMBERS || [];
+  const groups = [
+    { key: "pi",         labelZh: "课题组长",  labelEn: "Principal Investigator" },
+    { key: "postdoc",    labelZh: "博士后",    labelEn: "Postdoctoral Researchers" },
+    { key: "researcher", labelZh: "研究人员",  labelEn: "Researchers" },
+    { key: "phd",        labelZh: "博士生",    labelEn: "PhD Students" },
+    { key: "master",     labelZh: "硕士生",    labelEn: "Master's Students" },
+    { key: "alumni",     labelZh: "往届成员",  labelEn: "Alumni" },
+  ];
+
+  function photoSlot(m) {
+    const photos = m.photos || (m.photo ? [m.photo] : []);
+    const name = currentLang === "zh" ? m.name.zh : m.name.en;
+    if (photos.length === 0) {
+      return `<div style="width:96px;height:128px;flex-shrink:0;background:#f3f4f6;border-radius:.5rem"></div>`;
+    }
+    const hasMany = photos.length > 1;
+    const arrows = hasMany ? `
+      <button onclick="event.stopPropagation();_memberPhoto('${m.id}',-1)"
+        style="position:absolute;left:2px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;border-radius:50%;width:20px;height:20px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.18)">‹</button>
+      <button onclick="event.stopPropagation();_memberPhoto('${m.id}',1)"
+        style="position:absolute;right:2px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:none;border-radius:50%;width:20px;height:20px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.18)">›</button>` : "";
+    const dots = hasMany ? `
+      <div id="mphoto-dots-${m.id}" style="position:absolute;bottom:5px;left:0;right:0;display:flex;justify-content:center;gap:3px;pointer-events:none">
+        ${photos.map((_, i) => `<span class="mph-dot" style="width:5px;height:5px;border-radius:50%;background:${i === 0 ? "#2563eb" : "#d1d5db"}"></span>`).join("")}
+      </div>` : "";
+    return `
+      <div style="position:relative;width:96px;height:128px;flex-shrink:0">
+        <img id="mphoto-img-${m.id}" src="${photos[0]}" alt="${name}"
+             style="width:96px;height:128px;object-fit:cover;object-position:top;border-radius:.5rem;border:1px solid #f3f4f6;transition:opacity .15s"
+             onerror="this.style.opacity='.15'">
+        ${arrows}
+        ${dots}
+      </div>`;
+  }
+
+  function memberCard(m) {
+    const name     = currentLang === "zh" ? m.name.zh  : m.name.en;
+    const title    = currentLang === "zh" ? m.title.zh : m.title.en;
+    const bio      = currentLang === "zh" ? m.bio.zh   : m.bio.en;
+    const research = (currentLang === "zh" ? m.research.zh : m.research.en)
+      .map(r => `<span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">${r}</span>`)
+      .join("");
+    return `
+      <div class="bg-white rounded-xl border border-gray-200 p-5 flex gap-5 items-start hover:shadow-sm transition">
+        ${photoSlot(m)}
+        <div class="flex-1 min-w-0">
+          <div class="flex items-baseline gap-2 flex-wrap mb-0.5">
+            <h3 class="text-base font-bold text-gray-900">${name}</h3>
+            <span class="text-xs text-blue-700 font-medium">${title}</span>
+          </div>
+          <a href="mailto:${m.email}" class="text-xs text-gray-400 hover:text-blue-500 mb-2 inline-block">${m.email}</a>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3">${bio}</p>
+          <div class="flex flex-wrap gap-1">${research}</div>
+        </div>
+      </div>`;
+  }
+
+  const sections = groups.map(g => {
+    const gm = members.filter(m => m.group === g.key);
+    if (!gm.length) return "";
+    const label = currentLang === "zh" ? g.labelZh : g.labelEn;
+    return `
+      <div class="mb-8">
+        <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9ca3af;margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:1px solid #f3f4f6">${label}</div>
+        <div class="members-grid grid grid-cols-1 gap-4">
+          ${gm.map(memberCard).join("")}
+        </div>
+      </div>`;
+  }).join("");
+
+  document.getElementById("view-members").innerHTML = `
+    <div style="position:relative;margin:-1.5rem -1rem 2rem;padding:3rem 2.5rem 2rem;background:#f8fafc;border-bottom:1px solid #e5e7eb;overflow:hidden">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:900;color:rgba(37,99,235,.05);letter-spacing:-.25rem;pointer-events:none;user-select:none">TEAM</div>
+      <h2 style="font-size:1.5rem;font-weight:800;color:#1e3a8a;position:relative" data-i18n="members.title"></h2>
+    </div>
+    ${sections}`;
+  applyI18n();
+}
+
+// ── News ──────────────────────────────────────────────────────────
+let _newsCache = [];
+
+function _mdInline(text) {
+  return text
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/_(.+?)_/g, "<em>$1</em>")
+    .replace(/`(.+?)`/g, "<code style=\"background:#f3f4f6;padding:0 3px;border-radius:3px\">$1</code>");
+}
+
+function _renderMd(md) {
+  if (!md) return "";
+  const lines = md.split("\n");
+  let html = "";
+  let inList = false;
+  for (const line of lines) {
+    const imgMatch = line.match(/^!\[([^\]]*)\]\(([^)]+)\)$/);
+    if (imgMatch) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<figure style="margin:1.25rem 0;text-align:center"><img src="${imgMatch[2]}" alt="${imgMatch[1]}" style="max-width:100%;border-radius:.75rem;display:inline-block" onerror="this.style.display='none'"><figcaption style="font-size:.75rem;color:#9ca3af;margin-top:.4rem">${_mdInline(imgMatch[1])}</figcaption></figure>`;
+      continue;
+    }
+    if (/^## /.test(line)) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<h3 style="font-size:1rem;font-weight:700;color:#1e3a8a;margin:1.5rem 0 .5rem">${_mdInline(line.slice(3))}</h3>`;
+      continue;
+    }
+    if (/^### /.test(line)) {
+      if (inList) { html += "</ul>"; inList = false; }
+      html += `<h4 style="font-size:.9rem;font-weight:600;color:#374151;margin:1rem 0 .25rem">${_mdInline(line.slice(4))}</h4>`;
+      continue;
+    }
+    if (/^[-*] /.test(line)) {
+      if (!inList) { html += `<ul style="list-style:disc;padding-left:1.5rem;margin:.5rem 0">`; inList = true; }
+      html += `<li style="margin:.2rem 0">${_mdInline(line.slice(2))}</li>`;
+      continue;
+    }
+    if (!line.trim()) {
+      if (inList) { html += "</ul>"; inList = false; }
+      continue;
+    }
+    if (inList) { html += "</ul>"; inList = false; }
+    html += `<p style="margin:.6rem 0;line-height:1.7">${_mdInline(line)}</p>`;
+  }
+  if (inList) html += "</ul>";
+  return html;
+}
+
+async function renderNews() {
+  const el = document.getElementById("view-news");
+  el.innerHTML = `<div style="text-align:center;padding:4rem;color:#9ca3af">${t("loading")}</div>`;
+  try {
+    const resp = await fetch("/api/news");
+    _newsCache = resp.ok ? await resp.json() : [];
+  } catch { _newsCache = []; }
+
+  const canWrite = !!getToken();
+
+  function newsCard(item) {
+    const title   = currentLang === "zh" ? item.title.zh : (item.title.en || item.title.zh);
+    const excerpt = currentLang === "zh" ? item.excerpt.zh : (item.excerpt.en || item.excerpt.zh);
+    const [year, month, day] = item.date.split("-");
+    const canEdit = window.__isAdmin || getUsername() === item.createdBy;
+    const editBtns = canEdit ? `
+      <div style="display:flex;gap:6px;margin-top:8px" onclick="event.stopPropagation()">
+        <button onclick="openNewsEditor('${item.id}')"
+          style="font-size:.65rem;color:#2563eb;background:#eff6ff;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">${t("news.edit")}</button>
+        <button onclick="deleteNewsArticle('${item.id}')"
+          style="font-size:.65rem;color:#dc2626;background:#fef2f2;border:none;border-radius:4px;padding:2px 8px;cursor:pointer">${t("news.delete")}</button>
+      </div>` : "";
+    return `
+      <div class="news-card bg-white rounded-xl border border-gray-200 overflow-hidden cursor-pointer"
+           style="box-shadow:0 1px 3px rgba(0,0,0,.06)" onclick="showNewsDetail('${item.id}')">
+        <div style="overflow:hidden;aspect-ratio:16/9">
+          <img src="${item.coverImage || ''}" alt="${title}"
+               class="news-card-img w-full h-full object-cover"
+               onerror="this.parentElement.style.background='#f3f4f6'">
+        </div>
+        <div class="p-4">
+          <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:8px">
+            <span style="font-size:1.5rem;font-weight:900;color:#2563eb;line-height:1">${year}</span>
+            <span style="font-size:.75rem;color:#9ca3af;font-weight:500">${month}-${day}</span>
+          </div>
+          <h3 class="line-clamp-2" style="font-size:.875rem;font-weight:700;color:#111827;line-height:1.4;margin-bottom:8px">${title}</h3>
+          <p class="line-clamp-3" style="font-size:.75rem;color:#6b7280;line-height:1.6">${excerpt}</p>
+          <div style="margin-top:12px">
+            <span style="font-size:.7rem;color:#2563eb;font-weight:600">${t("news.readMore")} →</span>
+          </div>
+          ${editBtns}
+        </div>
+      </div>`;
+  }
+
+  const writeBtn = canWrite ? `
+    <button onclick="openNewsEditor(null)"
+      style="position:absolute;right:2.5rem;top:3rem;background:#2563eb;color:#fff;border:none;border-radius:.5rem;padding:.5rem 1.25rem;font-size:.875rem;font-weight:600;cursor:pointer">
+      ${t("news.write")}
+    </button>` : "";
+
+  el.innerHTML = `
+    <div style="position:relative;margin:-1.5rem -1rem 2rem;padding:3rem 2.5rem 2rem;background:#f8fafc;border-bottom:1px solid #e5e7eb;overflow:hidden">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;font-weight:900;color:rgba(37,99,235,.05);letter-spacing:-.25rem;pointer-events:none;user-select:none">NEWS</div>
+      <h2 style="font-size:1.5rem;font-weight:800;color:#1e3a8a;position:relative" data-i18n="news.title"></h2>
+      <p style="font-size:.875rem;color:#6b7280;margin-top:.25rem;position:relative" data-i18n="news.subtitle"></p>
+      ${writeBtn}
+    </div>
+    <div class="news-grid">
+      ${_newsCache.map(item => newsCard(item)).join("")}
+    </div>`;
+  applyI18n();
+}
+
+function showNewsDetail(id) {
+  const item = _newsCache.find(a => a.id === id);
+  if (!item) return;
+  const title = currentLang === "zh" ? item.title.zh : (item.title.en || item.title.zh);
+  const body  = currentLang === "zh" ? item.body.zh  : (item.body.en  || item.body.zh);
+  document.getElementById("news-modal-title").textContent = title;
+  document.getElementById("news-modal-date").textContent  = item.date;
+  const coverWrap = document.getElementById("news-modal-cover");
+  if (item.coverImage) {
+    document.getElementById("news-modal-img").src = item.coverImage;
+    coverWrap.style.display = "";
+  } else {
+    coverWrap.style.display = "none";
+  }
+  const srcEl = document.getElementById("news-modal-source");
+  if (item.url) {
+    srcEl.href = item.url;
+    srcEl.textContent = (item.source || "siat.ac.cn") + " ↗";
+    srcEl.style.display = "";
+  } else {
+    srcEl.style.display = "none";
+  }
+  document.getElementById("news-modal-body").innerHTML = _renderMd(body);
+  const editBtn = document.getElementById("news-modal-edit-btn");
+  const canEdit = window.__isAdmin || getUsername() === item.createdBy;
+  if (canEdit) {
+    editBtn.classList.remove("hidden");
+    editBtn.onclick = () => { closeNewsModal(); openNewsEditor(id); };
+    applyI18n();
+  } else {
+    editBtn.classList.add("hidden");
+  }
+  document.getElementById("news-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeNewsModal() {
+  document.getElementById("news-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+// ── News editor ────────────────────────────────────────────────────
+let _neArticleId = null;
+
+function openNewsEditor(idOrNull) {
+  _neArticleId = idOrNull;
+  const article = idOrNull ? _newsCache.find(a => a.id === idOrNull) : null;
+  document.getElementById("ne-title-zh").value   = article?.title?.zh    || "";
+  document.getElementById("ne-title-en").value   = article?.title?.en    || "";
+  document.getElementById("ne-excerpt-zh").value = article?.excerpt?.zh  || "";
+  document.getElementById("ne-excerpt-en").value = article?.excerpt?.en  || "";
+  document.getElementById("ne-date").value        = article?.date         || new Date().toISOString().slice(0, 10);
+  document.getElementById("ne-source").value      = article?.source       || "";
+  document.getElementById("ne-url").value         = article?.url          || "";
+  document.getElementById("ne-cover").value       = article?.coverImage   || "";
+  document.getElementById("ne-body-zh").value     = article?.body?.zh     || "";
+  document.getElementById("ne-body-en").value     = article?.body?.en     || "";
+  document.getElementById("ne-preview").innerHTML = "";
+  document.getElementById("ne-preview-wrap").classList.add("hidden");
+  document.getElementById("ne-error").classList.add("hidden");
+  document.getElementById("ne-status").textContent = "";
+  document.getElementById("news-editor-modal").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  applyI18n();
+}
+
+function closeNewsEditor() {
+  document.getElementById("news-editor-modal").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+function toggleNePreview() {
+  const wrap = document.getElementById("ne-preview-wrap");
+  if (wrap.classList.contains("hidden")) {
+    document.getElementById("ne-preview").innerHTML = _renderMd(document.getElementById("ne-body-zh").value);
+    wrap.classList.remove("hidden");
+  } else {
+    wrap.classList.add("hidden");
+  }
+}
+
+async function uploadNewsImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const status = document.getElementById("ne-img-status");
+  status.textContent = t("news.editor.uploadingImage");
+  try {
+    const fd = new FormData();
+    fd.append("file", file);
+    const resp = await apiFetch("/api/news/images", { method: "POST", body: fd });
+    if (!resp.ok) throw new Error();
+    const data = await resp.json();
+    const ta = document.getElementById("ne-body-zh");
+    const pos = ta.selectionStart;
+    const ins = `\n![](${data.url})\n`;
+    ta.value = ta.value.slice(0, pos) + ins + ta.value.slice(pos);
+    ta.selectionStart = ta.selectionEnd = pos + ins.length;
+    ta.focus();
+    status.textContent = t("news.editor.imageUploaded");
+    setTimeout(() => { status.textContent = ""; }, 2000);
+  } catch {
+    status.textContent = "Upload failed";
+    setTimeout(() => { status.textContent = ""; }, 2000);
+  }
+  input.value = "";
+}
+
+async function uploadNewsCover(input) {
+  const file = input.files[0];
+  if (!file) return;
+  try {
+    const fd = new FormData();
+    fd.append("file", file);
+    const resp = await apiFetch("/api/news/images", { method: "POST", body: fd });
+    if (!resp.ok) throw new Error();
+    const data = await resp.json();
+    document.getElementById("ne-cover").value = data.url;
+  } catch {}
+  input.value = "";
+}
+
+async function submitNewsArticle() {
+  const titleZh = document.getElementById("ne-title-zh").value.trim();
+  const bodyZh  = document.getElementById("ne-body-zh").value.trim();
+  if (!titleZh || !bodyZh) {
+    const errEl = document.getElementById("ne-error");
+    errEl.textContent = t("news.editor.errorEmpty");
+    errEl.classList.remove("hidden");
+    return;
+  }
+  const payload = {
+    title_zh:    titleZh,
+    title_en:    document.getElementById("ne-title-en").value.trim(),
+    excerpt_zh:  document.getElementById("ne-excerpt-zh").value.trim(),
+    excerpt_en:  document.getElementById("ne-excerpt-en").value.trim(),
+    date:        document.getElementById("ne-date").value,
+    source:      document.getElementById("ne-source").value.trim(),
+    url:         document.getElementById("ne-url").value.trim(),
+    cover_image: document.getElementById("ne-cover").value.trim(),
+    body_zh:     bodyZh,
+    body_en:     document.getElementById("ne-body-en").value.trim(),
+  };
+  const statusEl = document.getElementById("ne-status");
+  statusEl.textContent = t("news.editor.saving");
+  document.getElementById("ne-error").classList.add("hidden");
+  try {
+    const method = _neArticleId ? "PUT" : "POST";
+    const url    = _neArticleId ? `/api/news/${_neArticleId}` : "/api/news";
+    const resp   = await apiFetch(url, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.detail || t("news.editor.errorSave"));
+    }
+    statusEl.textContent = t("news.editor.saved");
+    setTimeout(() => { closeNewsEditor(); renderNews(); }, 600);
+  } catch (e) {
+    document.getElementById("ne-error").textContent = e.message;
+    document.getElementById("ne-error").classList.remove("hidden");
+    statusEl.textContent = "";
+  }
+}
+
+async function deleteNewsArticle(id) {
+  if (!confirm(`${t("news.delete")}?`)) return;
+  try {
+    const resp = await apiFetch(`/api/news/${id}`, { method: "DELETE" });
+    if (resp.ok) renderNews();
+  } catch {}
 }
 
 // ── Mobile menu ───────────────────────────────────────────────────

@@ -1,0 +1,138 @@
+/**
+ * ╔════════════════════════════════════════════════════════════════╗
+ * ║  ADMIN: 成员数据维护说明                                        ║
+ * ╠════════════════════════════════════════════════════════════════╣
+ * ║  添加成员：复制下方任意一个 {} 对象作为模板，填写所有字段          ║
+ * ║  修改成员：直接编辑对应字段，保存后立即生效                        ║
+ * ║  删除成员：删除对应的整个 {} 对象（含前后逗号）                    ║
+ * ╚════════════════════════════════════════════════════════════════╝
+ *
+ * 字段说明：
+ *   id        — 唯一标识符，建议 "姓名-拼音" (kebab-case)，与照片文件名对应
+ *   group     — 分组，决定在页面中出现在哪个区块：
+ *               "pi"         课题组长
+ *               "postdoc"    博士后
+ *               "researcher" 研究人员
+ *               "phd"        博士生
+ *               "master"     硕士生
+ *               "alumni"     往届成员
+ *   name      — { zh: "中文名", en: "English Name" }
+ *   title     — { zh: "职称/学位信息（中文）", en: "Title (English)" }
+ *   email     — 联系邮箱
+ *   photos    — 照片路径数组 [ "/data/members/文件名.jpg", ... ]
+ *               * 照片文件放到 data/members/ 目录下
+ *               * 第一张为默认展示图，多张时显示轮播箭头
+ *               * 支持 .jpg / .png / .webp
+ *   research  — { zh: ["关键词1", ...], en: ["Keyword1", ...] }  研究方向标签
+ *   edu       — { zh: ["经历1", ...], en: ["History1", ...] }  教育/工作经历
+ *   bio       — { zh: "中文简介", en: "English bio" }  个人简介段落
+ */
+window.MEMBERS = [
+
+  // ── 课题组长 / PI ─────────────────────────────────────────────────
+  {
+    id: "yang-hui",
+    group: "pi",
+    name: { zh: "杨慧", en: "Yang Hui" },
+    title: { zh: "研究员 · 课题组组长 · 传感中心主任", en: "Researcher · PI · Director of Sensing Center" },
+    email: "hui.yang@siat.ac.cn",
+    photos: [
+      "/data/members/yang-hui.jpg"
+      // 如需添加更多照片，在此行下方继续追加：
+      // "/data/members/yang-hui-2.jpg",
+    ],
+    research: {
+      zh: ["生物微机电系统（BioMEMS）", "微纳流控技术", "生物传感技术", "低成本疾病诊断", "单分子生物检测与成像", "细胞外泌体精准治疗"],
+      en: ["BioMEMS", "Micro/Nanofluidics", "Biosensing", "Low-cost diagnostics", "Single-molecule detection", "Exosome therapeutics"]
+    },
+    edu: {
+      zh: ["博士 · 洛桑联邦理工学院（EPFL），2014", "硕士 · 厦门大学，2009", "学士 · 厦门大学，2006"],
+      en: ["PhD · EPFL (Switzerland), 2014", "MEng · Xiamen University, 2009", "BEng · Xiamen University, 2006"]
+    },
+    bio: {
+      zh: "杨慧，中国科学院深圳先进技术研究院研究员、传感中心主任，BioMiND课题组组长。博士毕业于瑞士洛桑联邦理工学院（EPFL），曾在比利时微电子研究中心（IMEC）任研究科学家（2015–2017），并在EPFL从事博士后研究。研究方向涵盖生物微机电系统（BioMEMS）、微纳流控技术、生物传感及低成本疾病诊断等。",
+      en: "Dr. Yang Hui is a Researcher and Director of the Sensing Center at SIAT, Chinese Academy of Sciences, and PI of the BioMiND Lab. She received her PhD from EPFL (Switzerland) and worked as a Research Scientist at IMEC (Belgium, 2015–2017). Her research covers BioMEMS, micro/nanofluidics, biosensing, and low-cost disease diagnostics."
+    }
+  },
+
+  // ── 研究人员 / Researchers ─────────────────────────────────────────
+  {
+    id: "zhang-yi",
+    group: "researcher",
+    name: { zh: "张翊", en: "Zhang Yi" },
+    title: { zh: "正高级工程师 · 博士生导师", en: "Senior Engineer · Doctoral Supervisor" },
+    email: "yi.zhang3@siat.ac.cn",
+    photos: [
+      "/data/members/zhang-yi.jpg"
+    ],
+    research: {
+      zh: ["高性能医疗诊断与治疗器械", "生命科学仪器", "体外诊断（IVD/POCT）", "有源植入式生物电子学", "眼科器械", "脑机接口"],
+      en: ["Medical diagnostic/therapeutic devices", "Life science instrumentation", "IVD/POCT", "Active implantable bioelectronics", "Ophthalmic devices", "Brain-computer interface"]
+    },
+    edu: {
+      zh: ["博士 · 厦门大学，2009", "博士后 · 格拉斯哥大学生物医学工程系，2010–2012", "研究科学家 · 南加州大学医学院，2012–2018"],
+      en: ["PhD · Xiamen University, 2009", "Postdoc · University of Glasgow (Biomedical Engineering), 2010–2012", "Research Scientist · University of Southern California (School of Medicine), 2012–2018"]
+    },
+    bio: {
+      zh: "张翊正高级工程师，博士毕业于厦门大学，曾在格拉斯哥大学及南加州大学医学院从事研究，2019年加入中国科学院深圳先进技术研究院。研究方向涵盖高性能医疗诊断与治疗器械、体外诊断（IVD/POCT）、有源植入式生物电子学、眼科器械及脑机接口等。",
+      en: "Dr. Zhang Yi is a Senior Engineer at SIAT. He received his PhD from Xiamen University and conducted research at University of Glasgow and University of Southern California before joining SIAT in 2019. His research covers medical diagnostic devices, IVD/POCT, active implantable bioelectronics, ophthalmic devices, and brain-computer interfaces."
+    }
+  },
+  {
+    id: "gu-guoqiang",
+    group: "researcher",
+    name: { zh: "顾国强", en: "Gu Guoqiang" },
+    title: { zh: "副研究员 · 硕士生导师", en: "Associate Research Fellow · Master's Supervisor" },
+    email: "gq.gu@siat.ac.cn",
+    photos: [
+      "/data/members/gu-guoqiang.png"
+    ],
+    research: {
+      zh: ["超分辨成像技术", "拉曼光谱技术", "光学微腔技术", "生物医学光子学", "光学传感器", "微纳光学"],
+      en: ["Super-resolution imaging", "Raman spectroscopy", "Optical microcavity", "Biomedical photonics", "Optical sensors", "Micro/nano optics"]
+    },
+    edu: {
+      zh: ["博士 · 厦门大学，2015", "曾任职 · 南方科技大学、深圳大学、新加坡国立大学"],
+      en: ["PhD · Xiamen University, 2015", "Previously at Southern University of Science and Technology, Shenzhen University, and National University of Singapore"]
+    },
+    bio: {
+      zh: "顾国强副研究员，博士毕业于厦门大学，曾在南方科技大学、深圳大学及新加坡国立大学从事研究，2023年1月加入中国科学院深圳先进技术研究院。研究方向涵盖超分辨成像、拉曼光谱、光学微腔及生物医学光子学。",
+      en: "Dr. Gu Guoqiang is an Associate Research Fellow at SIAT. He received his PhD from Xiamen University and held positions at Southern University of Science and Technology, Shenzhen University, and National University of Singapore before joining SIAT in 2023. His research covers super-resolution imaging, Raman spectroscopy, optical microcavity, and biomedical photonics."
+    }
+  },
+  {
+    id: "sun-bin",
+    group: "researcher",
+    name: { zh: "孙滨", en: "Sun Bin" },
+    title: { zh: "高级工程师 · 研究生导师", en: "Senior Engineer · Graduate Supervisor" },
+    email: "bin.sun@siat.ac.cn",
+    photos: [
+      "/data/members/sun-bin.png"
+    ],
+    research: {
+      zh: ["柔性MEMS设计与工艺", "柔性电子技术", "触觉传感技术", "可穿戴器件", "人机交互"],
+      en: ["Flexible MEMS design & fabrication", "Flexible electronics", "Tactile sensing", "Wearable devices", "Human-computer interaction"]
+    },
+    edu: {
+      zh: ["博士后 · 中科院深圳先进技术研究院，2016", "助理研究员 · 中科院，2018–2021", "副研究员 · 中科大苏州研究院，2021–2024"],
+      en: ["Postdoc · SIAT, 2016", "Assistant Researcher · CAS, 2018–2021", "Associate Researcher · USTC Suzhou Institute, 2021–2024"]
+    },
+    bio: {
+      zh: "孙滨高级工程师，2024年9月加入中国科学院深圳先进技术研究院。长期从事柔性MEMS设计与工艺、柔性电子技术及触觉传感技术研究，致力于将三维柔性传感技术应用于可穿戴设备、医疗器械、机器人操控和人机交互等领域。",
+      en: "Dr. Sun Bin is a Senior Engineer at SIAT, joined in September 2024. His research focuses on flexible MEMS design and fabrication, flexible electronics, and tactile sensing, with applications in wearable devices, medical instruments, robotic manipulation, and human-computer interaction."
+    }
+  }
+
+  // ── 如需添加博士生，复制以下模板（取消注释并填写）─────────────────
+  // {
+  //   id: "xxx-yyy",
+  //   group: "phd",
+  //   name: { zh: "姓名", en: "Name" },
+  //   title: { zh: "博士研究生", en: "PhD Candidate" },
+  //   email: "xxx@siat.ac.cn",
+  //   photos: [ "/data/members/xxx-yyy.jpg" ],
+  //   research: { zh: ["方向1"], en: ["Topic1"] },
+  //   edu: { zh: ["..."], en: ["..."] },
+  //   bio: { zh: "简介", en: "Bio" }
+  // },
+];

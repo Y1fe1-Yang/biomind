@@ -6,12 +6,12 @@ router = APIRouter(prefix="/api/files")
 
 ROOT = Path(__file__).parent.parent.parent  # project root
 
-# Directories that may be served via /api/files/
-ALLOWED_DIRS = [
-    ROOT / "1.Journal Articles",
-    ROOT / "2.Conference Proceedings",
-    ROOT / "3.Books",
-    ROOT / "files",
+# Subdirectory names that may be served via /api/files/
+_ALLOWED_SUBDIRS = [
+    "1.Journal Articles",
+    "2.Conference Proceedings",
+    "3.Books",
+    "files",
 ]
 
 
@@ -19,10 +19,13 @@ ALLOWED_DIRS = [
 def serve_file(file_path: str):
     requested = (ROOT / file_path).resolve()
 
+    # Compute allowed dirs from current ROOT so monkeypatching ROOT in tests works
+    allowed_dirs = [ROOT / name for name in _ALLOWED_SUBDIRS]
+
     # Security: path must be inside one of the allowed directories
     allowed = any(
         requested == d.resolve() or d.resolve() in requested.parents
-        for d in ALLOWED_DIRS
+        for d in allowed_dirs
     )
     if not allowed:
         raise HTTPException(status_code=403, detail="Access denied")

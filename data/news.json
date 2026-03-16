@@ -1,0 +1,142 @@
+[
+  {
+    "id": "small-methods-spt-2025",
+    "date": "2025-12-22",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202512/t20251222_8031270.html",
+    "coverImage": "https://www.siat.ac.cn/siatxww/kyjz/W020251222541849422159_ORIGIN.jpg",
+    "title": {
+      "zh": "Small Methods | 基于微透镜阵列的片上光散射增强实现在传统明场显微镜下的高性能单颗粒追踪",
+      "en": "Small Methods | On-Chip Light-Scattering Enhancement via Microlens Array for High-Performance Single-Particle Tracking"
+    },
+    "excerpt": {
+      "zh": "传感中心杨慧研究员团队开发基于微透镜阵列的片上光散射增强方案，在普通明场显微镜下实现 2.9 nm 定位精度的高性能单颗粒追踪，入选 Small Methods 封面。",
+      "en": "Yang Hui's team developed a microlens array-based on-chip light-scattering enhancement enabling 2.9 nm precision single-particle tracking on conventional bright-field microscopes, featured on the cover of Small Methods."
+    },
+    "body": {
+      "zh": "近日，中国科学院深圳先进技术研究院医工所传感中心杨慧研究员团队在国际学术期刊 Small Methods 上发表最新研究成果，并入选封面文章。\n\n单颗粒追踪（SPT）技术能够实时可视化生物体系中单个分子或纳米颗粒的运动轨迹，被誉为揭示纳米尺度动态行为的利器，在医学诊断、药物研发及材料科学等领域具有广泛应用前景。然而，高精度 SPT 的实现长期依赖于专用光学装置，价格昂贵且难以普及。\n\n![Small Methods 封面图](https://www.siat.ac.cn/siatxww/kyjz/W020251222541849422159_ORIGIN.jpg)\n\n针对这一问题，研究团队提出了一种基于微透镜阵列芯片的片上光散射增强方案，利用高折射率微球构建微透镜，在普通明场显微镜下实现了近场光散射增强范围较传统技术提升约 **10 倍**的突破，大幅提高了单颗粒追踪的灵敏度和精度。\n\n该传感器核心性能指标：\n- 定位精度：**2.9 纳米**\n- 视野范围：**750 µm²**\n- 曝光时间：**200 微秒**\n- 最小可检颗粒：60 纳米\n\n![单颗粒追踪成像效果](https://www.siat.ac.cn/siatxww/kyjz/W020251222541849816580_ORIGIN.png)\n\n这项技术仅需标准 LED 光源和低照明功率即可完成高性能追踪，使高精度 SPT 从专用昂贵光学系统走向普通实验室常见设备，为生命科学研究的普及化奠定重要基础。",
+      "en": ""
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "jev-exose-2025",
+    "date": "2025-12-18",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202512/t20251218_8029732.html",
+    "coverImage": "https://www.siat.ac.cn/siatxww/kyjz/W020251218533057181288_ORIGIN.jpg",
+    "title": {
+      "zh": "Journal of Extracellular Vesicles | 新型微纳流控平台 ExoSE 助力细胞外囊泡表面工程化",
+      "en": "Journal of Extracellular Vesicles | ExoSE: A Microfluidic Platform for Extracellular Vesicle Surface Engineering"
+    },
+    "excerpt": {
+      "zh": "杨慧研究员团队开发 ExoSE 微纳流控平台，实现细胞外囊泡表面的高效标准化工程化改造，脂质嵌入效率超 97%，血脑屏障穿透能力提升 3 倍。成果发表于 Journal of Extracellular Vesicles。",
+      "en": "Yang Hui's team developed ExoSE, a microfluidic platform for standardized sEV surface engineering with >97% lipid embedding efficiency and 3x improved blood-brain barrier penetration, published in Journal of Extracellular Vesicles."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院杨慧研究员、曾林研究员团队联合复旦大学李聪教授团队，在 Journal of Extracellular Vesicles 发表研究成果（DOI: 10.1002/jev2.70215），开发了用于细胞外囊泡表面工程化的微纳流控平台 **ExoSE**（EV Surface-Engineering device）。\n\n小型细胞外囊泡（sEV）因其天然靶向递送能力备受关注，但临床应用中如何高效、标准化地对 sEV 进行表面功能化改造一直是领域难题。\n\n![ExoSE 平台示意图](https://www.siat.ac.cn/siatxww/kyjz/W020251218533057181288_ORIGIN.jpg)\n\n## 平台核心设计\n\nExoSE 将表面修饰流程解耦为两个独立单元：\n- **加载模块**：通过高通量机械穿孔实现功能性脂质嵌入\n- **混合模块**：负责配体的快速附着，无需依赖供体细胞\n\n## 性能指标\n\n- 脂质嵌入效率：**超 97%**\n- 单颗粒配体结合数量：提升 **3–6 倍**\n- RGE 肽修饰后血脑屏障穿透能力：提升 **3 倍**\n- AS1411 适配体修饰后对乳腺癌细胞靶向特异性：**77.8%**\n\n动物实验表明，修饰后的 sEV 可有效富集于脑部，无肝肾毒性，展现出良好的临床转化前景。",
+      "en": ""
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "nat-biomed-eng-nanodraw-2025",
+    "date": "2025-11-20",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202511/t20251120_8014862.html",
+    "coverImage": "https://www.siat.ac.cn/siatxww/kyjz/W020251120626103708058.png",
+    "title": {
+      "zh": "Nature Biomedical Engineering | 新一代术中分子导航平台：免标记拉曼技术实现前列腺癌恶性程度实时分级",
+      "en": "Nature Biomedical Engineering | Label-Free Raman Navigation System for Real-Time Intraoperative Tumor Grading"
+    },
+    "excerpt": {
+      "zh": "杨慧研究员与郑海荣院士团队联合复旦大学，开发 NanoDraw 微流控拉曼术中导航系统，6 秒完成采样，2 秒 AI 结果解读，144 例临床验证 AUC 达 0.890。成果发表于 Nature Biomedical Engineering。",
+      "en": "Yang Hui and Zheng Hairong's teams developed NanoDraw, a microfluidic SERS intraoperative navigation system achieving 6-second sampling and 2-second AI grading with AUC 0.890, published in Nature Biomedical Engineering."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院杨慧研究员、郑海荣院士团队联合复旦大学研究团队，在 Nature Biomedical Engineering 发表研究成果（DOI: 10.1038/s41551-025-01561-y），开发出前列腺癌术中恶性程度实时分级的分子导航系统。\n\n前列腺癌根治性切除术中，手术切缘阳性率高达 15%–40%，是术后复发的重要原因。传统病理评估需待术后数天，无法在术中实时指导医生判断肿瘤边界。\n\n![NanoDraw 系统示意图](https://www.siat.ac.cn/siatxww/kyjz/W020251120626103708058.png)\n\n## 系统设计\n\n研究团队将**表面增强拉曼散射（SERS）**与微流控技术结合，开发出非对称通道微流控采样器件 **NanoDraw**：\n- 仅需 **6 秒**完成无创标志物采集\n- 同时检测组织 pH 和前列腺特异性抗原（PSA）活性\n- AI 二维卷积神经网络 **2 秒**内完成结果解读\n\n## 临床验证\n\n在 144 例前列腺癌患者的临床试验中，系统对高级别肿瘤（GG≥3）的识别 AUC 达 **0.890**，可在术中实时为外科医生提供分子层面的肿瘤边界信息，帮助在彻底切除肿瘤的同时最大限度保护正常组织。",
+      "en": ""
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "hlife-toi-2025",
+    "date": "2025-06-18",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202506/t20250618_7871451.html",
+    "coverImage": "https://www.siat.ac.cn/siatxww/kyjz/W020250618606301778060_ORIGIN.jpg",
+    "title": {
+      "zh": "hLife | 传感中心研发面向传染病防控的便携式多模态免疫分析平台",
+      "en": "hLife | Portable Multimodal Immunoassay Platform for Infectious Disease Control"
+    },
+    "excerpt": {
+      "zh": "杨慧研究员、谭骁天副研究员团队研发便携式微流控化学发光免疫分析平台（TOI），仅需 1 µL 指尖血，40 分钟内完成多维度免疫指标快速定量评估，成果登上 hLife 2025 年第 7 期封面。",
+      "en": "Yang Hui and Tan Xiaotian's team developed a portable Tip Optofluidic Immunoassay (TOI) platform requiring just 1 µL of fingertip blood for multi-dimensional immune assessment within 40 minutes, featured on the cover of hLife Vol. 3 Issue 7."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院医学成像科学与技术系统全国重点实验室、医工所传感中心杨慧研究员、谭骁天副研究员团队在交叉学科期刊 hLife 发表最新研究成果，并于 2025 年 6 月 17 日登上第 3 卷第 7 期封面。\n\n团队成功研发出一种便携式微流控化学发光免疫分析平台（**Tip Optofluidic Immunoassay，TOI**）。只需 **1 微升**指尖血，研究人员即可利用该平台在 **40 分钟**内完成抗体结合能力和中和能力等多维度免疫指标的快速定量评估，为呼吸道传染病防控与免疫力监测提供了有效技术手段。\n\n![TOI 平台示意图](https://www.siat.ac.cn/siatxww/kyjz/W020250618606301778060_ORIGIN.jpg)\n\n## 平台技术亮点\n\nTOI 平台采用可批量注塑的聚苯乙烯微流控免疫反应器，能够与标准移液枪吸头无缝对接，配合自主设计的便携式化学发光成像设备，实现从采样到分析的全流程集成：\n- 抗体结合能力检测：**15 分钟**，灵敏度 0.1 ng/mL，动态范围近 4 个数量级，信噪比 10,000\n- 中和能力分析：**20 分钟**，输出与传统假病毒中和实验相当的结果\n\n![检测结果示意](https://www.siat.ac.cn/siatxww/kyjz/W020250618606302215342_ORIGIN.png)\n\n## 临床发现\n\n研究发现，疫苗接种策略与既往感染史对个体免疫水平具有显著影响：序贯接种人群的特异性抗体水平和中和能力普遍高于单纯接种灭活疫苗者；反复感染者对近期流行毒株的抗体反应更为强劲，呈现「免疫漂移」趋势。当抗体水平低于保护阈值时，个体在未来六个月内的再感染风险显著上升。\n\nTOI 平台可快速适配流感病毒、猴痘病毒、结核分枝杆菌等多种重要病原体，适用于社区检测、疫苗效果评估、口岸检疫等多种实际场景。",
+      "en": "Researchers from the Sensing Center at SIAT, led by Dr. Yang Hui and Associate Researcher Tan Xiaotian, published a study in hLife featured on the cover of Volume 3, Issue 7 (June 2025).\n\nThe team developed a **Tip Optofluidic Immunoassay (TOI)** platform — a portable microfluidic chemiluminescence immunoassay system. Using just **1 µL** of fingertip blood, the platform can quantitatively assess multiple immune indicators within **40 minutes**.\n\n## Key Performance\n\n- Binding antibody detection: **15 min**, sensitivity 0.1 ng/mL, dynamic range ~4 orders of magnitude, SNR 10,000\n- Neutralization capacity: **20 min**, comparable to traditional pseudovirus neutralization assays\n\n## Clinical Findings\n\nSequential vaccination resulted in higher antibody and neutralization levels than inactivated vaccine alone. Repeated infections led to stronger responses to recent variants (immune drift). Individuals with sub-threshold antibody levels showed significantly higher re-infection risk within 6 months.\n\nThe platform can be rapidly adapted for influenza, monkeypox, tuberculosis, and other pathogens."
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "acs-sensors-biosensing-2025",
+    "date": "2025-02-05",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202502/t20250220_7530801.html",
+    "coverImage": "",
+    "title": {
+      "zh": "ACS Sensors + Analytical Chemistry | 课题组在微流控生物分子传感领域取得系统性突破",
+      "en": "ACS Sensors + Analytical Chemistry | Systematic Breakthroughs in Microfluidic Biomolecular Sensing"
+    },
+    "excerpt": {
+      "zh": "杨慧研究员、谭骁天副研究员、李浩副研究员课题组在 ACS Sensors 和 Analytical Chemistry 双发，分别在微流控免疫反应动力学理论建模和结核病快速检测平台取得系统性突破。",
+      "en": "Yang Hui, Tan Xiaotian, and Li Hao's team published dual papers in ACS Sensors and Analytical Chemistry, achieving breakthroughs in microfluidic immunoreactor kinetics modeling and rapid tuberculosis detection."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院杨慧研究员、谭骁天副研究员、李浩副研究员课题组近期在微流控生物分子传感领域取得系统性突破，研究成果分别发表于 ACS Sensors 和 Analytical Chemistry。\n\n## ACS Sensors：微流控免疫反应动力学理论突破\n\n课题组基于「首次通过时间」方法，建立了管状微流控免疫反应器的定量动力学模型，揭示了**反应器尺寸—反应条件—分子探针性能**的三维协同机制，为生物传感器设计提供了量化标准，助力免疫分析平台精准优化。第一作者为博士后吕颖锴和硕士研究生张斌茂。\n\n## Analytical Chemistry：结核病快速检测平台\n\n课题组开发了便携式微流控化学发光免疫分析系统（TOI）集成微尺度 γ-干扰素释放试验（**CM-IGRA**）：\n- 样本量：仅需 **50 µL** 血液\n- 分析时间：约 **12 小时**（传统方法 20–24 小时）\n- 临床验证：80 余例疑似结核患者，与金标准一致性 **98.39%**\n\n该平台有望成为结核病基层快速筛查的有力工具。",
+      "en": ""
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "lpr-plasmon-exosome-2025",
+    "date": "2025-02-08",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202502/t20250220_7530798.html",
+    "coverImage": "https://www.siat.ac.cn/siatxww/kyjz/W020250220653991232789.png",
+    "title": {
+      "zh": "Laser & Photonics Reviews | 等离子体传感技术：助力外泌体检测与成分分析",
+      "en": "Laser & Photonics Reviews | Plasmonic Sensing Techniques for Exosome Detection and Composition Analysis"
+    },
+    "excerpt": {
+      "zh": "传感中心杨慧研究员团队在 Laser & Photonics Reviews（IF 9.8）发表综述，系统总结等离激元传感技术在外泌体检测与成分分析中的最新进展，涵盖 PSPR 和 LSPR 两类平台。",
+      "en": "Yang Hui's team published a review in Laser & Photonics Reviews (IF 9.8) systematically summarizing plasmonic sensing techniques for exosome detection and composition analysis, covering both PSPR and LSPR platforms."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院医工所传感中心杨慧研究员团队在光学领域顶级期刊 Laser & Photonics Reviews（影响因子 9.8）发表综述文章，系统总结了等离子体传感技术在外泌体检测与成分分析中的最新进展。\n\n外泌体（30–200 nm 膜囊泡）携带细胞来源的蛋白质、核酸等生物分子，在疾病早期诊断和个性化医疗中具有重要价值，而其纳米级尺寸与低浓度特性给精准检测带来了极大挑战。\n\n![综述图](https://www.siat.ac.cn/siatxww/kyjz/W020250220653991232789.png)\n\n## 两类等离子体传感平台\n\n文章重点分析了两类平台的最新进展：\n- **传播型表面等离子体共振（PSPR）**：可实现高灵敏度、无标记的外泌体实时检测\n- **局域型表面等离子体共振（LSPR）**：适用于单颗粒水平的外泌体成分分析\n\n![PSPR 与 LSPR 传感基底示意图](https://www.siat.ac.cn/siatxww/kyjz/W020250220653991655924.png)\n\n综述还展望了等离子体传感在多组学分析、临床样本高通量筛查中的应用前景，为外泌体液体活检技术的发展提供了重要参考。论文共同第一作者为胡宇睿（硕士毕业生）和王玉叶（深圳大学助理教授）。",
+      "en": ""
+    },
+    "createdBy": "admin"
+  },
+  {
+    "id": "afm-mxene-2024",
+    "date": "2024-12-13",
+    "source": "siat.ac.cn",
+    "url": "https://www.siat.ac.cn/siatxww/kyjz/202412/t20241213_7457220.html",
+    "coverImage": "https://aop.siat.ac.cn/appendix2/M00/22/CF/rBQ8a2XS_sqAWO7qAAN38EDpP-U4113388",
+    "title": {
+      "zh": "Advanced Functional Materials | 张翊团队提出构筑高性能生物电子界面新策略",
+      "en": "Advanced Functional Materials | Fast Electrodeposition of MXene/PDA Composites for High-Performance Bioelectronic Interfaces"
+    },
+    "excerpt": {
+      "zh": "医工所正高级工程师张翊团队与深圳大学彭争春教授合作，开发简便电化学加工技术，在常温常压下制备高性能 MXene/PDA 复合电极，为新一代高性能生物电子界面提供了新策略。",
+      "en": "Zhang Yi's team at SIAT collaborated with Prof. Peng Zhengchun at Shenzhen University, developing a facile electrochemical technique for high-performance MXene/PDA composite electrodes at ambient conditions."
+    },
+    "body": {
+      "zh": "中国科学院深圳先进技术研究院医工所正高级工程师张翊团队，与深圳大学彭争春教授团队合作，在 Advanced Functional Materials 发表研究论文，开发了一种简便电化学加工技术，在常温常压下制备高性能 MXene/PDA 复合电极，为构筑新一代高性能生物电子界面提供了新策略。\n\n理想的生物电子界面要求生物电极满足低界面阻抗、优异长期稳定性和生物安全性。现有技术主要依赖昂贵材料和制造方案，难以实现规模化生产，严重限制了实际应用。\n\n![MXene/PDA 复合电极示意图](https://aop.siat.ac.cn/appendix2/M00/22/CF/rBQ8a2XS_sqAWO7qAAN38EDpP-U4113388)\n\n## 制备方法\n\n研究团队开发了低成本、温和的原位制备方法：\n- 采用循环伏安法在金属衬底上制备 **PDA 粘附层**，提升基底亲水性\n- 再通过电泳沉积工艺制备 **MXene 功能涂层**，增强与金属衬底的附着力\n\n## 核心性能\n\n- 阴极电荷存储能力：较未修饰基底提升 **约 140 倍**\n- 稳定性：经 **1 亿次以上**电脉冲刺激和 **1000 次** CV 循环后，电化学稳定性优异\n- 光热响应：近红外激光照射下光电流响应较裸电极提升 **约 40 倍**\n\n该策略制备成本大幅降低，可普适应用于钛、不锈钢等多种金属衬底，在植入式神经电极和体外诊断等领域具有广泛前景。博士生曾齐为第一作者，张翊和彭争春为共同通讯作者。",
+      "en": "Researchers from SIAT, led by Senior Engineer Zhang Yi, collaborated with Prof. Peng Zhengchun at Shenzhen University to publish in Advanced Functional Materials, developing a facile electrochemical technique for MXene/PDA composite electrodes at ambient conditions.\n\n## Fabrication Method\n\nThe team developed a low-cost, mild in-situ preparation method:\n- **PDA adhesion layer** via cyclic voltammetry to enhance surface hydrophilicity\n- **MXene functional coating** via electrophoretic deposition for improved adhesion\n\n## Key Performance\n\n- Cathodal charge storage capacity: ~**140×** higher than unmodified substrates\n- Stability: Excellent performance through **100 million+** electrical pulse stimulations and **1,000** CV cycles\n- Photothermal response: ~**40×** higher photoelectric current under near-infrared laser\n\nThe strategy is broadly applicable to titanium, stainless steel, and other metal substrates, making it attractive for implantable neural electrodes and biomedical diagnostics."
+    },
+    "createdBy": "admin"
+  }
+]
