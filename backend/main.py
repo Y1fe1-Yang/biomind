@@ -8,6 +8,7 @@ from backend.routers.chat import router as chat_router
 from backend.routers.conversations import router as conversations_router
 from backend.routers.sop_extract import router as sop_extract_router
 from backend.routers.news import router as news_router
+from backend.routers.admin import router as admin_router
 from backend.services.user_store import ensure_admin_exists
 
 app = FastAPI(title="BioMiND")
@@ -24,6 +25,7 @@ app.include_router(chat_router)
 app.include_router(conversations_router)
 app.include_router(sop_extract_router)
 app.include_router(news_router)
+app.include_router(admin_router)
 
 @app.get("/api/health")
 def health():
