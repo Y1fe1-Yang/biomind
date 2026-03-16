@@ -1043,6 +1043,7 @@ let _newsCache = [];
 function _mdInline(text) {
   return text
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener" style="color:#2563eb;text-decoration:underline">$1</a>')
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/_(.+?)_/g, "<em>$1</em>")
     .replace(/`(.+?)`/g, "<code style=\"background:#f3f4f6;padding:0 3px;border-radius:3px\">$1</code>");
