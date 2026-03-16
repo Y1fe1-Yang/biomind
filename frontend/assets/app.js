@@ -2181,7 +2181,9 @@ function renderMembers() {
     const photos = m.photos || (m.photo ? [m.photo] : []);
     const name = currentLang === "zh" ? m.name.zh : m.name.en;
     if (photos.length === 0) {
-      return `<div style="width:96px;height:128px;flex-shrink:0;background:#f3f4f6;border-radius:.5rem"></div>`;
+      const initials = name.slice(0, 2);
+      const color = _avatarColor(initials);
+      return `<div style="width:96px;height:128px;flex-shrink:0;border-radius:.5rem;background:${color};display:flex;align-items:center;justify-content:center;color:white;font-size:1.35rem;font-weight:700;letter-spacing:.04em;user-select:none">${initials}</div>`;
     }
     const hasMany = photos.length > 1;
     const arrows = hasMany ? `
@@ -2196,8 +2198,9 @@ function renderMembers() {
     return `
       <div style="position:relative;width:96px;height:128px;flex-shrink:0">
         <img id="mphoto-img-${m.id}" src="${photos[0]}" alt="${name}"
+             data-initials="${name.slice(0,2)}"
              style="width:96px;height:128px;object-fit:cover;object-position:top;border-radius:.5rem;border:1px solid #f3f4f6;transition:opacity .15s"
-             onerror="this.style.opacity='.15'">
+             onerror="_memberPhotoFallback(this)">
         ${arrows}
         ${dots}
       </div>`;
@@ -2641,6 +2644,24 @@ async function deleteNewsArticle(id) {
     const resp = await apiFetch(`/api/news/${id}`, { method: "DELETE" });
     if (resp.ok) renderNews();
   } catch {}
+}
+
+// ── Member photo fallback ─────────────────────────────────────────
+const _AVATAR_COLORS = ["#3b82f6","#10b981","#8b5cf6","#f59e0b","#ef4444","#06b6d4","#ec4899"];
+
+function _avatarColor(name) {
+  let n = 0;
+  for (let i = 0; i < name.length; i++) n += name.charCodeAt(i);
+  return _AVATAR_COLORS[n % _AVATAR_COLORS.length];
+}
+
+function _memberPhotoFallback(img) {
+  const initials = (img.dataset.initials || "?").slice(0, 2);
+  const color = _avatarColor(initials);
+  const div = document.createElement("div");
+  div.style.cssText = `width:96px;height:128px;border-radius:.5rem;flex-shrink:0;background:${color};display:flex;align-items:center;justify-content:center;color:white;font-size:1.35rem;font-weight:700;letter-spacing:.04em;user-select:none`;
+  div.textContent = initials;
+  img.replaceWith(div);
 }
 
 // ── Mobile menu ───────────────────────────────────────────────────
