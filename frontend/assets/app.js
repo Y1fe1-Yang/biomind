@@ -852,7 +852,7 @@ async function _adminTabPapers(container) {
       <div class="flex items-start justify-between gap-3">
         <div class="flex-1 min-w-0">
           <p class="text-sm font-medium text-gray-800 leading-snug">${_esc(p.title)}</p>
-          <p class="text-xs text-gray-400 mt-0.5">${_esc(p.id)} · ${p.year || ""} · ${_esc(p.journal || p.type || "")}</p>
+          <p class="text-xs text-gray-400 mt-0.5">${_esc(p.id)} · ${p.year || ""} · ${_esc(p.journal || p.type || "")}${p.doi ? ` · DOI: ${_esc(p.doi)}` : ""}</p>
         </div>
         <button class="flex-shrink-0 text-blue-600 hover:text-blue-700 text-sm"
           onclick="_adminEditPaper('${_esc(p.id)}')">编辑</button>
@@ -1708,7 +1708,7 @@ function renderDirections() {
   ].filter(item =>
     selectedDirections.length === 0 ||
     selectedDirections.some(d => (item.directions || []).includes(d))
-  );
+  ).sort((a, b) => (b.year || 0) - (a.year || 0));
 
   document.getElementById("view-directions").innerHTML =
     tagBar +
