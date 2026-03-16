@@ -4,4 +4,6 @@ python-dotenv
 httpx
 PyJWT>=2.0
 bcrypt
+python-multipart
 rank-bm25
+pymupdf>=1.24.0
