@@ -1,0 +1,17 @@
+.git
+.env
+.claude
+.worktrees
+.superpowers
+node_modules
+__pycache__
+*.pyc
+.pytest_cache
+conversations
+data/users.db
+data/ai_config.json
+1.Journal Articles
+2.Conference Proceedings
+3.Books
+ALL PUBLISHED.zip
+.playwright-mcp
