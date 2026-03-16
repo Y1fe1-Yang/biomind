@@ -9,6 +9,7 @@ from backend.routers.conversations import router as conversations_router
 from backend.routers.sop_extract import router as sop_extract_router
 from backend.routers.news import router as news_router
 from backend.routers.admin import router as admin_router
+from backend.routers.sops import router as sops_router
 from backend.services.user_store import ensure_admin_exists
 
 app = FastAPI(title="BioMiND")
@@ -26,6 +27,7 @@ app.include_router(conversations_router)
 app.include_router(sop_extract_router)
 app.include_router(news_router)
 app.include_router(admin_router)
+app.include_router(sops_router)
 
 @app.get("/api/health")
 def health():
@@ -33,9 +35,11 @@ def health():
 
 root = Path(__file__).parent.parent
 
-# Serve data files (data.js, data.json)
+# Serve data files (data.js, data.json, user-sops/, etc.)
 data_dir = root / "data"
 data_dir.mkdir(exist_ok=True)
+# Ensure user-sops directory exists
+(root / "data" / "user-sops").mkdir(exist_ok=True)
 app.mount("/data", StaticFiles(directory=str(data_dir)), name="data")
 
 # Serve frontend
