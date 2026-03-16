@@ -429,7 +429,525 @@ const _ADMIN_VIEWS = new Set(["admin"]);
 
 // ── Placeholder render functions (filled by worktrees) ────────────
 function renderShare() { /* TODO: sop-upload worktree */ }
-function renderAdmin() { /* TODO: admin-panel worktree */ }
+async function renderAdmin() {
+  const el = document.getElementById("view-admin");
+  el.innerHTML = "";
+
+  const tabs = [
+    { key: "members",  label: "成员管理" },
+    { key: "papers",   label: "论文管理" },
+    { key: "news",     label: "新闻管理" },
+    { key: "ai",       label: "AI配置" },
+    { key: "footer",   label: "友情链接" },
+  ];
+
+  let activeTab = "members";
+
+  // ── Tab bar ──────────────────────────────────────────────────────
+  const tabBar = document.createElement("div");
+  tabBar.className = "flex gap-2 mb-6 flex-wrap";
+  tabBar.innerHTML = tabs.map(tab =>
+    `<button data-tab="${tab.key}" class="px-4 py-2 text-sm rounded-lg font-medium transition ${
+      tab.key === activeTab
+        ? "bg-blue-600 text-white"
+        : "text-gray-600 hover:bg-gray-100"
+    }">${tab.label}</button>`
+  ).join("");
+
+  // ── Content area ─────────────────────────────────────────────────
+  const content = document.createElement("div");
+  content.id = "admin-tab-content";
+
+  el.appendChild(tabBar);
+  el.appendChild(content);
+
+  // ── Tab click handler ─────────────────────────────────────────────
+  tabBar.addEventListener("click", e => {
+    const btn = e.target.closest("[data-tab]");
+    if (!btn) return;
+    activeTab = btn.dataset.tab;
+    tabBar.querySelectorAll("[data-tab]").forEach(b => {
+      const active = b.dataset.tab === activeTab;
+      b.className = `px-4 py-2 text-sm rounded-lg font-medium transition ${
+        active ? "bg-blue-600 text-white" : "text-gray-600 hover:bg-gray-100"
+      }`;
+    });
+    _renderAdminTab(activeTab, content);
+  });
+
+  await _renderAdminTab(activeTab, content);
+}
+
+// ── Per-tab renderers ─────────────────────────────────────────────
+
+async function _renderAdminTab(tab, container) {
+  container.innerHTML = `<div class="text-gray-400 text-sm py-8 text-center">加载中…</div>`;
+  try {
+    switch (tab) {
+      case "members": await _adminTabMembers(container); break;
+      case "papers":  await _adminTabPapers(container);  break;
+      case "news":    _adminTabNews(container);           break;
+      case "ai":      await _adminTabAi(container);      break;
+      case "footer":  await _adminTabFooter(container);  break;
+    }
+  } catch (err) {
+    container.innerHTML = `<div class="text-red-500 text-sm py-8 text-center">加载失败: ${err.message}</div>`;
+  }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────
+
+function _adminInput(id, placeholder, value = "") {
+  return `<input id="${id}" type="text" placeholder="${placeholder}" value="${_esc(value)}"
+    class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">`;
+}
+
+function _adminBtn(label, cls = "primary", onclick = "") {
+  const base = "rounded-lg px-4 py-2 text-sm font-medium cursor-pointer";
+  const style = cls === "primary"
+    ? "bg-blue-600 text-white hover:bg-blue-700 " + base
+    : cls === "danger"
+    ? "text-red-600 hover:text-red-700 text-sm cursor-pointer"
+    : base;
+  return `<button class="${style}" onclick="${onclick}">${label}</button>`;
+}
+
+function _esc(s) {
+  return String(s || "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+}
+
+function _adminCard(html) {
+  return `<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-4">${html}</div>`;
+}
+
+// ── Members tab ───────────────────────────────────────────────────
+
+async function _adminTabMembers(container) {
+  const resp = await apiFetch("/api/admin/members");
+  const members = resp.ok ? await resp.json() : [];
+
+  const groupLabel = { pi: "PI", postdoc: "博士后", researcher: "研究人员", phd: "博士生", master: "硕士生", alumni: "往届成员" };
+
+  const rows = members.map(m => `
+    <div class="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
+      <div>
+        <span class="font-medium text-sm">${_esc(m.name?.zh || m.id)}</span>
+        <span class="text-xs text-gray-400 ml-2">${_esc(groupLabel[m.group] || m.group || "")}</span>
+        <span class="text-xs text-gray-400 ml-2">${_esc(m.email || "")}</span>
+      </div>
+      <div class="flex gap-3 items-center">
+        <button class="text-blue-600 hover:text-blue-700 text-sm" onclick="_adminEditMember('${_esc(m.id)}')">编辑</button>
+        <button class="text-red-600 hover:text-red-700 text-sm" onclick="_adminDeleteMember('${_esc(m.id)}', this)">删除</button>
+      </div>
+    </div>`).join("") || `<p class="text-gray-400 text-sm">暂无成员</p>`;
+
+  container.innerHTML = _adminCard(`
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold text-gray-800">成员列表</h3>
+      <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+        onclick="_adminAddMember()">+ 添加成员</button>
+    </div>
+    <div id="admin-members-list">${rows}</div>
+  `) + _adminCard(`
+    <h3 class="font-semibold text-gray-800 mb-4" id="admin-member-form-title">添加成员</h3>
+    <div class="grid grid-cols-1 gap-3" id="admin-member-form">
+      <div class="grid grid-cols-2 gap-3">
+        ${_adminInput("amf-id", "ID（如 zhang-san）")}
+        ${_adminInput("amf-group", "分组（pi/phd/master/researcher/alumni）")}
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        ${_adminInput("amf-name-zh", "中文姓名")}
+        ${_adminInput("amf-name-en", "English Name")}
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        ${_adminInput("amf-title-zh", "职称（中文）")}
+        ${_adminInput("amf-title-en", "Title (English)")}
+      </div>
+      ${_adminInput("amf-email", "邮箱")}
+      <div class="flex gap-2">
+        <button id="amf-save-btn" class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+          onclick="_adminSaveMember()">保存</button>
+        <button class="text-gray-500 hover:text-gray-700 text-sm px-4 py-2" onclick="_adminClearMemberForm()">清空</button>
+      </div>
+      <div id="amf-status" class="text-sm"></div>
+    </div>
+  `);
+}
+
+let _editingMemberId = null;
+
+function _adminClearMemberForm() {
+  _editingMemberId = null;
+  document.getElementById("admin-member-form-title").textContent = "添加成员";
+  document.getElementById("amf-save-btn").textContent = "保存";
+  ["amf-id","amf-group","amf-name-zh","amf-name-en","amf-title-zh","amf-title-en","amf-email"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+  const idField = document.getElementById("amf-id");
+  if (idField) idField.disabled = false;
+}
+
+async function _adminEditMember(memberId) {
+  const resp = await apiFetch("/api/admin/members");
+  if (!resp.ok) return;
+  const members = await resp.json();
+  const m = members.find(x => x.id === memberId);
+  if (!m) return;
+  _editingMemberId = memberId;
+  document.getElementById("admin-member-form-title").textContent = "编辑成员";
+  document.getElementById("amf-save-btn").textContent = "更新";
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ""; };
+  set("amf-id", m.id);
+  set("amf-group", m.group);
+  set("amf-name-zh", m.name?.zh);
+  set("amf-name-en", m.name?.en);
+  set("amf-title-zh", m.title?.zh);
+  set("amf-title-en", m.title?.en);
+  set("amf-email", m.email);
+  const idField = document.getElementById("amf-id");
+  if (idField) idField.disabled = true;
+  document.getElementById("admin-member-form").scrollIntoView({ behavior: "smooth" });
+}
+
+async function _adminSaveMember() {
+  const get = id => document.getElementById(id)?.value?.trim() || "";
+  const statusEl = document.getElementById("amf-status");
+  const payload = {
+    id: get("amf-id"),
+    group: get("amf-group"),
+    name: { zh: get("amf-name-zh"), en: get("amf-name-en") },
+    title: { zh: get("amf-title-zh"), en: get("amf-title-en") },
+    email: get("amf-email"),
+    photos: [], research: { zh: [], en: [] }, edu: { zh: [], en: [] }, bio: { zh: "", en: "" },
+  };
+  if (!payload.id) { statusEl.textContent = "ID 不能为空"; statusEl.className = "text-sm text-red-500"; return; }
+  try {
+    let resp;
+    if (_editingMemberId) {
+      resp = await apiFetch(`/api/admin/members/${_editingMemberId}`, {
+        method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      });
+    } else {
+      resp = await apiFetch("/api/admin/members", {
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      });
+    }
+    if (!resp.ok) {
+      const err = await resp.json();
+      statusEl.textContent = err.detail || "保存失败";
+      statusEl.className = "text-sm text-red-500";
+      return;
+    }
+    statusEl.textContent = "已保存";
+    statusEl.className = "text-sm text-green-600";
+    _adminClearMemberForm();
+    await _adminTabMembers(document.getElementById("admin-tab-content"));
+  } catch {
+    statusEl.textContent = "网络错误";
+    statusEl.className = "text-sm text-red-500";
+  }
+}
+
+async function _adminDeleteMember(memberId, btn) {
+  if (!confirm(`确认删除成员 "${memberId}"？`)) return;
+  try {
+    const resp = await apiFetch(`/api/admin/members/${memberId}`, { method: "DELETE" });
+    if (resp.ok) {
+      await _adminTabMembers(document.getElementById("admin-tab-content"));
+    }
+  } catch {}
+}
+
+function _adminAddMember() {
+  _adminClearMemberForm();
+  document.getElementById("admin-member-form").scrollIntoView({ behavior: "smooth" });
+}
+
+// ── Papers tab ────────────────────────────────────────────────────
+
+async function _adminTabPapers(container) {
+  const papers = (window.DATA?.papers || []).concat(window.DATA?.books || []);
+
+  const rows = papers.map(p => `
+    <div class="py-3 border-b border-gray-50 last:border-0">
+      <div class="flex items-start justify-between gap-3">
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-medium text-gray-800 leading-snug">${_esc(p.title)}</p>
+          <p class="text-xs text-gray-400 mt-0.5">${_esc(p.id)} · ${p.year || ""} · ${_esc(p.journal || p.type || "")}</p>
+        </div>
+        <button class="flex-shrink-0 text-blue-600 hover:text-blue-700 text-sm"
+          onclick="_adminEditPaper('${_esc(p.id)}')">编辑</button>
+      </div>
+    </div>`).join("") || `<p class="text-gray-400 text-sm">无论文数据</p>`;
+
+  container.innerHTML = _adminCard(`
+    <h3 class="font-semibold text-gray-800 mb-4">论文列表</h3>
+    <div class="max-h-96 overflow-y-auto">${rows}</div>
+  `) + _adminCard(`
+    <h3 class="font-semibold text-gray-800 mb-4" id="admin-paper-form-title">编辑论文</h3>
+    <div class="grid grid-cols-1 gap-3">
+      ${_adminInput("apf-id", "论文 ID（只读）")}
+      ${_adminInput("apf-title", "标题")}
+      ${_adminInput("apf-authors", "作者（逗号分隔）")}
+      ${_adminInput("apf-doi", "DOI")}
+      ${_adminInput("apf-directions", "研究方向（逗号分隔）")}
+      <textarea id="apf-abstract" rows="4" placeholder="摘要"
+        class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500 resize-y"></textarea>
+      <div class="flex gap-2">
+        <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+          onclick="_adminSavePaper()">保存</button>
+      </div>
+      <div id="apf-status" class="text-sm"></div>
+    </div>
+  `);
+  const idField = document.getElementById("apf-id");
+  if (idField) idField.disabled = true;
+}
+
+function _adminEditPaper(paperId) {
+  const papers = (window.DATA?.papers || []).concat(window.DATA?.books || []);
+  const p = papers.find(x => x.id === paperId);
+  if (!p) return;
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ""; };
+  set("apf-id", p.id);
+  set("apf-title", p.title);
+  set("apf-authors", (p.authors || []).join(", "));
+  set("apf-doi", p.doi || "");
+  set("apf-directions", (p.directions || []).join(", "));
+  const abs = document.getElementById("apf-abstract");
+  if (abs) abs.value = p.abstract || "";
+  const idField = document.getElementById("apf-id");
+  if (idField) idField.disabled = true;
+  document.getElementById("admin-paper-form-title").textContent = `编辑: ${p.title?.slice(0, 40) || p.id}`;
+  document.getElementById("apf-abstract")?.scrollIntoView({ behavior: "smooth" });
+}
+
+async function _adminSavePaper() {
+  const get = id => document.getElementById(id)?.value?.trim() || "";
+  const statusEl = document.getElementById("apf-status");
+  const paperId = get("apf-id");
+  if (!paperId) { statusEl.textContent = "请先选择要编辑的论文"; statusEl.className = "text-sm text-red-500"; return; }
+  const authorsRaw = get("apf-authors");
+  const directionsRaw = get("apf-directions");
+  const payload = {
+    title: get("apf-title"),
+    authors: authorsRaw ? authorsRaw.split(",").map(s => s.trim()).filter(Boolean) : [],
+    doi: get("apf-doi"),
+    directions: directionsRaw ? directionsRaw.split(",").map(s => s.trim()).filter(Boolean) : [],
+    abstract: document.getElementById("apf-abstract")?.value || "",
+  };
+  try {
+    const resp = await apiFetch(`/api/admin/papers/${paperId}`, {
+      method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      const err = await resp.json();
+      statusEl.textContent = err.detail || "保存失败";
+      statusEl.className = "text-sm text-red-500";
+      return;
+    }
+    const updated = await resp.json();
+    // Patch local window.DATA so the list refreshes without reload
+    const arr = window.DATA?.papers || [];
+    const idx = arr.findIndex(x => x.id === paperId);
+    if (idx >= 0) arr[idx] = { ...arr[idx], ...updated };
+    else {
+      const bookArr = window.DATA?.books || [];
+      const bi = bookArr.findIndex(x => x.id === paperId);
+      if (bi >= 0) bookArr[bi] = { ...bookArr[bi], ...updated };
+    }
+    statusEl.textContent = "已保存";
+    statusEl.className = "text-sm text-green-600";
+  } catch {
+    statusEl.textContent = "网络错误";
+    statusEl.className = "text-sm text-red-500";
+  }
+}
+
+// ── News tab ─────────────────────────────────────────────────────
+
+function _adminTabNews(container) {
+  const items = _newsCache || [];
+  const rows = items.map(item => {
+    const title = item.title?.zh || item.title?.en || "(无标题)";
+    return `
+      <div class="flex items-center justify-between py-2 border-b border-gray-50 last:border-0">
+        <div>
+          <span class="text-sm font-medium">${_esc(title)}</span>
+          <span class="text-xs text-gray-400 ml-2">${_esc(item.date || "")}</span>
+        </div>
+        <button class="text-blue-600 hover:text-blue-700 text-sm"
+          onclick="showView('news');renderNews().then(()=>openNewsEditor('${_esc(item.id)}'))">编辑</button>
+      </div>`;
+  }).join("") || `<p class="text-gray-400 text-sm">暂无新闻，请切换到"新闻"页面查看</p>`;
+
+  container.innerHTML = _adminCard(`
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="font-semibold text-gray-800">新闻文章</h3>
+      <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+        onclick="showView('news');renderNews().then(()=>openNewsEditor(null))">+ 新建文章</button>
+    </div>
+    <div>${rows}</div>
+  `);
+}
+
+// ── AI Config tab ─────────────────────────────────────────────────
+
+async function _adminTabAi(container) {
+  const resp = await apiFetch("/api/admin/ai-config");
+  const config = resp.ok ? await resp.json() : { provider: "", keys: {} };
+
+  const providerOptions = ["zhipu", "claude", "kimi"].map(p =>
+    `<option value="${p}" ${config.provider === p ? "selected" : ""}>${p}</option>`
+  ).join("");
+
+  container.innerHTML = _adminCard(`
+    <h3 class="font-semibold text-gray-800 mb-4">AI 提供商配置</h3>
+    <div class="grid grid-cols-1 gap-4">
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">AI 提供商</label>
+        <select id="ai-provider"
+          class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+          ${providerOptions}
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">ZhipuAI Key ${_aiKeyHint(config.keys?.zhipu)}</label>
+        <input id="ai-key-zhipu" type="password" placeholder="留空保持不变"
+          class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">Claude Key ${_aiKeyHint(config.keys?.claude)}</label>
+        <input id="ai-key-claude" type="password" placeholder="留空保持不变"
+          class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div>
+        <label class="block text-xs font-medium text-gray-600 mb-1">Kimi Key ${_aiKeyHint(config.keys?.kimi)}</label>
+        <input id="ai-key-kimi" type="password" placeholder="留空保持不变"
+          class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div class="flex gap-2 items-center">
+        <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+          onclick="_adminSaveAi()">保存配置</button>
+        <div id="ai-status" class="text-sm"></div>
+      </div>
+    </div>
+  `);
+}
+
+function _aiKeyHint(masked) {
+  if (!masked) return '<span class="text-red-400">（未配置）</span>';
+  return `<span class="text-green-600">（已配置: ${_esc(masked)}）</span>`;
+}
+
+async function _adminSaveAi() {
+  const provider = document.getElementById("ai-provider")?.value;
+  const statusEl = document.getElementById("ai-status");
+  const keysPayload = {};
+  const zhipu = document.getElementById("ai-key-zhipu")?.value || "";
+  const claude = document.getElementById("ai-key-claude")?.value || "";
+  const kimi   = document.getElementById("ai-key-kimi")?.value   || "";
+  if (zhipu !== "") keysPayload.zhipu = zhipu;
+  if (claude !== "") keysPayload.claude = claude;
+  if (kimi   !== "") keysPayload.kimi   = kimi;
+
+  const payload = { provider };
+  if (Object.keys(keysPayload).length > 0) payload.keys = keysPayload;
+
+  try {
+    const resp = await apiFetch("/api/admin/ai-config", {
+      method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+    });
+    if (!resp.ok) {
+      const err = await resp.json();
+      statusEl.textContent = err.detail || "保存失败";
+      statusEl.className = "text-sm text-red-500";
+      return;
+    }
+    statusEl.textContent = "已保存";
+    statusEl.className = "text-sm text-green-600";
+    // Refresh to show updated masked keys
+    await _adminTabAi(document.getElementById("admin-tab-content"));
+  } catch {
+    statusEl.textContent = "网络错误";
+    statusEl.className = "text-sm text-red-500";
+  }
+}
+
+// ── Footer tab ────────────────────────────────────────────────────
+
+async function _adminTabFooter(container) {
+  const resp = await apiFetch("/api/admin/footer");
+  const data = resp.ok ? await resp.json() : { links: [] };
+  const links = data.links || [];
+
+  const rows = links.map((lnk, i) => `
+    <div class="flex gap-2 mb-2 items-center" data-link-idx="${i}">
+      <input type="text" value="${_esc(lnk.label)}" placeholder="标签"
+        class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 link-label">
+      <input type="text" value="${_esc(lnk.url)}" placeholder="URL"
+        class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 link-url">
+      <button class="text-red-600 hover:text-red-700 text-sm px-2"
+        onclick="this.closest('[data-link-idx]').remove()">删除</button>
+    </div>`).join("");
+
+  container.innerHTML = _adminCard(`
+    <h3 class="font-semibold text-gray-800 mb-4">友情链接</h3>
+    <div id="footer-links-list">${rows}</div>
+    <button class="text-blue-600 hover:text-blue-700 text-sm mt-2"
+      onclick="_adminAddFooterLink()">+ 添加链接</button>
+    <div class="flex gap-2 items-center mt-4">
+      <button class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700"
+        onclick="_adminSaveFooter()">保存</button>
+      <div id="footer-status" class="text-sm"></div>
+    </div>
+  `);
+}
+
+function _adminAddFooterLink() {
+  const list = document.getElementById("footer-links-list");
+  const idx = list.querySelectorAll("[data-link-idx]").length;
+  const div = document.createElement("div");
+  div.className = "flex gap-2 mb-2 items-center";
+  div.setAttribute("data-link-idx", idx);
+  div.innerHTML = `
+    <input type="text" placeholder="标签"
+      class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 link-label">
+    <input type="text" placeholder="URL"
+      class="border border-gray-300 rounded-lg px-3 py-2 text-sm flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 link-url">
+    <button class="text-red-600 hover:text-red-700 text-sm px-2"
+      onclick="this.closest('[data-link-idx]').remove()">删除</button>`;
+  list.appendChild(div);
+}
+
+async function _adminSaveFooter() {
+  const statusEl = document.getElementById("footer-status");
+  const rows = document.querySelectorAll("#footer-links-list [data-link-idx]");
+  const links = [];
+  rows.forEach(row => {
+    const label = row.querySelector(".link-label")?.value?.trim() || "";
+    const url   = row.querySelector(".link-url")?.value?.trim()   || "";
+    if (label || url) links.push({ label, url });
+  });
+  try {
+    const resp = await apiFetch("/api/admin/footer", {
+      method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ links }),
+    });
+    if (!resp.ok) {
+      const err = await resp.json();
+      statusEl.textContent = err.detail || "保存失败";
+      statusEl.className = "text-sm text-red-500";
+      return;
+    }
+    statusEl.textContent = "已保存";
+    statusEl.className = "text-sm text-green-600";
+    setTimeout(() => { statusEl.textContent = ""; }, 2000);
+  } catch {
+    statusEl.textContent = "网络错误";
+    statusEl.className = "text-sm text-red-500";
+  }
+}
 function renderSopDetail(id) { /* TODO: sop-upload worktree */ }
 
 // ── Shared helpers ────────────────────────────────────────────────
