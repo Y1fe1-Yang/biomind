@@ -184,6 +184,7 @@ document.getElementById("reg-submit").addEventListener("click", async () => {
 
 // ── Router ────────────────────────────────────────────────────────
 let currentView = "home";
+let _currentArticleId = null; // id of currently-displayed article, or null
 
 function showView(viewName) {
   document.querySelectorAll(".view").forEach(el => el.classList.add("hidden"));
@@ -198,9 +199,62 @@ function showView(viewName) {
 }
 
 function renderCurrentView() {
-  showView(currentView);
-  renderView(currentView);
+  if (currentView === "news" && _currentArticleId) {
+    showView("news");
+    history.replaceState(null, "", `#news/${_currentArticleId}`);
+    renderNewsArticle(_currentArticleId);
+  } else {
+    showView(currentView);
+    renderView(currentView);
+  }
 }
+
+function navToArticle(id) {
+  _currentArticleId = id;
+  currentView = "news";
+  document.querySelectorAll(".view").forEach(el => el.classList.add("hidden"));
+  const newsView = document.getElementById("view-news");
+  if (newsView) newsView.classList.remove("hidden");
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.classList.toggle("text-blue-600", btn.dataset.view === "news");
+    btn.classList.toggle("font-semibold", btn.dataset.view === "news");
+  });
+  history.pushState(null, "", `#news/${id}`);
+  renderNewsArticle(id);
+}
+
+function navBack() {
+  _currentArticleId = null;
+  history.pushState(null, "", "#news");
+  showView("news");
+  renderNews();
+}
+
+function navToArticleEdit(id) {
+  navBack();
+  openNewsEditor(id);
+}
+
+window.addEventListener("popstate", () => {
+  const hash = location.hash.slice(1) || "home";
+  const [view, subId] = hash.split("/");
+  if (view === "news" && subId) {
+    _currentArticleId = subId;
+    currentView = "news";
+    document.querySelectorAll(".view").forEach(el => el.classList.add("hidden"));
+    const newsView = document.getElementById("view-news");
+    if (newsView) newsView.classList.remove("hidden");
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.classList.toggle("text-blue-600", btn.dataset.view === "news");
+      btn.classList.toggle("font-semibold", btn.dataset.view === "news");
+    });
+    renderNewsArticle(subId);
+  } else {
+    _currentArticleId = null;
+    showView(view || "home");
+    renderView(view || "home");
+  }
+});
 
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", async () => {
@@ -1140,7 +1194,7 @@ async function renderNews() {
       ? `<img src="${item.coverImage}" alt="" class="news-card-img-v2" style="width:100%;height:100%;object-fit:cover">`
       : `<div style="width:100%;height:100%;background:${coverBg(item.id)};display:flex;align-items:center;justify-content:center"><span style="font-size:3.5rem;opacity:.18;color:white">✦</span></div>`;
     return `
-      <div class="news-featured-card" onclick="showNewsDetail('${item.id}')">
+      <div class="news-featured-card" onclick="navToArticle('${item.id}')">
         <div style="overflow:hidden;min-height:240px">${imgInner}</div>
         <div style="padding:1.75rem;display:flex;flex-direction:column;justify-content:center">
           ${tagHtml(item)}
@@ -1167,7 +1221,7 @@ async function renderNews() {
       }
     </div>`;
     return `
-      <div class="news-card-v2" onclick="showNewsDetail('${item.id}')">
+      <div class="news-card-v2" onclick="navToArticle('${item.id}')">
         ${imgBlock}
         <div class="news-card-content" style="padding:.9rem 1rem">
           ${tagHtml(item)}
@@ -1209,45 +1263,95 @@ async function renderNews() {
   applyI18n();
 }
 
-function showNewsDetail(id) {
-  const item = _newsCache.find(a => a.id === id);
-  if (!item) return;
-  const title = currentLang === "zh" ? item.title.zh : (item.title.en || item.title.zh);
-  const body  = currentLang === "zh" ? item.body.zh  : (item.body.en  || item.body.zh);
-  document.getElementById("news-modal-title").textContent = title;
-  document.getElementById("news-modal-date").textContent  = item.date;
-  const coverWrap = document.getElementById("news-modal-cover");
-  if (item.coverImage) {
-    document.getElementById("news-modal-img").src = item.coverImage;
-    coverWrap.style.display = "";
-  } else {
-    coverWrap.style.display = "none";
-  }
-  const srcEl = document.getElementById("news-modal-source");
-  if (item.url) {
-    srcEl.href = item.url;
-    srcEl.textContent = (item.source || "siat.ac.cn") + " ↗";
-    srcEl.style.display = "";
-  } else {
-    srcEl.style.display = "none";
-  }
-  document.getElementById("news-modal-body").innerHTML = _renderMd(body);
-  const editBtn = document.getElementById("news-modal-edit-btn");
-  const canEdit = window.__isAdmin || getUsername() === item.createdBy;
-  if (canEdit) {
-    editBtn.classList.remove("hidden");
-    editBtn.onclick = () => { closeNewsModal(); openNewsEditor(id); };
-    applyI18n();
-  } else {
-    editBtn.classList.add("hidden");
-  }
-  document.getElementById("news-modal").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-}
+async function renderNewsArticle(id) {
+  const el = document.getElementById("view-news");
+  el.innerHTML = `<div style="text-align:center;padding:4rem;color:#9ca3af">${t("loading")}</div>`;
 
-function closeNewsModal() {
-  document.getElementById("news-modal").classList.add("hidden");
-  document.body.style.overflow = "";
+  // Ensure news cache is populated (e.g. when navigating directly to #news/id)
+  if (!_newsCache.length) {
+    try {
+      const resp = await fetch("/api/news");
+      _newsCache = resp.ok ? await resp.json() : [];
+    } catch { _newsCache = []; }
+  }
+
+  const item = _newsCache.find(a => a.id === id);
+  if (!item) {
+    el.innerHTML = `
+      <div style="text-align:center;padding:4rem">
+        <p style="color:#64748b;margin-bottom:1rem">文章未找到</p>
+        <button onclick="navBack()" style="color:#2563eb;font-size:.9rem;cursor:pointer;background:none;border:none">← ${t("news.title")}</button>
+      </div>`;
+    return;
+  }
+
+  const title   = currentLang === "zh" ? item.title.zh   : (item.title.en   || item.title.zh);
+  const excerpt = currentLang === "zh" ? item.excerpt?.zh : (item.excerpt?.en || item.excerpt?.zh);
+  const body    = currentLang === "zh" ? item.body.zh     : (item.body.en    || item.body.zh);
+
+  const src = (item.source || "").toLowerCase();
+  const isBiz = src.includes("somestech") || src.includes("中科创星") || src.includes("企业");
+  const tagCls   = isBiz ? "art-tag-biz" : "art-tag-research";
+  const tagLabel = isBiz ? "企业" : "科研";
+
+  const coverHtml = item.coverImage
+    ? `<div class="article-hero-cover"><img src="${item.coverImage}" alt="${title}"></div>`
+    : `<div class="article-hero-cover"><div class="article-hero-cover-placeholder">✦</div></div>`;
+
+  const canEdit = window.__isAdmin || getUsername() === item.createdBy;
+  const editBtnHtml = canEdit
+    ? `<button onclick="navToArticleEdit('${item.id}')" style="font-size:.78rem;color:#2563eb;background:#eff6ff;border:none;cursor:pointer;padding:4px 12px;border-radius:20px;margin-left:auto">${t("news.edit")}</button>`
+    : "";
+
+  // Related: up to 2 other articles, most recent first (API order)
+  const others = _newsCache.filter(a => a.id !== id).slice(0, 2);
+  const relatedHtml = others.length === 0 ? "" : `
+    <div class="article-related">
+      <div class="article-related-label">${currentLang === "zh" ? "相关进展" : "Related"}</div>
+      <div class="article-related-grid">
+        ${others.map(o => {
+          const oTitle = currentLang === "zh" ? o.title.zh : (o.title.en || o.title.zh);
+          return `<div class="article-related-card" onclick="navToArticle('${o.id}')">
+            <div class="arc-title">${oTitle}</div>
+            <div class="arc-date">${o.date}</div>
+          </div>`;
+        }).join("")}
+      </div>
+    </div>`;
+
+  const sourceHtml = item.url
+    ? `<div class="article-source-footer">
+        <span>📰 ${currentLang === "zh" ? "来源" : "Source"}：</span>
+        <a href="${item.url}" target="_blank" rel="noopener">${item.source || "siat.ac.cn"} ↗</a>
+        <span style="margin-left:auto">${item.date}</span>
+       </div>`
+    : "";
+
+  el.innerHTML = `
+    <div class="article-breadcrumb">
+      <span class="ab-back" onclick="navBack()">← ${t("news.title")}</span>
+      <span class="ab-sep">/</span>
+      <span class="ab-title">${title}</span>
+      ${editBtnHtml}
+    </div>
+    <div class="article-hero">
+      <div class="article-hero-inner">
+        <div class="article-hero-meta">
+          <span class="art-tag ${tagCls}">${tagLabel}</span>
+          <span class="art-tag art-tag-date">${item.date}</span>
+        </div>
+        <div class="article-hero-title">${title}</div>
+        ${excerpt ? `<div class="article-hero-excerpt">${excerpt}</div>` : ""}
+        ${coverHtml}
+      </div>
+    </div>
+    <div class="article-body-wrap">
+      <div class="article-body-card">
+        ${_renderMd(body)}
+        ${sourceHtml}
+      </div>
+      ${relatedHtml}
+    </div>`;
 }
 
 // ── News editor ────────────────────────────────────────────────────
@@ -1397,11 +1501,26 @@ async function boot() {
   window.__isAdmin = localStorage.getItem("biomind_is_admin") === "true";
   applyI18n();
   updateNavUser();
-  let hash = location.hash.replace("#", "") || "home";
-  // SOP library requires login — redirect to home if not authenticated
-  if (hash === "sops" && !getUsername()) hash = "home";
-  showView(hash);
-  renderView(hash);
+  const rawHash = location.hash.slice(1) || "home";
+  const [view, subId] = rawHash.split("/");
+  if (view === "sops" && !getUsername()) {
+    showView("home");
+    renderView("home");
+  } else if (view === "news" && subId) {
+    _currentArticleId = subId;
+    currentView = "news";
+    document.querySelectorAll(".view").forEach(el => el.classList.add("hidden"));
+    const newsView = document.getElementById("view-news");
+    if (newsView) newsView.classList.remove("hidden");
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+      btn.classList.toggle("text-blue-600", btn.dataset.view === "news");
+      btn.classList.toggle("font-semibold", btn.dataset.view === "news");
+    });
+    await renderNewsArticle(subId);
+  } else {
+    showView(view || "home");
+    renderView(view || "home");
+  }
   // One-time event delegation for extract-sop / view-sop buttons on paper cards
   document.querySelector("main").addEventListener("click", _handleSopAction);
 }
