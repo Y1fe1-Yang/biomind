@@ -103,6 +103,191 @@
     .news-card-img-v2 { transition: transform .35s ease; }
     .news-card-v2:hover .news-card-img-v2,
     .news-featured-card:hover .news-card-img-v2 { transform: scale(1.04); }
+
+    /* ── Article detail page ─────────────────────────────────── */
+    .article-breadcrumb {
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: .55rem 1.5rem;
+      font-size: 12.5px;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-breadcrumb .ab-back {
+      color: #2563eb;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .article-breadcrumb .ab-back:hover { text-decoration: underline; }
+    .article-breadcrumb .ab-sep { color: #cbd5e1; }
+    .article-breadcrumb .ab-title {
+      color: #334155;
+      max-width: 520px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .article-hero {
+      background: linear-gradient(135deg, #0c1445 0%, #1e3a8a 55%, #1d4ed8 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 2.75rem 1.5rem 2.25rem;
+      animation: artHeroIn .45s cubic-bezier(.22,1,.36,1) both;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.06) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+    .article-hero-inner {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .article-hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: .9rem;
+    }
+    .art-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+      letter-spacing: .3px;
+    }
+    .art-tag-research { background: #dbeafe; color: #1d4ed8; }
+    .art-tag-biz      { background: #fef3c7; color: #92400e; }
+    .art-tag-date     { background: rgba(255,255,255,.12); color: #cbd5e1; }
+    .article-hero-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: .7rem;
+      letter-spacing: -.25px;
+    }
+    .article-hero-excerpt {
+      font-size: .925rem;
+      color: #93c5fd;
+      line-height: 1.65;
+      max-width: 620px;
+    }
+    .article-hero-cover {
+      margin-top: 1.75rem;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+      max-height: 360px;
+    }
+    .article-hero-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .article-hero-cover-placeholder {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      opacity: .15;
+      color: #fff;
+    }
+    .article-body-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      animation: artBodyIn .4s cubic-bezier(.22,1,.36,1) .12s both;
+    }
+    .article-body-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.25rem 2.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      font-size: .95rem;
+      line-height: 1.85;
+      color: #374151;
+    }
+    .article-body-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 1.5rem 0 .55rem;
+    }
+    .article-body-card p { margin-bottom: .9rem; }
+    .article-body-card img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 1.25rem 0 .4rem;
+    }
+    .article-source-footer {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: .85rem 1.1rem;
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: .82rem;
+      color: #64748b;
+    }
+    .article-source-footer a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .article-source-footer a:hover { text-decoration: underline; }
+    .article-related { margin-top: 2rem; }
+    .article-related-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: .85rem;
+    }
+    .article-related-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .article-related-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      cursor: pointer;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .article-related-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,0,0,.1);
+    }
+    .article-related-card .arc-title {
+      font-size: .875rem;
+      font-weight: 600;
+      color: #1e293b;
+      line-height: 1.4;
+      margin-bottom: 4px;
+    }
+    .article-related-card .arc-date { font-size: .75rem; color: #94a3b8; }
+    @keyframes artHeroIn {
+      from { opacity: 0; transform: translateY(-18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes artBodyIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 <body class="h-full bg-gray-50 text-gray-900">
@@ -216,32 +401,6 @@
     <div id="view-members" class="view hidden"></div>
     <div id="view-news" class="view hidden"></div>
   </main>
-
-  <!-- News detail modal -->
-  <div id="news-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" style="background:rgba(0,0,0,0.6)" onclick="closeNewsModal()">
-    <div class="flex min-h-full items-start justify-center py-8 px-4">
-      <div class="bg-white rounded-2xl shadow-2xl w-full overflow-hidden" style="max-width:700px" onclick="event.stopPropagation()">
-        <!-- Cover image -->
-        <div id="news-modal-cover" class="relative overflow-hidden" style="aspect-ratio:16/9">
-          <img id="news-modal-img" src="" alt="" class="w-full h-full object-cover">
-          <button onclick="closeNewsModal()" class="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow flex items-center justify-center text-gray-600 hover:text-gray-900 text-sm font-bold">✕</button>
-        </div>
-        <!-- Content -->
-        <div class="p-6 md:p-8">
-          <div class="flex items-center justify-between mb-3">
-            <div class="flex items-center gap-3">
-              <span id="news-modal-date" class="text-sm font-semibold text-blue-600"></span>
-              <a id="news-modal-source" href="#" target="_blank" rel="noopener"
-                 class="text-xs text-gray-400 hover:text-blue-500 transition"></a>
-            </div>
-            <button id="news-modal-edit-btn" class="hidden text-xs text-blue-600 bg-blue-50 hover:bg-blue-100 px-3 py-1 rounded-full transition" data-i18n="news.edit"></button>
-          </div>
-          <h2 id="news-modal-title" class="text-xl font-extrabold text-gray-900 leading-snug mb-5"></h2>
-          <div id="news-modal-body" class="text-sm text-gray-700 leading-relaxed"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- News editor modal -->
   <div id="news-editor-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" style="background:rgba(0,0,0,0.6)">
