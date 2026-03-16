@@ -589,6 +589,19 @@
   <!-- Backdrop -->
   <div id="chat-backdrop" class="hidden fixed inset-0 z-40 bg-black/20" id="chat-backdrop"></div>
 
+  <!-- SOP Upload Modal -->
+  <div id="modal-sop-upload" class="hidden fixed inset-0 z-50 overflow-y-auto" style="background:rgba(0,0,0,0.6)" onclick="this.classList.add('hidden')">
+    <div class="flex min-h-full items-start justify-center py-8 px-4">
+      <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-gray-900" id="sop-modal-title">上传内容</h2>
+          <button onclick="document.getElementById('modal-sop-upload').classList.add('hidden')" class="text-gray-400 hover:text-gray-600">✕</button>
+        </div>
+        <div id="sop-upload-form-container"></div>
+      </div>
+    </div>
+  </div>
+
   <script src="/assets/app.js"></script>
 </body>
 </html>

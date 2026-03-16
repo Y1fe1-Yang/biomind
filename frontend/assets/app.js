@@ -428,9 +428,367 @@ const _AUTH_VIEWS  = new Set(["sops", "share", "admin"]);
 const _ADMIN_VIEWS = new Set(["admin"]);
 
 // ── Placeholder render functions (filled by worktrees) ────────────
-function renderShare() { /* TODO: sop-upload worktree */ }
 function renderAdmin() { /* TODO: admin-panel worktree */ }
-function renderSopDetail(id) { /* TODO: sop-upload worktree */ }
+
+// ── SOP/Share Upload ──────────────────────────────────────────────
+
+function _userSopCard(s) {
+  const title = currentLang === "zh" ? s.title.zh : (s.title.en || s.title.zh);
+  const tags = (s.tags || [])
+    .map(tag => `<span style="font-size:.65rem;background:#fef3c7;color:#92400e;padding:1px 6px;border-radius:9999px">${escHtml(tag)}</span>`)
+    .join("");
+  const dateStr = s.uploadedAt ? new Date(s.uploadedAt * 1000).toLocaleDateString() : "";
+  const fileIcon = s.fileType === "pdf" ? "📄" : s.fileType === "docx" ? "📝" : "📋";
+  return `
+    <div style="background:white;border-radius:.75rem;border:1px solid #e5e7eb;padding:1rem;cursor:pointer;transition:box-shadow .2s"
+         onmouseover="this.style.boxShadow='0 4px 12px rgba(0,0,0,.08)'"
+         onmouseout="this.style.boxShadow='none'"
+         onclick="showView('sops');renderView('sops');setTimeout(()=>renderSopDetail('${escHtml(s.id)}'),50)">
+      <div style="display:flex;align-items:flex-start;gap:.75rem">
+        <span style="font-size:1.4rem;flex-shrink:0">${fileIcon}</span>
+        <div style="flex:1;min-width:0">
+          <p style="font-size:.875rem;font-weight:600;color:#111827;margin:0 0 .25rem">${escHtml(title)}</p>
+          <p style="font-size:.72rem;color:#9ca3af;margin:0 0 .4rem">${escHtml(s.uploadedBy)} · ${dateStr}</p>
+          ${tags ? `<div style="display:flex;flex-wrap:wrap;gap:3px">${tags}</div>` : ""}
+        </div>
+      </div>
+    </div>`;
+}
+
+async function renderShare() {
+  const el = document.getElementById("view-share");
+  el.innerHTML = `<div style="text-align:center;padding:4rem;color:#9ca3af">${t("loading")}</div>`;
+
+  let shares = [];
+  try {
+    const resp = await apiFetch("/api/sops?type=share");
+    shares = resp.ok ? await resp.json() : [];
+  } catch { shares = []; }
+
+  const uploadBtn = `
+    <button onclick="openSopUploadModal('share')"
+      style="flex-shrink:0;background:rgba(255,255,255,.12);color:white;border:1px solid rgba(255,255,255,.28);border-radius:.5rem;padding:.5rem 1.1rem;font-size:.825rem;font-weight:600;cursor:pointer;transition:background .2s"
+      onmouseover="this.style.background='rgba(255,255,255,.22)'" onmouseout="this.style.background='rgba(255,255,255,.12)'">
+      + 上传分享
+    </button>`;
+
+  el.innerHTML = `
+    <div style="background:linear-gradient(135deg,#0c1445,#1e3a8a,#1d4ed8);margin:-1.5rem -1rem 2rem;padding:2.25rem 2rem 1.75rem;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;position:relative;overflow:hidden">
+      <div style="position:absolute;right:-1rem;bottom:-.5rem;font-size:8rem;font-weight:900;color:rgba(255,255,255,.04);letter-spacing:-.3rem;line-height:1;pointer-events:none;user-select:none">SHARE</div>
+      <div style="position:relative">
+        <div style="font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem">BioMiND Lab</div>
+        <h2 style="font-size:1.6rem;font-weight:900;color:white;line-height:1.1">组内分享</h2>
+        <p style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.35rem">团队成员的知识分享与资料汇编</p>
+      </div>
+      ${uploadBtn}
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem">
+      ${shares.map(_userSopCard).join("") || `<p style="color:#9ca3af;padding:3rem 0;text-align:center;grid-column:1/-1">${t("noResults")}</p>`}
+    </div>`;
+}
+
+async function renderSopDetail(id) {
+  const el = document.getElementById("view-sops");
+
+  let sop = null;
+  try {
+    const resp = await apiFetch(`/api/sops/${id}`);
+    if (resp.ok) sop = await resp.json();
+  } catch {}
+
+  if (!sop) {
+    el.insertAdjacentHTML("beforeend", `
+      <div style="text-align:center;padding:3rem">
+        <p style="color:#64748b;margin-bottom:1rem">SOP 未找到</p>
+        <button onclick="renderSops()" style="color:#2563eb;font-size:.9rem;cursor:pointer;background:none;border:none">← 返回 SOP 列表</button>
+      </div>`);
+    return;
+  }
+
+  const title = currentLang === "zh" ? sop.title.zh : (sop.title.en || sop.title.zh);
+  const desc  = currentLang === "zh" ? sop.description?.zh : (sop.description?.en || sop.description?.zh);
+  const dateStr = sop.uploadedAt ? new Date(sop.uploadedAt * 1000).toLocaleDateString() : "";
+  const tags = (sop.tags || [])
+    .map(tag => `<span style="font-size:.7rem;background:#fef3c7;color:#92400e;padding:2px 8px;border-radius:9999px">${escHtml(tag)}</span>`)
+    .join("");
+
+  const canEdit = window.__isAdmin || getUsername() === sop.uploadedBy;
+
+  // File download or Markdown rendering
+  let contentHtml = "";
+  if (sop.fileType === "md" && sop.mdContent) {
+    contentHtml = `<div style="margin-top:1.25rem;padding:1.25rem;background:#f8fafc;border-radius:.75rem;border:1px solid #e2e8f0;font-size:.875rem;color:#374151">${_renderMd(sop.mdContent)}</div>`;
+  } else if (sop.file) {
+    contentHtml = `<div style="margin-top:1.25rem">
+      <a href="/data/${escHtml(sop.file)}" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:white;padding:.6rem 1.25rem;border-radius:.5rem;font-size:.875rem;font-weight:600;text-decoration:none">
+        ↓ 下载文件 (${sop.fileType?.toUpperCase()})
+      </a>
+    </div>`;
+  }
+
+  // Inline edit form
+  const editFormHtml = canEdit ? `
+    <details id="sop-detail-edit-${id}" style="margin-top:1.25rem">
+      <summary style="font-size:.8rem;color:#2563eb;cursor:pointer;font-weight:600;user-select:none">编辑</summary>
+      <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.6rem">
+        <input id="sde-title-zh-${id}" value="${escHtml(sop.title.zh)}" placeholder="标题（中文）"
+          style="border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem">
+        <input id="sde-title-en-${id}" value="${escHtml(sop.title.en || '')}" placeholder="Title (English)"
+          style="border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem">
+        <input id="sde-tags-${id}" value="${escHtml((sop.tags || []).join(','))}" placeholder="标签（逗号分隔）"
+          style="border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem">
+        <div style="display:flex;gap:.5rem;margin-top:.25rem">
+          <button onclick="_submitSopEdit('${escHtml(id)}')"
+            style="background:#2563eb;color:white;border:none;border-radius:.5rem;padding:.4rem .9rem;font-size:.8rem;font-weight:600;cursor:pointer">保存</button>
+          <button onclick="document.getElementById('sop-detail-edit-${id}').removeAttribute('open')"
+            style="background:#f3f4f6;color:#374151;border:none;border-radius:.5rem;padding:.4rem .9rem;font-size:.8rem;cursor:pointer">取消</button>
+          <span id="sde-status-${id}" style="font-size:.75rem;color:#9ca3af;align-self:center"></span>
+        </div>
+      </div>
+    </details>` : "";
+
+  const deleteBtn = canEdit ? `
+    <button onclick="_deleteSopFromDetail('${escHtml(id)}')"
+      style="font-size:.75rem;color:#dc2626;background:none;border:1px solid #fecaca;border-radius:.375rem;padding:.3rem .7rem;cursor:pointer;margin-left:.5rem">删除</button>` : "";
+
+  el.insertAdjacentHTML("beforeend", `
+    <div id="sop-detail-card-${id}" style="margin-top:1.5rem;background:white;border:1px solid #e5e7eb;border-radius:1rem;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
+        <div style="flex:1;min-width:0">
+          <h3 style="font-size:1.1rem;font-weight:800;color:#111827;margin:0 0 .3rem">${escHtml(title)}</h3>
+          <p style="font-size:.75rem;color:#9ca3af;margin:0 0 .5rem">${escHtml(sop.uploadedBy)} · ${dateStr}</p>
+          ${tags ? `<div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:.5rem">${tags}</div>` : ""}
+          ${desc ? `<p style="font-size:.85rem;color:#6b7280;margin:0">${escHtml(desc)}</p>` : ""}
+        </div>
+        <div style="flex-shrink:0;display:flex;align-items:center">
+          <button onclick="document.getElementById('sop-detail-card-${id}').remove()"
+            style="font-size:.75rem;color:#6b7280;background:none;border:1px solid #e5e7eb;border-radius:.375rem;padding:.3rem .7rem;cursor:pointer">关闭</button>
+          ${deleteBtn}
+        </div>
+      </div>
+      ${contentHtml}
+      ${editFormHtml}
+    </div>`);
+}
+
+async function _submitSopEdit(id) {
+  const titleZh = document.getElementById(`sde-title-zh-${id}`)?.value?.trim();
+  const titleEn = document.getElementById(`sde-title-en-${id}`)?.value?.trim();
+  const tagsStr = document.getElementById(`sde-tags-${id}`)?.value?.trim();
+  const statusEl = document.getElementById(`sde-status-${id}`);
+  const tags = tagsStr ? tagsStr.split(",").map(t => t.trim()).filter(Boolean) : [];
+  if (statusEl) statusEl.textContent = "保存中…";
+  try {
+    const resp = await apiFetch(`/api/sops/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title_zh: titleZh, title_en: titleEn, tags }),
+    });
+    if (!resp.ok) throw new Error("保存失败");
+    if (statusEl) statusEl.textContent = "已保存";
+    // Refresh detail
+    const card = document.getElementById(`sop-detail-card-${id}`);
+    if (card) card.remove();
+    renderSopDetail(id);
+  } catch (e) {
+    if (statusEl) statusEl.textContent = e.message;
+  }
+}
+
+async function _deleteSopFromDetail(id) {
+  if (!confirm("确认删除此 SOP？")) return;
+  try {
+    const resp = await apiFetch(`/api/sops/${id}`, { method: "DELETE" });
+    if (resp.ok) {
+      const card = document.getElementById(`sop-detail-card-${id}`);
+      if (card) card.remove();
+    }
+  } catch {}
+}
+
+function openSopUploadModal(type) {
+  document.getElementById("sop-modal-title").textContent = type === "share" ? "上传分享" : "上传 SOP";
+  const container = document.getElementById("sop-upload-form-container");
+  container.innerHTML = `
+    <form id="sop-upload-form" onsubmit="event.preventDefault();_submitSopUpload('${type}')">
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">类型</label>
+          <select id="suf-type" style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem">
+            <option value="sop" ${type === "sop" ? "selected" : ""}>SOP（操作规程）</option>
+            <option value="share" ${type === "share" ? "selected" : ""}>分享</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">标题（中文）<span style="color:#ef4444">*</span></label>
+          <input id="suf-title-zh" required placeholder="例：PCR 操作规程"
+            style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">Title (English)</label>
+          <input id="suf-title-en" placeholder="e.g. PCR Protocol"
+            style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">简介（中文）</label>
+          <textarea id="suf-desc-zh" rows="2" placeholder="简短描述..."
+            style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem;resize:none;box-sizing:border-box"></textarea>
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">Description (English)</label>
+          <textarea id="suf-desc-en" rows="2" placeholder="Brief description..."
+            style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem;resize:none;box-sizing:border-box"></textarea>
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.3rem">标签（逗号分隔）</label>
+          <input id="suf-tags" placeholder="PCR, 分子生物学, ..."
+            style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.85rem;box-sizing:border-box">
+        </div>
+        <div>
+          <label style="font-size:.75rem;font-weight:600;color:#374151;display:block;margin-bottom:.5rem">内容</label>
+          <div style="display:flex;gap:.5rem;margin-bottom:.5rem">
+            <button type="button" id="suf-tab-file" onclick="_sufSwitchTab('file')"
+              style="flex:1;padding:.4rem;border-radius:.375rem;border:1px solid #2563eb;background:#2563eb;color:white;font-size:.75rem;font-weight:600;cursor:pointer">上传文件</button>
+            <button type="button" id="suf-tab-md" onclick="_sufSwitchTab('md')"
+              style="flex:1;padding:.4rem;border-radius:.375rem;border:1px solid #d1d5db;background:white;color:#374151;font-size:.75rem;font-weight:600;cursor:pointer">Markdown</button>
+          </div>
+          <div id="suf-panel-file">
+            <input id="suf-file" type="file" accept=".pdf,.docx,.doc"
+              style="width:100%;font-size:.8rem;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .6rem;box-sizing:border-box">
+            <p style="font-size:.68rem;color:#9ca3af;margin:.3rem 0 0">支持 PDF、DOCX，最大 20 MB</p>
+          </div>
+          <div id="suf-panel-md" style="display:none">
+            <textarea id="suf-md" rows="6" placeholder="# 标题\n\n写下 Markdown 内容..."
+              style="width:100%;border:1px solid #d1d5db;border-radius:.5rem;padding:.45rem .75rem;font-size:.82rem;font-family:monospace;resize:y;box-sizing:border-box"></textarea>
+          </div>
+        </div>
+        <p id="suf-error" style="color:#dc2626;font-size:.75rem;display:none"></p>
+        <div style="display:flex;justify-content:flex-end;gap:.75rem;padding-top:.25rem">
+          <button type="button" onclick="document.getElementById('modal-sop-upload').classList.add('hidden')"
+            style="padding:.5rem 1rem;font-size:.85rem;color:#6b7280;background:none;border:none;cursor:pointer">取消</button>
+          <button type="submit" id="suf-submit"
+            style="padding:.5rem 1.25rem;font-size:.85rem;font-weight:600;color:white;background:#2563eb;border:none;border-radius:.5rem;cursor:pointer">上传</button>
+        </div>
+      </div>
+    </form>`;
+  document.getElementById("modal-sop-upload").classList.remove("hidden");
+}
+
+function _sufSwitchTab(tab) {
+  const isFile = tab === "file";
+  document.getElementById("suf-panel-file").style.display = isFile ? "" : "none";
+  document.getElementById("suf-panel-md").style.display   = isFile ? "none" : "";
+  document.getElementById("suf-tab-file").style.background = isFile ? "#2563eb" : "white";
+  document.getElementById("suf-tab-file").style.color      = isFile ? "white" : "#374151";
+  document.getElementById("suf-tab-file").style.borderColor= isFile ? "#2563eb" : "#d1d5db";
+  document.getElementById("suf-tab-md").style.background  = isFile ? "white" : "#2563eb";
+  document.getElementById("suf-tab-md").style.color       = isFile ? "#374151" : "white";
+  document.getElementById("suf-tab-md").style.borderColor = isFile ? "#d1d5db" : "#2563eb";
+}
+
+async function _submitSopUpload(defaultType) {
+  const type = document.getElementById("suf-type").value;
+  const titleZh = document.getElementById("suf-title-zh").value.trim();
+  const titleEn = document.getElementById("suf-title-en").value.trim();
+  const descZh  = document.getElementById("suf-desc-zh").value.trim();
+  const descEn  = document.getElementById("suf-desc-en").value.trim();
+  const tagsStr = document.getElementById("suf-tags").value.trim();
+  const mdContent = document.getElementById("suf-md").value.trim();
+  const fileEl  = document.getElementById("suf-file");
+  const errEl   = document.getElementById("suf-error");
+  const submitBtn = document.getElementById("suf-submit");
+
+  errEl.style.display = "none";
+
+  if (!titleZh) {
+    errEl.textContent = "请填写标题（中文）";
+    errEl.style.display = "";
+    return;
+  }
+
+  const file = fileEl?.files?.[0];
+  const mdVisible = document.getElementById("suf-panel-md").style.display !== "none";
+
+  if (!file && (!mdVisible || !mdContent)) {
+    errEl.textContent = "请上传文件或填写 Markdown 内容";
+    errEl.style.display = "";
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "上传中…";
+
+  try {
+    const fd = new FormData();
+    fd.append("type", type);
+    fd.append("title_zh", titleZh);
+    fd.append("title_en", titleEn);
+    fd.append("description_zh", descZh);
+    fd.append("description_en", descEn);
+    fd.append("tags", tagsStr);
+    if (file) {
+      fd.append("file", file);
+    } else {
+      fd.append("mdContent", mdContent);
+    }
+
+    const resp = await apiFetch("/api/sops", { method: "POST", body: fd });
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({}));
+      throw new Error(err.detail || "上传失败");
+    }
+    document.getElementById("modal-sop-upload").classList.add("hidden");
+    // Re-render the current view
+    if (type === "share") {
+      renderShare();
+    } else {
+      renderSops();
+    }
+  } catch (e) {
+    errEl.textContent = e.message;
+    errEl.style.display = "";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "上传";
+  }
+}
+
+async function renderUserSops() {
+  const container = document.getElementById("view-sops");
+
+  let userSops = [];
+  try {
+    const resp = await apiFetch("/api/sops?type=sop");
+    userSops = resp.ok ? await resp.json() : [];
+  } catch { userSops = []; }
+
+  const uploadBtn = `
+    <button onclick="openSopUploadModal('sop')"
+      style="display:inline-flex;align-items:center;gap:.4rem;background:#2563eb;color:white;border:none;border-radius:.5rem;padding:.5rem 1rem;font-size:.8rem;font-weight:600;cursor:pointer;transition:background .2s"
+      onmouseover="this.style.background='#1d4ed8'" onmouseout="this.style.background='#2563eb'">
+      + 上传 SOP
+    </button>`;
+
+  const section = `
+    <div id="user-sops-section" style="margin-top:2rem;border-top:2px solid #e5e7eb;padding-top:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.5rem">
+        <div>
+          <h3 style="font-size:1rem;font-weight:800;color:#1e3a8a;margin:0">团队 SOP 上传</h3>
+          <p style="font-size:.75rem;color:#9ca3af;margin:.2rem 0 0">成员上传的操作规程与文档</p>
+        </div>
+        ${getUsername() ? uploadBtn : ""}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.875rem">
+        ${userSops.map(_userSopCard).join("") || `<p style="color:#9ca3af;padding:1.5rem 0;grid-column:1/-1;font-size:.85rem">${t("noResults")}</p>`}
+      </div>
+    </div>`;
+
+  // Remove existing section to avoid duplicates on re-render
+  const existing = document.getElementById("user-sops-section");
+  if (existing) existing.remove();
+
+  container.insertAdjacentHTML("beforeend", section);
+}
 
 // ── Shared helpers ────────────────────────────────────────────────
 function paperTypeColor(type) {
@@ -699,6 +1057,11 @@ function renderSops() {
         class="border rounded-lg px-3 py-1.5 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
     <div class="space-y-3">${filtered.map(sopCard).join("") || `<p class="text-gray-400 py-12 text-center">${t("noResults")}</p>`}</div>`;
+
+  // Append user-uploaded SOPs section below the existing library
+  if (getUsername()) {
+    renderUserSops();
+  }
 }
 
 // ── Presentations ─────────────────────────────────────────────────
