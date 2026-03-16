@@ -385,15 +385,18 @@
         <button id="nav-login-btn" class="text-sm text-blue-600 font-medium hover:text-blue-800 transition hidden flex-shrink-0" data-i18n="auth.loginTab" onclick="showAuthModal()"></button>
         <button id="logout-btn" class="text-sm text-gray-400 hover:text-red-500 transition hidden flex-shrink-0" data-i18n="auth.logout"></button>
         <!-- Hamburger (mobile only) -->
-        <button id="hamburger-btn" class="hidden flex-col justify-center items-center gap-1.5 p-2 ml-1" onclick="toggleMobileMenu()" aria-label="菜单">
-          <span class="block w-5 h-0.5 bg-gray-600"></span>
-          <span class="block w-5 h-0.5 bg-gray-600"></span>
-          <span class="block w-5 h-0.5 bg-gray-600"></span>
+        <button id="hamburger-btn" class="hidden flex-col justify-center items-center gap-1.5 p-2 ml-2 rounded-lg border border-gray-200 bg-gray-50 active:bg-gray-100" onclick="toggleMobileMenu()" aria-label="菜单" style="min-width:40px;min-height:40px">
+          <span class="block w-5 h-0.5 bg-gray-700"></span>
+          <span class="block w-5 h-0.5 bg-gray-700"></span>
+          <span class="block w-5 h-0.5 bg-gray-700"></span>
         </button>
       </div>
     </div>
     <!-- Mobile dropdown menu -->
     <div id="mobile-nav-menu" class="hidden bg-white border-t border-gray-100 shadow-sm">
+      <div class="px-4 py-2.5 border-b border-gray-100">
+        <input id="mobile-search-input" type="text" class="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" data-i18n-placeholder="search.placeholder">
+      </div>
       <button data-view="home" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.home"></button>
       <button data-view="timeline" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.timeline"></button>
       <button data-view="directions" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.directions"></button>

@@ -2652,6 +2652,23 @@ function closeMobileMenu() {
   document.getElementById("mobile-nav-menu").classList.add("hidden");
 }
 
+// Wire mobile search input (inside dropdown)
+document.getElementById("mobile-search-input")?.addEventListener("input", e => {
+  const q = e.target.value.trim();
+  if (q.length > 1) {
+    closeMobileMenu();
+    showView("search");
+    renderSearch(q);
+  } else if (!q) {
+    showView(currentView === "search" ? "home" : currentView);
+  }
+});
+
+// Close mobile menu when any nav-btn inside it is clicked
+document.getElementById("mobile-nav-menu")?.addEventListener("click", e => {
+  if (e.target.closest(".nav-btn")) closeMobileMenu();
+});
+
 // ── Footer ────────────────────────────────────────────────────────
 async function initFooter() {
   document.getElementById("footer-year").textContent = new Date().getFullYear();
