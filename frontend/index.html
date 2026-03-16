@@ -372,6 +372,8 @@
         <button data-view="presentations" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.presentations"></button>
         <button data-view="members" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.members"></button>
         <button data-view="news" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition" data-i18n="nav.news"></button>
+        <button id="nav-share-btn" data-view="share" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition hidden" data-i18n="nav.share"></button>
+        <button id="nav-admin-btn" data-view="admin" class="nav-btn text-sm font-medium text-gray-600 hover:text-blue-600 transition hidden" data-i18n="nav.admin"></button>
       </div>
       <!-- Right controls -->
       <div class="ml-auto flex items-center gap-2">
@@ -398,7 +400,9 @@
       <button data-view="sops" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.sops"></button>
       <button data-view="presentations" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.presentations"></button>
       <button data-view="members" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.members"></button>
-      <button data-view="news" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600" data-i18n="nav.news"></button>
+      <button data-view="news" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100" data-i18n="nav.news"></button>
+      <button id="mobile-share-btn" data-view="share" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 border-b border-gray-100 hidden" data-i18n="nav.share"></button>
+      <button id="mobile-admin-btn" data-view="admin" class="nav-btn w-full text-left px-5 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-blue-600 hidden" data-i18n="nav.admin"></button>
     </div>
   </nav>
 
@@ -412,7 +416,36 @@
     <div id="view-search" class="view hidden"></div>
     <div id="view-members" class="view hidden"></div>
     <div id="view-news" class="view hidden"></div>
+    <div id="view-share" class="view hidden"></div>
+    <div id="view-admin" class="view hidden"></div>
   </main>
+
+  <!-- Site footer -->
+  <footer id="site-footer" class="mt-12 border-t border-gray-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <!-- Top row: SIAT logo + name -->
+      <div class="flex flex-wrap items-center justify-between gap-6 mb-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/siat-logo.png" alt="SIAT" class="h-8 object-contain" onerror="this.style.display='none'">
+          <div>
+            <div class="text-xs font-semibold text-gray-700">中国科学院深圳先进技术研究院</div>
+            <div class="text-xs text-gray-500">Shenzhen Institute of Advanced Technology, CAS</div>
+          </div>
+        </div>
+        <!-- Powered by HappyCapy -->
+        <a href="https://happycapy.ai/?via=yves" target="_blank" rel="noopener"
+           class="flex items-center gap-2 text-xs text-gray-500 hover:text-gray-700 transition">
+          <span>Powered by</span>
+          <img src="/assets/happycapy-logo.png" alt="HappyCapy" class="h-5 object-contain" onerror="this.style.display='none'">
+          <span class="font-medium">HappyCapy</span>
+        </a>
+      </div>
+      <!-- Friendly links -->
+      <div id="footer-links" class="flex flex-wrap gap-4 text-xs text-gray-500 mb-4"></div>
+      <!-- Copyright -->
+      <div class="text-xs text-gray-400">&copy; <span id="footer-year"></span> BioMiND Lab · SIAT, CAS</div>
+    </div>
+  </footer>
 
   <!-- News editor modal -->
   <div id="news-editor-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" style="background:rgba(0,0,0,0.6)">

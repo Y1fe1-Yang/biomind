@@ -32,6 +32,7 @@ function setAuth(token, username, isAdmin) {
   localStorage.setItem("biomind_username", username);
   localStorage.setItem("biomind_is_admin", isAdmin ? "true" : "false");
   window.__isAdmin = isAdmin === true;
+  updateNavAdmin();
 }
 
 function clearAuth() {
@@ -39,6 +40,7 @@ function clearAuth() {
   localStorage.removeItem("biomind_username");
   localStorage.removeItem("biomind_is_admin");
   window.__isAdmin = false;
+  updateNavAdmin();
 }
 
 function authHeaders() {
@@ -259,10 +261,11 @@ window.addEventListener("popstate", () => {
 document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", async () => {
     const view = btn.dataset.view;
-    if (view === "sops" && !getUsername()) {
+    if (_AUTH_VIEWS.has(view) && !getUsername()) {
       await showAuthModal();
       if (!getUsername()) return;
     }
+    if (_ADMIN_VIEWS.has(view) && !window.__isAdmin) return;
     showView(view);
     renderView(view);
     closeMobileMenu();
@@ -414,9 +417,20 @@ function renderView(name) {
     presentations: renderPresentations,
     members: renderMembers,
     news: renderNews,
+    share: renderShare,
+    admin: renderAdmin,
   };
   if (renders[name]) renders[name]();
 }
+
+// ── Auth-gated views ──────────────────────────────────────────────
+const _AUTH_VIEWS  = new Set(["sops", "share", "admin"]);
+const _ADMIN_VIEWS = new Set(["admin"]);
+
+// ── Placeholder render functions (filled by worktrees) ────────────
+function renderShare() { /* TODO: sop-upload worktree */ }
+function renderAdmin() { /* TODO: admin-panel worktree */ }
+function renderSopDetail(id) { /* TODO: sop-upload worktree */ }
 
 // ── Shared helpers ────────────────────────────────────────────────
 function paperTypeColor(type) {
@@ -1496,14 +1510,48 @@ function closeMobileMenu() {
   document.getElementById("mobile-nav-menu").classList.add("hidden");
 }
 
+// ── Footer ────────────────────────────────────────────────────────
+async function initFooter() {
+  document.getElementById("footer-year").textContent = new Date().getFullYear();
+  try {
+    const resp = await fetch("/data/footer_config.json");
+    if (!resp.ok) return;
+    const cfg = await resp.json();
+    const container = document.getElementById("footer-links");
+    if (container && cfg.links && cfg.links.length) {
+      container.innerHTML = cfg.links.map(l =>
+        `<a href="${l.url}" target="_blank" rel="noopener" class="hover:text-gray-700 hover:underline transition">${l.label}</a>`
+      ).join('<span class="text-gray-300">·</span>');
+    }
+  } catch {}
+}
+
+function updateNavAdmin() {
+  const isAdmin = window.__isAdmin;
+  const isLoggedIn = !!getUsername();
+  ["nav-share-btn", "mobile-share-btn"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle("hidden", !isLoggedIn);
+  });
+  ["nav-admin-btn", "mobile-admin-btn"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle("hidden", !isAdmin);
+  });
+}
+
 // ── Boot ──────────────────────────────────────────────────────────
 async function boot() {
   window.__isAdmin = localStorage.getItem("biomind_is_admin") === "true";
   applyI18n();
   updateNavUser();
+  updateNavAdmin();
+  initFooter();
   const rawHash = location.hash.slice(1) || "home";
   const [view, subId] = rawHash.split("/");
-  if (view === "sops" && !getUsername()) {
+  if (_AUTH_VIEWS.has(view) && !getUsername()) {
+    showView("home");
+    renderView("home");
+  } else if (_ADMIN_VIEWS.has(view) && !window.__isAdmin) {
     showView("home");
     renderView("home");
   } else if (view === "news" && subId) {

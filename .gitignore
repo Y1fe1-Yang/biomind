@@ -12,6 +12,7 @@ frontend/assets/input.css
 package*.json
 tailwind.config.js
 data/users.db
+data/ai_config.json
 
 # Large binary/media files — not hosted on GitHub
 1.Journal Articles/
