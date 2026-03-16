@@ -78,12 +78,18 @@ Everything else in `data/` remains inaccessible via HTTP.
 {
   "ai_provider": "zhipu",
   "zhipu_api_key": "sk-...",
+  "zhipu_base_url": "",
   "claude_api_key": "",
   "kimi_api_key": "",
   "jwt_secret": ""
 }
 ```
-In `GET /api/admin/settings`, keys are masked: `"sk-****...xxxx"` (first 3 chars + `****` + last 4 chars). `jwt_secret` is always fully masked. Environment variables still override `settings.json` at runtime; `backend/config.py` reads `settings.json` as a secondary fallback (after env vars, before hardcoded defaults).
+
+`zhipu_base_url` is optional. When empty, the default ZhipuAI cloud endpoint is used (`https://open.bigmodel.cn/api/paas/v4`). When set, it overrides the base URL — enabling self-hosted GLM deployments (e.g., `http://192.168.1.10:8000/v1`). The AI settings panel in the admin UI shows this field as "自定义 API 地址（留空使用官方）".
+
+The same pattern applies to other providers: `claude_base_url` and `kimi_base_url` can be added to the schema in the future with no structural change needed.
+
+In `GET /api/admin/settings`, keys are masked: `"sk-****...xxxx"` (first 3 chars + `****` + last 4 chars). `jwt_secret` always fully masked. Base URLs are shown unmasked. Environment variables still override `settings.json` at runtime; `backend/config.py` reads `settings.json` as a secondary fallback (after env vars, before hardcoded defaults).
 
 ### .js Regeneration
 
@@ -174,7 +180,7 @@ Node.js is confirmed available (used in previous sessions for `.js` file validat
 3. **成员管理** — member card grid, add/edit form with bilingual fields (name ZH/EN, title ZH/EN, email, photo URL, research areas ZH/EN, education ZH/EN, bio ZH/EN)
 4. **新闻管理** — article list, add/edit with EasyMDE Markdown editor + cover image URL + extra image URLs, bilingual title/excerpt, Markdown body (ZH/EN tabs)
 5. **文献管理** — publication list table + search/filter, PDF upload workflow (see below)
-6. **AI 设置** — provider selector (zhipu / claude / kimi), API key input (masked), test-connection button that calls `POST /api/chat` with a hello message
+6. **AI 设置** — provider selector (zhipu / claude / kimi), API key input (masked), **custom base URL field** (optional, for self-hosted GLM or compatible endpoints), test-connection button that calls `POST /api/chat` with a hello message
 7. **系统设置** — JWT secret update (shows masked value), current host/port info (read-only)
 
 ---
