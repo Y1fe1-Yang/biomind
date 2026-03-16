@@ -10,7 +10,9 @@ from backend.routers.sop_extract import router as sop_extract_router
 from backend.routers.news import router as news_router
 from backend.routers.admin import router as admin_router
 from backend.routers.sops import router as sops_router
+from backend.routers.social import router as social_router
 from backend.services.user_store import ensure_admin_exists
+from backend.services.social_store import _ensure_social_tables
 
 app = FastAPI(title="BioMiND")
 
@@ -18,6 +20,7 @@ app = FastAPI(title="BioMiND")
 @app.on_event("startup")
 def startup():
     ensure_admin_exists()
+    _ensure_social_tables()
 
 app.include_router(auth_router)
 app.include_router(files_router)
@@ -28,6 +31,7 @@ app.include_router(sop_extract_router)
 app.include_router(news_router)
 app.include_router(admin_router)
 app.include_router(sops_router)
+app.include_router(social_router)
 
 @app.get("/api/health")
 def health():

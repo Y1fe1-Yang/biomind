@@ -797,7 +797,9 @@ async function renderSopDetail(id) {
       </div>
       ${contentHtml}
       ${editFormHtml}
+      <div id="sop-social-${id}" style="margin-top:1.5rem"></div>
     </div>`);
+  renderSopSocial(id);
 }
 
 async function _submitSopEdit(id) {
@@ -1305,6 +1307,213 @@ async function renderUserSops() {
   if (existing) existing.remove();
 
   container.insertAdjacentHTML("beforeend", section);
+}
+
+// ── SOP social widgets (likes, bookmarks, comments) ────────────────
+
+async function renderSopSocial(id) {
+  const socialEl = document.getElementById(`sop-social-${id}`);
+  if (!socialEl) return;
+
+  // Fetch current user's likes, bookmarks, and comments in parallel
+  let myLikes = [], myBookmarks = [], comments = [];
+  try {
+    const [likesResp, bookmarksResp, commentsResp] = await Promise.all([
+      apiFetch("/api/me/likes"),
+      apiFetch("/api/me/bookmarks"),
+      apiFetch(`/api/sops/${id}/comments`),
+    ]);
+    myLikes      = await likesResp.json();
+    myBookmarks  = await bookmarksResp.json();
+    comments     = await commentsResp.json();
+  } catch {
+    socialEl.innerHTML = '<p class="text-red-400 text-sm">Could not load social features.</p>';
+    return;
+  }
+
+  const liked      = myLikes.includes(id);
+  const bookmarked = myBookmarks.includes(id);
+  const username   = getUsername();
+
+  function _likeClass(active) {
+    return active
+      ? "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-red-300 text-red-600 bg-red-50"
+      : "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-gray-200 text-gray-600 hover:bg-gray-50";
+  }
+  function _bookmarkClass(active) {
+    return active
+      ? "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-yellow-300 text-yellow-600 bg-yellow-50"
+      : "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-gray-200 text-gray-600 hover:bg-gray-50";
+  }
+
+  function _renderComments(cmts) {
+    if (!cmts.length) {
+      return '<p class="text-gray-400 text-sm py-4 text-center">No comments yet. Be the first!</p>';
+    }
+    return cmts.map(c => {
+      const date = new Date(c.created_at * 1000).toLocaleDateString();
+      const canDelete = (c.username === username) || window.__isAdmin;
+      const delBtn = canDelete
+        ? `<button onclick="_deleteSopComment('${id}', ${c.id})"
+             class="text-xs text-red-400 hover:text-red-600 ml-2">Delete</button>`
+        : "";
+      return `<div class="flex justify-between py-3 border-b border-gray-100 last:border-0">
+        <div class="flex-1">
+          <span class="font-medium text-sm text-gray-800">${c.username}</span>
+          <span class="text-xs text-gray-400 ml-2">${date}</span>
+          <p class="text-sm text-gray-700 mt-1">${c.content.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>
+        </div>
+        ${delBtn}
+      </div>`;
+    }).join("");
+  }
+
+  socialEl.innerHTML = `
+    <div class="mb-6">
+      <div class="flex gap-3 mb-6">
+        <button id="like-btn-${id}" onclick="_toggleSopLike('${id}')"
+          class="${_likeClass(liked)}">
+          <span>${liked ? "&#9829;" : "&#9825;"}</span>
+          <span id="like-count-${id}">${myLikes.length > 0 ? "" : ""}Like</span>
+        </button>
+        <button id="bookmark-btn-${id}" onclick="_toggleSopBookmark('${id}')"
+          class="${_bookmarkClass(bookmarked)}">
+          <span>${bookmarked ? "&#9733;" : "&#9734;"}</span>
+          <span id="bookmark-count-${id}">Bookmark</span>
+        </button>
+      </div>
+
+      <div class="border-t border-gray-200 pt-4">
+        <h3 class="font-semibold text-gray-800 mb-3">Comments</h3>
+        <div id="comments-list-${id}">${_renderComments(comments)}</div>
+
+        <div class="mt-4">
+          <textarea id="comment-input-${id}" rows="3" maxlength="500"
+            placeholder="Add a comment (max 500 chars)…"
+            class="border border-gray-300 rounded-lg px-3 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          <div class="flex justify-end mt-2">
+            <button onclick="_submitSopComment('${id}')"
+              class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">
+              Post Comment
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+async function _toggleSopLike(id) {
+  try {
+    const resp = await apiFetch(`/api/sops/${id}/like`, { method: "POST" });
+    const data = await resp.json();
+    const btn = document.getElementById(`like-btn-${id}`);
+    if (btn) {
+      btn.className = data.liked
+        ? "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-red-300 text-red-600 bg-red-50"
+        : "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-gray-200 text-gray-600 hover:bg-gray-50";
+      btn.innerHTML = `<span>${data.liked ? "&#9829;" : "&#9825;"}</span><span>Like (${data.count})</span>`;
+    }
+  } catch {}
+}
+
+async function _toggleSopBookmark(id) {
+  try {
+    const resp = await apiFetch(`/api/sops/${id}/bookmark`, { method: "POST" });
+    const data = await resp.json();
+    const btn = document.getElementById(`bookmark-btn-${id}`);
+    if (btn) {
+      btn.className = data.bookmarked
+        ? "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-yellow-300 text-yellow-600 bg-yellow-50"
+        : "flex items-center gap-2 px-4 py-2 rounded-lg border text-sm border-gray-200 text-gray-600 hover:bg-gray-50";
+      btn.innerHTML = `<span>${data.bookmarked ? "&#9733;" : "&#9734;"}</span><span>Bookmark (${data.count})</span>`;
+    }
+  } catch {}
+}
+
+async function _submitSopComment(id) {
+  const input = document.getElementById(`comment-input-${id}`);
+  if (!input) return;
+  const content = input.value.trim();
+  if (!content) return;
+  try {
+    const resp = await apiFetch(`/api/sops/${id}/comments`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content }),
+    });
+    if (!resp.ok) {
+      const err = await resp.json();
+      alert(err.detail || "Failed to post comment");
+      return;
+    }
+    input.value = "";
+    // Refresh comments
+    const cResp = await apiFetch(`/api/sops/${id}/comments`);
+    const comments = await cResp.json();
+    const listEl = document.getElementById(`comments-list-${id}`);
+    const username = getUsername();
+    if (listEl) {
+      if (!comments.length) {
+        listEl.innerHTML = '<p class="text-gray-400 text-sm py-4 text-center">No comments yet. Be the first!</p>';
+      } else {
+        listEl.innerHTML = comments.map(c => {
+          const date = new Date(c.created_at * 1000).toLocaleDateString();
+          const canDelete = (c.username === username) || window.__isAdmin;
+          const delBtn = canDelete
+            ? `<button onclick="_deleteSopComment('${id}', ${c.id})"
+                 class="text-xs text-red-400 hover:text-red-600 ml-2">Delete</button>`
+            : "";
+          return `<div class="flex justify-between py-3 border-b border-gray-100 last:border-0">
+            <div class="flex-1">
+              <span class="font-medium text-sm text-gray-800">${c.username}</span>
+              <span class="text-xs text-gray-400 ml-2">${date}</span>
+              <p class="text-sm text-gray-700 mt-1">${c.content.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>
+            </div>
+            ${delBtn}
+          </div>`;
+        }).join("");
+      }
+    }
+  } catch {}
+}
+
+async function _deleteSopComment(sopId, commentId) {
+  if (!confirm("Delete this comment?")) return;
+  try {
+    const resp = await apiFetch(`/api/sops/${sopId}/comments/${commentId}`, { method: "DELETE" });
+    if (!resp.ok) {
+      const err = await resp.json();
+      alert(err.detail || "Failed to delete comment");
+      return;
+    }
+    // Refresh comments
+    const cResp = await apiFetch(`/api/sops/${sopId}/comments`);
+    const comments = await cResp.json();
+    const listEl = document.getElementById(`comments-list-${sopId}`);
+    const username = getUsername();
+    if (listEl) {
+      if (!comments.length) {
+        listEl.innerHTML = '<p class="text-gray-400 text-sm py-4 text-center">No comments yet. Be the first!</p>';
+      } else {
+        listEl.innerHTML = comments.map(c => {
+          const date = new Date(c.created_at * 1000).toLocaleDateString();
+          const canDelete = (c.username === username) || window.__isAdmin;
+          const delBtn = canDelete
+            ? `<button onclick="_deleteSopComment('${sopId}', ${c.id})"
+                 class="text-xs text-red-400 hover:text-red-600 ml-2">Delete</button>`
+            : "";
+          return `<div class="flex justify-between py-3 border-b border-gray-100 last:border-0">
+            <div class="flex-1">
+              <span class="font-medium text-sm text-gray-800">${c.username}</span>
+              <span class="text-xs text-gray-400 ml-2">${date}</span>
+              <p class="text-sm text-gray-700 mt-1">${c.content.replace(/</g,"&lt;").replace(/>/g,"&gt;")}</p>
+            </div>
+            ${delBtn}
+          </div>`;
+        }).join("");
+      }
+    }
+  } catch {}
 }
 
 // ── Shared helpers ────────────────────────────────────────────────
