@@ -411,6 +411,7 @@ function renderHome() {
 function renderView(name) {
   const renders = {
     home: renderHome,
+    papers: renderPapers,
     timeline: renderTimeline,
     directions: renderDirections,
     sops: renderSops,
@@ -1697,6 +1698,76 @@ function presentationCard(p) {
         ${(p.tags || []).map(tag => `<span class="text-xs bg-purple-50 text-purple-600 px-2 py-0.5 rounded-full">${tag}</span>`).join("")}
       </div>
     </div>`;
+}
+
+// ── Papers ────────────────────────────────────────────────────────
+let _papersSearch = "";
+let _papersType = "all";
+
+function renderPapers() {
+  const data = window.DATA;
+  const allPapers = (data.papers || []).filter(p => !p.archived);
+
+  // Reset filters each time view is opened
+  _papersSearch = "";
+  _papersType = "all";
+
+  const typeBtns = ["all", "journal", "conference"].map(tp => `
+    <button data-ptype="${tp}"
+      onclick="_setPapersType('${tp}')"
+      class="papers-type-btn px-3 py-1.5 text-xs rounded-full border font-medium transition ${tp === "all" ? "bg-blue-600 text-white border-blue-600" : "border-gray-300 text-gray-600 hover:border-blue-400"}">
+      ${tp === "all" ? (currentLang === "zh" ? "全部" : "All") : t("type." + tp)}
+    </button>`).join("");
+
+  document.getElementById("view-papers").innerHTML = `
+    <div class="flex items-center gap-3 mb-6 pb-3 border-b-2 border-blue-900">
+      <h2 class="text-xl font-extrabold text-gray-900">${currentLang === "zh" ? "论文库" : "Publications"}</h2>
+      <span id="papers-count" class="text-xs bg-gray-100 text-gray-400 px-2 py-0.5 rounded-full">${allPapers.length}</span>
+    </div>
+    <div class="flex flex-wrap gap-3 mb-5 items-center">
+      <input id="papers-search-input" type="text" autocomplete="off"
+        placeholder="${currentLang === "zh" ? "搜索标题、摘要、期刊…" : "Search title, abstract, journal…"}"
+        oninput="_papersSearch=this.value;_updatePapersResults()"
+        class="flex-1 min-w-0 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+      <div class="flex gap-2 flex-shrink-0">${typeBtns}</div>
+    </div>
+    <div id="papers-results" class="space-y-3"></div>`;
+
+  _updatePapersResults();
+}
+
+function _setPapersType(tp) {
+  _papersType = tp;
+  document.querySelectorAll(".papers-type-btn").forEach(b => {
+    const active = b.dataset.ptype === tp;
+    b.className = "papers-type-btn px-3 py-1.5 text-xs rounded-full border font-medium transition " +
+      (active ? "bg-blue-600 text-white border-blue-600" : "border-gray-300 text-gray-600 hover:border-blue-400");
+  });
+  _updatePapersResults();
+}
+
+function _updatePapersResults() {
+  const allPapers = (window.DATA.papers || []).filter(p => !p.archived);
+  const q = _papersSearch.toLowerCase();
+  const items = allPapers
+    .filter(p => {
+      if (_papersType !== "all" && p.type !== _papersType) return false;
+      if (!q) return true;
+      return (p.title || "").toLowerCase().includes(q) ||
+             (p.abstract || "").toLowerCase().includes(q) ||
+             (p.journal || "").toLowerCase().includes(q);
+    })
+    .sort((a, b) => (b.year || 0) - (a.year || 0));
+
+  const countEl = document.getElementById("papers-count");
+  if (countEl) countEl.textContent = items.length;
+
+  const resultsEl = document.getElementById("papers-results");
+  if (resultsEl) {
+    resultsEl.innerHTML = items.length
+      ? items.map(p => paperCard(p)).join("")
+      : `<p class="text-gray-400 py-12 text-center">${t("noResults")}</p>`;
+  }
 }
 
 // ── Timeline ──────────────────────────────────────────────────────
