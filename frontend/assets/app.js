@@ -2751,6 +2751,14 @@ async function boot() {
   }
   // One-time event delegation for extract-sop / view-sop buttons on paper cards
   document.querySelector("main").addEventListener("click", _handleSopAction);
+
+  // Back-to-top button: show after scrolling 300px
+  const _bttBtn = document.getElementById("back-to-top");
+  if (_bttBtn) {
+    window.addEventListener("scroll", () => {
+      _bttBtn.classList.toggle("btt-visible", window.scrollY > 300);
+    }, { passive: true });
+  }
 }
 
 boot();

@@ -300,6 +300,25 @@
       .article-breadcrumb { padding: .5rem 1rem; }
       .article-breadcrumb .ab-title { max-width: 180px; }
     }
+    /* ── Back-to-top button ── */
+    #back-to-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: #2563eb; color: white; border: none;
+      cursor: pointer; font-size: 1.1rem; font-weight: 700; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(37,99,235,.38);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .25s, transform .25s, background .15s;
+      pointer-events: none; z-index: 90;
+    }
+    #back-to-top.btt-visible {
+      opacity: 1; transform: translateY(0); pointer-events: auto;
+    }
+    #back-to-top:hover { background: #1d4ed8; transform: translateY(-2px) scale(1.08); }
+    @media (max-width: 639px) {
+      #back-to-top { bottom: 1rem; right: 1rem; width: 2.25rem; height: 2.25rem; font-size: 1rem; }
+    }
   </style>
 </head>
 <body class="h-full bg-gray-50 text-gray-900">
@@ -605,5 +624,10 @@
   </div>
 
   <script src="/assets/app.js"></script>
+
+  <!-- Floating back-to-top button -->
+  <button id="back-to-top"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+    title="返回顶部" aria-label="返回顶部">↑</button>
 </body>
 </html>

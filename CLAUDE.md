@@ -39,10 +39,16 @@ python scripts/build.py --rebuild   # full rebuild, preserves existing notes/abs
 node_modules/.bin/tailwindcss -i frontend/assets/input.css -o frontend/assets/style.css --minify
 ```
 
+**Run with Docker** (self-hosted / local Docker deployment):
+```bash
+docker-compose up --build
+```
+Volumes in `docker-compose.yml` bind-mount `data/`, `conversations/`, `files/`, and the PDF directories so data persists outside the container.
+
 ## Architecture
 
 ### Stack
-FastAPI backend + Vanilla JS SPA + Tailwind CSS v3. No build step for JS. Deployed on Railway via Dockerfile.
+FastAPI backend + Vanilla JS SPA + Tailwind CSS v3. No build step for JS. Deployed on Render via Dockerfile + `render.yaml`.
 
 ### Data Loading — two patterns coexist
 - **Script-tag globals** (`window.DATA`, `window.MEMBERS`): `data/data.js` and `data/members.js` are served as static files and loaded via `<script>` tags in `index.html`. These contain papers, system SOPs, books, presentations, and member profiles. Never use `fetch()` for these.
@@ -89,6 +95,9 @@ Scans `1.Journal Articles/`, `2.Conference Proceedings/`, `3.Books/`, `files/sop
 - `data/ai_config.json` — runtime AI provider/key config; overrides env vars when present (in git)
 - `data/footer_config.json` — footer link config managed via admin panel (in git)
 - `conversations/` — per-user conversation JSON files (not in git)
+- `files/sops/` — system SOP PDFs scanned by `scripts/build.py`
+- `files/presentations/` — presentation files scanned by `scripts/build.py`
+- `files/generated/` — auto-created by Dockerfile (not in git)
 
 ### Router Map
 | File | Routes |
@@ -102,7 +111,7 @@ Scans `1.Journal Articles/`, `2.Conference Proceedings/`, `3.Books/`, `files/sop
 | `backend/routers/sops.py` | `GET/POST/PUT/DELETE /api/sops[/{id}]`, `POST /api/admin/sops/{id}/remove` (soft-delete, admin) |
 | `backend/routers/social.py` | `POST /api/sops/{id}/like`, `/bookmark`, `GET/POST /api/sops/{id}/comments`, `DELETE /api/sops/{id}/comments/{comment_id}`, `GET /api/me/likes`, `/bookmarks` |
 | `backend/routers/admin.py` | `GET/POST/PUT/DELETE /api/admin/members[/{id}]`, `PUT /api/admin/papers/{id}`, `GET/PUT /api/admin/ai-config`, `GET/PUT /api/admin/footer` |
-| `backend/routers/sop_extract.py` | SOP AI extraction |
+| `backend/routers/sop_extract.py` | `POST /api/extract-sop` (admin only, SSE) — on-demand SOP extraction from a paper |
 
 ### Service / Store Map
 | File | Responsibility |
@@ -120,6 +129,11 @@ Scans `1.Journal Articles/`, `2.Conference Proceedings/`, `3.Books/`, `files/sop
 | `backend/services/sop_service.py` | SOP extraction prompts (Chinese-only, 4-category constraint) |
 | `backend/config.py` | AI_PROVIDER / *_API_KEY / JWT_SECRET / HOST / PORT env vars |
 | `backend/deps.py` | `current_user` + `admin_required` FastAPI dependencies (HTTPBearer) |
+
+## Dependencies
+Two requirements files:
+- `requirements.txt` — full dev install: includes AI SDKs (`anthropic`, `claude-agent-sdk`), build tools (`pymupdf`, `PyPDF2`, `python-docx`, `python-pptx`, `openpyxl`), and `pytest`. Use locally.
+- `requirements-server.txt` — slim Render/prod install: FastAPI, uvicorn, JWT, bcrypt, rank-bm25, PyMuPDF only. No AI SDKs (provider clients use `httpx` directly) and no dev tools.
 
 ## Tests
 Tests across 12 files in `tests/`. All must pass before committing. Tests that touch the DB use `monkeypatch` to redirect `DB_PATH` to a `tmp_path`. Auth tests use `TestClient` as a context manager so the startup event fires (`ensure_admin_exists` seeds `admin`/`admin`). Registration requires an admin JWT — test helpers log in first to get one.
