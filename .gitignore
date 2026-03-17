@@ -13,10 +13,7 @@ package*.json
 data/users.db
 data/ai_config.json
 
-# Large binary/media files — not hosted on GitHub
-1.Journal Articles/
-2.Conference Proceedings/
-3.Books/
+# Large binary/media files
 ALL PUBLISHED.zip
 
 # Local tooling
